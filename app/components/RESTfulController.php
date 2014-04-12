@@ -1,6 +1,6 @@
 <?php
 
-abstract class RESTfulController extends BaseController
+abstract class RESTfulController extends Controller
 {
 
     /**

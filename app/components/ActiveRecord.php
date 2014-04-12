@@ -3,8 +3,9 @@
 /**
  * Extended active record class with helper functions
  */
-class ActiveRecord extends CActiveRecord
+class ActiveRecord extends CActiveRecord 
 {
+    use \Traits\ClassName;
     /**
      * @var string field name with record creation date
      */
