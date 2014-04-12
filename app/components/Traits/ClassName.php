@@ -10,7 +10,5 @@ namespace Traits;
 
 
 trait ClassName {
-    static public function className() {
-        return get_called_class();
-    }
+
 } 

@@ -3,9 +3,14 @@
 /**
  * Extended active record class with helper functions
  */
-class ActiveRecord extends CActiveRecord 
+class ActiveRecord extends CActiveRecord
 {
-    use \Traits\ClassName;
+
+    static public function className()
+    {
+        return get_called_class();
+    }
+
     /**
      * @var string field name with record creation date
      */
@@ -23,21 +28,23 @@ class ActiveRecord extends CActiveRecord
      */
     protected function beforeValidate()
     {
-        if (!parent::beforeValidate()) {
+        if (!parent::beforeValidate())
+        {
             return false;
         }
 
-        if (isset($this->getMetaData()->tableSchema->columns[$this->updatedField])) {
+        if (isset($this->getMetaData()->tableSchema->columns[$this->updatedField]))
+        {
             $this->{$this->updatedField} = new CDbExpression('CURRENT_TIMESTAMP');
         }
 
-        if ($this->isNewRecord && isset($this->getMetaData()->tableSchema->columns[$this->createdField])) {
+        if ($this->isNewRecord && isset($this->getMetaData()->tableSchema->columns[$this->createdField]))
+        {
             $this->{$this->createdField} = new CDbExpression('CURRENT_TIMESTAMP');
         }
 
         return true;
     }
-
 
     /**
      * Start DB transaction
@@ -47,7 +54,8 @@ class ActiveRecord extends CActiveRecord
      */
     public static function beginTransaction($connection = null)
     {
-        if ($connection === null) {
+        if ($connection === null)
+        {
             $connection = Yii::app()->getDb();
         }
 
@@ -62,12 +70,14 @@ class ActiveRecord extends CActiveRecord
      */
     public static function commitTransaction($connection = null)
     {
-        if ($connection === null) {
+        if ($connection === null)
+        {
             $connection = Yii::app()->getDb();
         }
 
         /** @var CDbTransaction $transaction */
-        if (($transaction = $connection->getCurrentTransaction()) === null) {
+        if (($transaction = $connection->getCurrentTransaction()) === null)
+        {
             throw new ActiveRecordException('Transaction not started');
         }
 
@@ -82,15 +92,18 @@ class ActiveRecord extends CActiveRecord
      */
     public static function rollbackTransaction($connection = null)
     {
-        if ($connection === null) {
+        if ($connection === null)
+        {
             $connection = Yii::app()->getDb();
         }
 
         /** @var CDbTransaction $transaction */
-        if (($transaction = $connection->getCurrentTransaction()) === null) {
+        if (($transaction = $connection->getCurrentTransaction()) === null)
+        {
             throw new ActiveRecordException('Transaction not started');
         }
 
         $transaction->rollback();
     }
+
 }
