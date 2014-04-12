@@ -29,7 +29,7 @@ class SiteController extends BaseController
      */
     public function actionLogin()
     {
-        if(!$this->user->isGuest)
+        if(!$this->user()->isGuest)
         {
             $this->redirect(Yii::app()->user->returnUrl);
         }
