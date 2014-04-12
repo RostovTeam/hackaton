@@ -25,5 +25,15 @@ class EventController extends RESTfulController
             ]
                 ], parent::accessRules());
     }
+    
+    public function getFilterCriteria()
+    {
+        $cr=parent::getFilterCriteria();
+        
+        if($name=Yii::app()->request->getParam('name'))
+        {
+            $cr->compare('name', $name,true);
+        }
+    }
 
 }
