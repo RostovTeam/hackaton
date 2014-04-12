@@ -14,6 +14,9 @@
     <title></title>
     <meta name="description" content="">
     <meta name="viewport" content="width=device-width">
+    <?php
+    Yii::app()->clientScript->registerPackage('app');
+    ?>
 </head>
 <body>
     <?= $content; ?>
