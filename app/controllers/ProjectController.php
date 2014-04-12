@@ -32,6 +32,16 @@ class ProjectController extends RESTfulController
 
         $cr->with = ['team'];
 
+        if ($name = Yii::app()->request->getParam('name'))
+        {
+            $cr->compare('name', $name, true);
+        }
+
+        if ($event_id = Yii::app()->request->getParam('event_id '))
+        {
+            $cr->compare('event_id', $event_id);
+        }
+
         return $cr;
     }
 
@@ -41,6 +51,7 @@ class ProjectController extends RESTfulController
 
         $row['team'] = $model->team;
         $row['members'] = $model->team->members;
+        $row['mark']=$model->getMark();
         
         return $row;
     }
