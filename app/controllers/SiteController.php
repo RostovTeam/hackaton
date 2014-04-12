@@ -37,10 +37,10 @@ class SiteController extends BaseController
         Yii::log('Authenticating', CLogger::LEVEL_INFO, 'auth');
 
         $serviceName = Yii::app()->request->getParam('service');
-       
+
         if ($serviceName)
         {
-             Yii::log('With ' . $serviceName, CLogger::LEVEL_INFO, 'auth');
+            Yii::log('With ' . $serviceName, CLogger::LEVEL_INFO, 'auth');
             /** @var $eauth EAuthServiceBase */
             $eauth = Yii::app()->eauth->getIdentity($serviceName);
             $eauth->redirectUrl = Yii::app()->user->returnUrl;
@@ -48,6 +48,7 @@ class SiteController extends BaseController
 
             try
             {
+                Yii::log('Trying  ' . $serviceName, CLogger::LEVEL_INFO, 'auth');
                 if ($eauth->authenticate())
                 {
                     Yii::log('Eauth authenticated ', CLogger::LEVEL_INFO, 'auth');
