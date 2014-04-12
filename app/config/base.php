@@ -23,7 +23,7 @@ return array(
     // application components
     'components' => array(
         'request' => array(
-            'class' => HttpRequest::className()
+            'class' => BaseHttpRequest::className()
         ),
         'user' => array(
             // enable cookie-based authentication
