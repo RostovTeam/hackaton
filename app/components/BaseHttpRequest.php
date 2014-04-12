@@ -7,7 +7,6 @@
  */
 class BaseHttpRequest extends CHttpRequest 
 {
-    use \Traits\ClassName;
     
     public function getJsonData()
     {
