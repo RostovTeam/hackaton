@@ -1,6 +1,5 @@
 .idea/
 nbproject/
-.htaccess
 vendor/
 *.swp
 composer.phar
