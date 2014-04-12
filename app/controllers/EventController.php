@@ -20,8 +20,10 @@ class EventController extends RESTfulController
         return array_merge(
                 [
             ['allow',
-                'roles' => ['member','admin']
+                //'roles' => ['member','admin']
+                'users' => ['*']
             ]
                 ], parent::accessRules());
     }
+
 }

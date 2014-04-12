@@ -70,4 +70,52 @@ class User extends ActiveRecord
         return parent::model($className);
     }
 
+    /**
+     * hash password before save user
+     * 
+     * @return boolean
+     */
+    public function beforeSave()
+    {
+        if (parent::beforeSave())
+        {
+            $this->salt = $this->generateSalt();
+            $this->password = $this->hashPassword($this->password, $this->salt);
+            return true;
+        }
+        return false;
+    }
+
+    /**
+     * Check if given passwrod matches hashed password
+     * 
+     * @param String $password
+     * @return Bool  
+     */
+    public function validatePassword($password)
+    {
+        return $this->hashPassword($password, $this->salt) === $this->password;
+    }
+
+    /**
+     * Hash passwod with salt
+     * 
+     * @param String $password
+     * @param String $salt
+     * @return String 
+     */
+    public function hashPassword($password, $salt)
+    {
+        return md5(md5($salt) . $password);
+    }
+
+    /**
+     * Generates additional hash 
+     * @return uuid
+     */
+    protected function generateSalt()
+    {
+        return uniqid('', true);
+    }
+
 }
