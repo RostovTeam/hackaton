@@ -51,8 +51,6 @@ return array(
                 '<controller:[a-zA-Z]+>/<action:[a-zA-Z]+>' => '<controller>/<action>',
             ),
         ),
-        'db' => array(
-        ),
         'authManager' => array(
             'class' => 'CDbAuthManager',
         ),

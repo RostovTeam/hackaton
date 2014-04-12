@@ -8,3 +8,4 @@ composer.lock
 app/config/db.php
 app/config/main.php
 app/config/params.php
+app/runtime/application.log

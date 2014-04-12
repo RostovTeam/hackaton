@@ -1,0 +1,12 @@
+<?php
+/**
+ * @author Smotrov Dmitriy <dsxack@gmail.com>
+ */
+
+return array(
+    'connectionString' => 'mysql:host=localhost;dbname=hackaton',
+    'emulatePrepare' => true,
+    'username' => 'root',
+    'password' => 'hackaton',
+    'charset' => 'utf8',
+);
