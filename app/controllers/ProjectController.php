@@ -21,9 +21,28 @@ class ProjectController extends RESTfulController
                 [
             ['allow',
                 //'roles' => ['member', 'admin']
-                 'users'=>['*']
+                'users' => ['*']
             ]
                 ], parent::accessRules());
+    }
+
+    public function getFilterCriteria()
+    {
+        $cr = parent::getFilterCriteria();
+
+        $cr->with = ['team'];
+
+        return $cr;
+    }
+
+    public function serializeView($model)
+    {
+        $row = $model->attributes;
+
+        $row['team'] = $model->team;
+        $row['members'] = $model->team->members;
+        
+        return $row;
     }
 
 }
