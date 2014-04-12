@@ -29,6 +29,11 @@ class SiteController extends BaseController
      */
     public function actionLogin()
     {
+        if(!$this->user->isGuest)
+        {
+            $this->redirect(Yii::app()->user->returnUrl);
+        }
+        
         $serviceName = Yii::app()->request->getQuery('service');
         if (isset($serviceName))
         {
@@ -42,9 +47,6 @@ class SiteController extends BaseController
                 if ($eauth->authenticate())
                 {
                     $identity = new EAuthUserIdentity($eauth);
-
-                    var_dump($eauth->getIsAuthenticated(),
-                            $eauth->getAttributes());
 
                     // successful authentication
                     if ($identity->authenticate())
@@ -94,8 +96,10 @@ class SiteController extends BaseController
             if ($model->validate() && $model->login())
                     $this->redirect(Yii::app()->user->returnUrl);
         }
+        
         // display the login form
         $this->render('login', array('model' => $model));
+
     }
 
     /**
