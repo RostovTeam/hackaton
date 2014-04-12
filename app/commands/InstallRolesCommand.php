@@ -5,7 +5,7 @@
  *
  * @author Komov Roman <komov.r@gmail.com>
  */
-class InstallRolesCommand extends BaseConsoleCommand
+class InstallRolesCommand extends CConsoleCommand
 {
 
     public function actionIndex()
