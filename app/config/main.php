@@ -15,7 +15,7 @@ return CMap::mergeArray(
                     'charset' => 'utf8',
                 ),
                 'clientScript' => array(
-                    'class' => ClientScript::className(),
+                    'class' => 'ClientScript',
                     'packages' => require __DIR__ . '/assets.php',
                 ),
                 'cache' => array(
