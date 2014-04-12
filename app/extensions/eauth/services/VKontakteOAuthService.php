@@ -48,6 +48,7 @@ class VKontakteOAuthService extends EOAuth2Service {
 		$this->attributes['name'] = $info->first_name . ' ' . $info->last_name;
 		$this->attributes['url'] = 'http://vk.com/id' . $info->uid;
 
+                $this->attributes['photo_medium'] = $info->photo_medium;
 		/*if (!empty($info->nickname))
 			$this->attributes['username'] = $info->nickname;
 		else
@@ -61,7 +62,7 @@ class VKontakteOAuthService extends EOAuth2Service {
 		$this->attributes['timezone'] = timezone_name_from_abbr('', $info->timezone*3600, date('I'));;
 
 		$this->attributes['photo'] = $info->photo;
-		$this->attributes['photo_medium'] = $info->photo_medium;
+		
 		$this->attributes['photo_big'] = $info->photo_big;
 		$this->attributes['photo_rec'] = $info->photo_rec;*/
 	}
