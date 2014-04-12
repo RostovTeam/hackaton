@@ -29,11 +29,14 @@ class SiteController extends BaseController
      */
     public function actionLogin()
     {
-        if(!$this->user()->isGuest)
+        if (!$this->user()->isGuest)
         {
             $this->redirect(Yii::app()->user->returnUrl);
         }
         
+        Yii::log('Authenticating',
+                                CLogger::LEVEL_INFO, 'auth');
+
         $serviceName = Yii::app()->request->getQuery('service');
         if (isset($serviceName))
         {
@@ -52,24 +55,32 @@ class SiteController extends BaseController
                     if ($identity->authenticate())
                     {
                         Yii::app()->user->login($identity);
-                        //var_dump($identity->id, $identity->name, Yii::app()->user->id);exit;
-                        // Save the attributes to display it in layouts/main.php
+
                         $session = Yii::app()->session;
                         $session['eauth_profile'] = $eauth->attributes;
+
+                        Yii::log('Auth success', CLogger::LEVEL_INFO, 'auth');
 
                         // redirect and close the popup window if needed
                         $eauth->redirect();
                     } else
                     {
+                        Yii::log('Auth cant authenticate identity',
+                                CLogger::LEVEL_WARNING, 'auth');
                         // close popup window and redirect to cancelUrl
                         $eauth->cancel();
                     }
                 }
+                Yii::log('Auth cant authenticate eauth',
+                                CLogger::LEVEL_WARNING, 'auth');
 
                 // Something went wrong, redirect back to login page
                 $this->redirect(array('site/login'));
             } catch (EAuthException $e)
             {
+                Yii::log('EAuth exection '.$e->getMessage(),
+                                CLogger::LEVEL_WARNING, 'auth');
+                
                 // save authentication error to session
                 Yii::app()->user->setFlash('error',
                         'EAuthException: ' . $e->getMessage());
@@ -96,10 +107,9 @@ class SiteController extends BaseController
             if ($model->validate() && $model->login())
                     $this->redirect(Yii::app()->user->returnUrl);
         }
-        
+
         // display the login form
         $this->render('login', array('model' => $model));
-
     }
 
     /**
