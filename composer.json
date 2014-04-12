@@ -1,0 +1,16 @@
+{
+    "require": {
+        "php": ">=5.4.0",
+        "yiisoft/yii": "1.1.14",
+        "swiftmailer/swiftmailer": "dev-master"
+    },
+    "autoload": {
+        "psr-0": {
+            "": ["app/components", "app/modules", "app/models"]
+        },
+        "files": [
+            "vendor/yiisoft/yii/framework/YiiBase.php",
+            "app/components/Yii.php"
+        ]
+    }
+}
