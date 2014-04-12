@@ -45,6 +45,7 @@ class Event extends ActiveRecord
         return array(
             'members' => array(self::MANY_MANY, Member::className(), 'event_members(event_id, members_id)'),
             'projects' => array(self::HAS_MANY, Project::className(), 'event_id'),
+            'commits'=>[self::HAS_MANY,Commit::className(),['id'=>'project_id'],'through'=>'projects']
         );
     }
 

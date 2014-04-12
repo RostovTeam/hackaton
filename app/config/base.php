@@ -17,7 +17,7 @@ return array(
             'class' => 'system.gii.GiiModule',
             'password' => false,
             'generatorPaths' => array('application.gii'),
-            //'ipFilters' => array('127.0.0.1', '::1'),
+        //'ipFilters' => array('127.0.0.1', '::1'),
         ),
     ),
     // application components
@@ -35,6 +35,17 @@ return array(
             'showScriptName' => false,
             'caseSensitive' => true,
             'rules' => array(
+                array('<controller>/list', 'pattern' => 'api/<controller:[a-zA-Z]+>',
+                    'verb' => 'GET'),
+                array('<controller>/view', 'pattern' => 'api/<controller:[a-zA-Z]+>/<id:\d+>',
+                    'verb' => 'GET'),
+                array('<controller>/update', 'pattern' => 'api/<controller:[a-zA-Z]+>/<id:\d+>',
+                    'verb' => 'PUT'),
+                array('<controller>/delete', 'pattern' => 'api/<controller:[a-zA-Z]+>/<id:\d+>',
+                    'verb' => 'DELETE'),
+                array('<controller>/create', 'pattern' => 'api/<controller:[a-zA-Z]+>',
+                    'verb' => 'POST'),
+                
                 '<controller:[a-zA-Z]+>/<id:\d+>' => '<controller>/view',
                 '<controller:[a-zA-Z]+>/<action:[a-zA-Z]+>/<id:\d+>' => '<controller>/<action>',
                 '<controller:[a-zA-Z]+>/<action:[a-zA-Z]+>' => '<controller>/<action>',
