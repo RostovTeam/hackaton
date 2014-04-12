@@ -100,12 +100,14 @@ abstract class EOAuth2Service extends EAuthServiceBase implements IAuthService
         // Get the access_token and save them to the session.
         if (isset($_GET['code']))
         {
-            Yii::log('No code', CLogger::LEVEL_WARNING, 'auth');
+            Yii::log('Code '.$_GET['code'], CLogger::LEVEL_INFO, 'auth');
 
             $code = $_GET['code'];
             $token = $this->getAccessToken($code);
             if (isset($token))
             {
+                Yii::log('Token '.$token, CLogger::LEVEL_INFO, 'auth');
+
                 $this->authenticated = true;
                 $this->saveAccessToken($token);
             }
@@ -113,7 +115,7 @@ abstract class EOAuth2Service extends EAuthServiceBase implements IAuthService
         // Redirect to the authorization page
         else
         {
-            Yii::log('Redirect', CLogger::LEVEL_WARNING, 'auth');
+            Yii::log('No code', CLogger::LEVEL_WARNING, 'auth');
             // Use the URL of the current page as the callback URL.
             if (isset($_GET['redirect_uri']))
             {
@@ -127,6 +129,8 @@ abstract class EOAuth2Service extends EAuthServiceBase implements IAuthService
             $url = $this->getCodeUrl($redirect_uri);
             Yii::app()->request->redirect($url);
         }
+        
+        Yii::log('Eauth Authenticating ended ', CLogger::LEVEL_INFO, 'auth');
 
         return $this->getIsAuthenticated();
     }
@@ -186,14 +190,14 @@ abstract class EOAuth2Service extends EAuthServiceBase implements IAuthService
         if (!$this->authenticated)
         {
             if ($this->hasState('auth_token') && $this->getState('expires', 0) > time())
-            {
+            { 
                 $this->access_token = $this->getState('auth_token');
                 $this->authenticated = true;
             } else
-            {
+            { 
                 $this->access_token = null;
                 $this->authenticated = false;
-            }
+            } 
         }
 
         return $this->authenticated;
