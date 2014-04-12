@@ -10,6 +10,7 @@ return array(
     'import' => array(
         'application.models.*',
         'application.components.*',
+        'application.controllers.*',
     ),
     'modules' => array(
         'gii' => array(
@@ -22,7 +23,7 @@ return array(
     // application components
     'components' => array(
         'request' => array(
-            'class' => 'HttpRequest'
+            'class' => HttpRequest::className()
         ),
         'user' => array(
             // enable cookie-based authentication
@@ -59,6 +60,30 @@ return array(
 //                    'class' => 'CWebLogRoute',
 //                ),
             ),
+        ),
+
+        'eauth' => array(
+            'class' => 'ext.eauth.EAuth',
+            'popup' => true, // Use the popup window instead of redirecting.
+            'cache' => false, // Cache component name or false to disable cache. Defaults to 'cache'.
+            'cacheExpire' => 0, // Cache lifetime. Defaults to 0 - means unlimited.
+            'services' => array( // You can change the providers and their classes.
+                'facebook' => array(
+                    // register your app here: https://developers.facebook.com/apps/
+                    'class' => 'FacebookOAuthService',
+                    'client_id' => '...',
+                    'client_secret' => '...',
+                ),
+                'vkontakte' => array(
+                    // register your app here: https://vk.com/editapp?act=create&site=1
+                    'class' => 'VKontakteOAuthService',
+                    'client_id' => '4302211',
+                    'client_secret' => 'NEsrfCNCG3aSGHFmxqk6',
+                ),
+            ),
+        ),
+        'loid' => array(
+            'class' => 'ext.lightopenid.loid',
         ),
     ),
     'params' => require(dirname(__FILE__) . '/params.php'),
