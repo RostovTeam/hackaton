@@ -37,9 +37,10 @@ class SiteController extends BaseController
         Yii::log('Authenticating', CLogger::LEVEL_INFO, 'auth');
 
         $serviceName = Yii::app()->request->getParam('service');
-        Yii::log('With ' . $serviceName, CLogger::LEVEL_INFO, 'auth');
+       
         if ($serviceName)
         {
+             Yii::log('With ' . $serviceName, CLogger::LEVEL_INFO, 'auth');
             /** @var $eauth EAuthServiceBase */
             $eauth = Yii::app()->eauth->getIdentity($serviceName);
             $eauth->redirectUrl = Yii::app()->user->returnUrl;
