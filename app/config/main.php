@@ -50,13 +50,7 @@ return array(
 		),
 		*/
 		// uncomment the following to use a MySQL database
-		'db'=>array(
-			'connectionString' => 'mysql:host=localhost;dbname=hackaton',
-			'emulatePrepare' => true,
-			'username' => 'root',
-			'password' => '',
-			'charset' => 'utf8',
-		),
+		'db'=>require("db.php"),
 		'errorHandler'=>array(
 			// use 'site/error' action to display errors
 			'errorAction'=>'site/error',

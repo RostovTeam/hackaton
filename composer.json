@@ -2,6 +2,7 @@
     "require": {
         "php": ">=5.4.0",
         "yiisoft/yii": "1.1.14",
+        "petrgrishin/yiimigrate": "dev-master",
         "swiftmailer/swiftmailer": "dev-master"
     },
     "autoload": {
