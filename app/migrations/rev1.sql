@@ -12,3 +12,4 @@ ALTER TABLE `hackaton`.`members` CHANGE COLUMN `user_id` `user_id` INT(11) NULL 
   ON DELETE NO ACTION
   ON UPDATE NO ACTION;
 
+ALTER TABLE `hackaton`.`teams` CHANGE COLUMN `id` `id` INT(11) NOT NULL AUTO_INCREMENT  ;

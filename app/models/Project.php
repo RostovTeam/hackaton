@@ -54,7 +54,7 @@ class Project extends ActiveRecord
             'projectCriteriases' => array(self::HAS_MANY, ProjectCriteria::className(), 'projects_id'),
             'event' => array(self::BELONGS_TO, Event::className(), 'event_id'),
             'owner' => array(self::BELONGS_TO, Member::className(), 'owner_id'),
-            'teams' => array(self::HAS_MANY, Team::className(), 'project_id'),
+            'team' => array(self::HAS_ONE, Team::className(), 'project_id','with'=>'members'),
         );
     }
 

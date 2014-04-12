@@ -28,8 +28,8 @@ class Team extends ActiveRecord
     public function rules()
     {
         return array(
-            array('id, project_id', 'required'),
-            array('id, project_id', 'numerical', 'integerOnly' => true),
+            array(' project_id', 'required'),
+            array(' project_id', 'numerical', 'integerOnly' => true),
             array('id, project_id', 'safe', 'on' => 'search'),
         );
     }
@@ -41,7 +41,7 @@ class Team extends ActiveRecord
     {
         return array(
             'members' => array(self::MANY_MANY, Member::className(), 'team_members(team_id, members_id)'),
-            'project' => array(self::BELONGS_TO, Projects::className(), 'project_id'),
+            'project' => array(self::BELONGS_TO, Project::className(), 'project_id'),
         );
     }
 
