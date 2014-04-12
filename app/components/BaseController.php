@@ -3,7 +3,9 @@
  * @author Smotrov Dmitriy <dsxack@gmail.com>
  */
 
-class Controller extends \CController{
+class BaseController extends \CController{
+    use \Traits\ClassName;
+
     /**
      * @return HttpRequest
      */
