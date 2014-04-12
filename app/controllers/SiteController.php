@@ -37,8 +37,10 @@ class SiteController extends BaseController
         Yii::log('Authenticating',
                                 CLogger::LEVEL_INFO, 'auth');
 
-        $serviceName = Yii::app()->request->getQuery('service');
-        if (isset($serviceName))
+        $serviceName = Yii::app()->request->getParam('service');
+         Yii::log('With'. $serviceName,
+                                CLogger::LEVEL_INFO, 'auth');
+        if ($serviceName)
         {
             /** @var $eauth EAuthServiceBase */
             $eauth = Yii::app()->eauth->getIdentity($serviceName);
