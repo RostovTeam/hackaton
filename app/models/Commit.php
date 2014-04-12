@@ -14,7 +14,7 @@
  * @property Members $member
  * @property Projects $project
  */
-class Commits extends ActiveRecord
+class Commit extends ActiveRecord
 {
 	/**
 	 * @return string the associated database table name
@@ -43,11 +43,10 @@ class Commits extends ActiveRecord
 	 */
 	public function relations()
 	{
-		// NOTE: you may need to adjust the relation name and the related
-		// class name for the relations automatically generated below.
+		
 		return array(
-			'member' => array(self::BELONGS_TO, 'Members', 'member_id'),
-			'project' => array(self::BELONGS_TO, 'Projects', 'project_id'),
+			'member' => array(self::BELONGS_TO, Member::className(), 'member_id'),
+			'project' => array(self::BELONGS_TO, Projects::className(), 'project_id'),
 		);
 	}
 

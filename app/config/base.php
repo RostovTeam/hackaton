@@ -31,7 +31,7 @@ return array(
         ),
         'urlManager' => array(
             'urlFormat' => 'path',
-            'showScriptName' => true,
+            'showScriptName' => false,
             'caseSensitive' => true,
             'rules' => array(
                 '<controller:[a-zA-Z]+>/<id:\d+>' => '<controller>/view',

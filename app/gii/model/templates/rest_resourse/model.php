@@ -78,8 +78,6 @@ class <?php echo $modelClass; ?> extends <?php echo $this->baseClass."\n"; ?>
 	 */
 	public function relations()
 	{
-		// NOTE: you may need to adjust the relation name and the related
-		// class name for the relations automatically generated below.
 		return array(
 <?php foreach($relations as $name=>$relation): ?>
 			<?php echo "'$name' => $relation,\n"; ?>

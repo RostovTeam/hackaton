@@ -1,20 +1,21 @@
 <?php
 
 /**
- * This is the model class for table "team_members".
+ * This is the model class for table "event_members".
  *
- * The followings are the available columns in table 'team_members':
- * @property integer $team_id
+ * The followings are the available columns in table 'event_members':
+ * @property integer $event_id
  * @property integer $members_id
+ * @property integer $status
  */
-class TeamMembers extends ActiveRecord
+class EventMember extends ActiveRecord
 {
 	/**
 	 * @return string the associated database table name
 	 */
 	public function tableName()
 	{
-		return 'team_members';
+		return 'event_members';
 	}
 
 	/**
@@ -23,9 +24,9 @@ class TeamMembers extends ActiveRecord
 	public function rules()
 	{
 		return array(
-			array('team_id, members_id', 'required'),
-			array('team_id, members_id', 'numerical', 'integerOnly'=>true),
-			array('team_id, members_id', 'safe', 'on'=>'search'),
+			array('event_id, members_id', 'required'),
+			array('event_id, members_id, status', 'numerical', 'integerOnly'=>true),
+			array('event_id, members_id, status', 'safe', 'on'=>'search'),
 		);
 	}
 
@@ -34,8 +35,6 @@ class TeamMembers extends ActiveRecord
 	 */
 	public function relations()
 	{
-		// NOTE: you may need to adjust the relation name and the related
-		// class name for the relations automatically generated below.
 		return array(
 		);
 	}
@@ -46,8 +45,9 @@ class TeamMembers extends ActiveRecord
 	public function attributeLabels()
 	{
 		return array(
-			'team_id' => 'Team',
+			'event_id' => 'Event',
 			'members_id' => 'Members',
+			'status' => 'Status',
 		);
 	}
 
@@ -55,7 +55,7 @@ class TeamMembers extends ActiveRecord
 	 * Returns the static model of the specified AR class.
 	 * Please note that you should have this exact method in all your CActiveRecord descendants!
 	 * @param string $className active record class name.
-	 * @return TeamMembers the static model class
+	 * @return EventMembers the static model class
 	 */
 	public static function model($className=__CLASS__)
 	{
