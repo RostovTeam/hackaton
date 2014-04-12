@@ -13,7 +13,7 @@
  *
  * The followings are the available model relations:
  * @property Commits[] $commits
- * @property ProjectCriterias[] $projectCriteriases
+ * @property ProjectCriterias[] $projectCriterias
  * @property Events $event
  * @property Members $owner
  * @property Teams[] $teams
@@ -51,10 +51,11 @@ class Project extends ActiveRecord
 
         return array(
             'commits' => array(self::HAS_MANY, Commit::className(), 'project_id'),
-            'projectCriteriases' => array(self::HAS_MANY, ProjectCriteria::className(), 'projects_id'),
+            'projectCriterias' => array(self::HAS_MANY, ProjectCriteria::className(),
+                'projects_id'),
             'event' => array(self::BELONGS_TO, Event::className(), 'event_id'),
             'owner' => array(self::BELONGS_TO, Member::className(), 'owner_id'),
-            'team' => array(self::HAS_ONE, Team::className(), 'project_id','with'=>'members'),
+            'team' => array(self::HAS_ONE, Team::className(), 'project_id', 'with' => 'members'),
         );
     }
 
@@ -83,5 +84,14 @@ class Project extends ActiveRecord
     {
         return parent::model($className);
     }
-
+    
+    /**
+     * Gets critetias summary value
+     * 
+     * @return int
+     */
+    public function getMark()
+    {
+        return (int)array_sum(array_map(function($v){ return $v->value;},$this->projectCriterias));
+    }
 }
