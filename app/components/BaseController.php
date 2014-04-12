@@ -6,6 +6,8 @@
 class BaseController extends \CController{
     use \Traits\ClassName;
 
+    public $breadcrumbs;
+
     /**
      * @return HttpRequest
      */
