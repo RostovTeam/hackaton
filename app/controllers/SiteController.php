@@ -33,13 +33,11 @@ class SiteController extends BaseController
         {
             $this->redirect(Yii::app()->user->returnUrl);
         }
-        
-        Yii::log('Authenticating',
-                                CLogger::LEVEL_INFO, 'auth');
+
+        Yii::log('Authenticating', CLogger::LEVEL_INFO, 'auth');
 
         $serviceName = Yii::app()->request->getParam('service');
-         Yii::log('With'. $serviceName,
-                                CLogger::LEVEL_INFO, 'auth');
+        Yii::log('With ' . $serviceName, CLogger::LEVEL_INFO, 'auth');
         if ($serviceName)
         {
             /** @var $eauth EAuthServiceBase */
@@ -51,6 +49,8 @@ class SiteController extends BaseController
             {
                 if ($eauth->authenticate())
                 {
+                    Yii::log('Eauth authenticated ', CLogger::LEVEL_INFO, 'auth');
+
                     $identity = new EAuthUserIdentity($eauth);
 
                     // successful authentication
@@ -73,16 +73,16 @@ class SiteController extends BaseController
                         $eauth->cancel();
                     }
                 }
-                Yii::log('Auth cant authenticate eauth',
-                                CLogger::LEVEL_WARNING, 'auth');
+                Yii::log('Auth cant authenticate eauth', CLogger::LEVEL_WARNING,
+                        'auth');
 
                 // Something went wrong, redirect back to login page
                 $this->redirect(array('site/login'));
             } catch (EAuthException $e)
             {
-                Yii::log('EAuth exection '.$e->getMessage(),
-                                CLogger::LEVEL_WARNING, 'auth');
-                
+                Yii::log('EAuth exception ' . $e->getMessage(),
+                        CLogger::LEVEL_WARNING, 'auth');
+
                 // save authentication error to session
                 Yii::app()->user->setFlash('error',
                         'EAuthException: ' . $e->getMessage());
