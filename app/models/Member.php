@@ -37,14 +37,13 @@ class Member extends ActiveRecord
     public function rules()
     {
         return array(
-            array('user_id', 'required'),
             array('user_id', 'numerical', 'integerOnly' => true),
             array('full_name', 'length', 'max' => 450),
             array('email', 'length', 'max' => 200),
             array('phone', 'length', 'max' => 20),
             array('git_nickname', 'length', 'max' => 50),
             array('vk_link', 'length', 'max' => 100),
-            array('created', 'safe'),
+            array('user_id,vk_link','unsafe'),
             array('id, user_id, full_name, email, phone, created, git_nickname, vk_link',
                 'safe', 'on' => 'search'),
         );

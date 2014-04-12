@@ -46,7 +46,7 @@ class Commit extends ActiveRecord
 		
 		return array(
 			'member' => array(self::BELONGS_TO, Member::className(), 'member_id'),
-			'project' => array(self::BELONGS_TO, Projects::className(), 'project_id'),
+			'project' => array(self::BELONGS_TO, Project::className(), 'project_id'),
 		);
 	}
 

@@ -5,7 +5,7 @@
  *
  * @author Komov Roman
  */
-class HttpRequest extends CHttpRequest
+class HttpRequest extends CHttpRequest 
 {
     use \Traits\ClassName;
     
