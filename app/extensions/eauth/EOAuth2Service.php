@@ -106,7 +106,7 @@ abstract class EOAuth2Service extends EAuthServiceBase implements IAuthService
             $token = $this->getAccessToken($code);
             if (isset($token))
             {
-                Yii::log('Token '.$token, CLogger::LEVEL_INFO, 'auth');
+                //Yii::log('Token '.$token, CLogger::LEVEL_INFO, 'auth');
 
                 $this->authenticated = true;
                 $this->saveAccessToken($token);
