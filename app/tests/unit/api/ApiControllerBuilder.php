@@ -47,11 +47,11 @@ class ApiControllerBuilder {
         $controller = new $this->_controllerClass($controllerId);
 
         ob_start();
-        $controller->actionParams = $this->_actionParams;
 
         (!empty($this->_postData)) && $_POST = $this->_postData;
 
-        $controller->run($this->_actionId);
+        $action = $controller->createAction($this->_actionId);
+        $action->runWithParams($this->_actionParams);
 
         return json_decode(ob_get_clean(), true);
     }
