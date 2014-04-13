@@ -24,6 +24,10 @@ angular.module('hackatonAApp', [
         templateUrl: 'views/e_mark.html',
         controller: 'EMarkCtrl'
       })
+      .when('/addProj', {
+        templateUrl: 'views/addproj.html',
+        controller: 'AddprojCtrl'
+      })
       .otherwise({
         redirectTo: '/'
       });

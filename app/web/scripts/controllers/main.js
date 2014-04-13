@@ -42,7 +42,6 @@ angular.module('hackatonAApp')
 
 
         $scope.listProj=ListProj.query();
-        //$scope.listProj=ListProj.get({name:"",eventId:""})
 
         $scope.setMedal=function(index, mark){
             if(mark>0){

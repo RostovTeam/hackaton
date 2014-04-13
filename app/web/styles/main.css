@@ -21,16 +21,53 @@ h2{
     margin-bottom: 20px;
 }
 .b-button{
+    float: left;
     cursor: pointer;
-    margin: 5px auto;
-    width: 200px;
+    font-size: 12px;
+    margin: 5px 10px;
+    width: 100px;
     color: #fff;
     text-align: center;
     border-radius: 5px;
     padding: 6px 0;
 }
+.b-button:hover{
+    text-decoration: underline;
+}
 .b-button__green{
     background: #24d0a5;
+}
+.b-form{
+    overflow: hidden;
+}
+.b-lable{
+    display: block;
+    float: left;
+    font-size: 12px;
+    margin-top: 20px;
+    width: 120px;
+    height: 35px;
+}
+.b-input{
+    background: #f2f2f0;
+    border: 1px solid #d4d4ca;
+    color: #373737;
+    float: left;
+    padding: 10px 10px;
+    margin: 10px;
+    width: 200px;
+    outline: none;
+}
+.b-textaria{
+    background: #f2f2f0;
+    border: 1px solid #d4d4ca;
+    color: #373737;
+    padding: 5px 10px;
+    margin: 10px;
+    width: 200px;
+    height: 100px;
+    resize: none;
+    outline: none;
 }
 .container{
     height: 100%;
@@ -67,6 +104,30 @@ h2{
     margin: 6px 0px;
     display: block;
     float: left;
+}
+.b-header-menu{
+    width: 500px;
+    padding: 20px 0;
+    margin-left: 40px;
+    float: left;
+}
+.b-prev{
+    float: left;
+    color: #fff;
+    text-decoration: none;
+    width: 100%;
+    text-align: center;
+    margin: 10px 0;
+}
+.b-menu__item{
+    list-style: none;
+    display: inline-block;
+    margin: 0 20px;
+}
+.b-menu__item a{
+    color: #c5c5c5;
+    font-size: 12px;
+    text-decoration: none;
 }
 .b-header__logo_mobile{
     float: right;
@@ -283,6 +344,14 @@ h2{
 .b-expert-info__position{
     font-size: 11px;
     color: #c5c5c5;
+}
+.b-add-panel{
+    width: 1024px;
+    margin: 0 auto;
+}
+.b-add-proj{
+    margin: 20px 0;
+    width: 362px;
 }
 .b-footer-contener{
     float: left;
