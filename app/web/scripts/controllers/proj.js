@@ -7,10 +7,10 @@ angular.module('hackatonAApp')
       'AngularJS',
       'Karma'
     ];
-        console.log($routeParams.id);
+        
         var Proj = $resource("/api/project/:proj_id",{proj_id:"@id"});
 
-        var pr=Proj.query();
+        var pr=Proj.get({proj_id:$routeParams.proj_id});
 
         $scope.Title=pr.name;
         $scope.Des=pr.description;
