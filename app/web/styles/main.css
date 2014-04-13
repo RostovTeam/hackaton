@@ -77,7 +77,7 @@ h2{
 }
 .b-wrapper{
     min-width: 1040px;
-    height: 100%;
+    min-height: 100%;
 }
 .b-wrapper_mobile{
     min-width: 100%;
