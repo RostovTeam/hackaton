@@ -79,8 +79,8 @@ class GitHubConnector
                     $commit->date = $c->commit->committer ? $c->commit->committer->date : new CDbExpression('NOW()');
 
                     $commit->save();
-                    var_dump($commit->attributes);
-                    var_dump($commit->errors);
+//                    var_dump($commit->attributes);
+//                    var_dump($commit->errors);
                 }
             } catch (Exception $e)
             {

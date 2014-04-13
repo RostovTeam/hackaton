@@ -113,7 +113,7 @@ class SiteController extends BaseController
             }
             else
             {
-                Yii::app()->user->setFlash('error','Номер не найден');
+                //Yii::app()->user->setFlash('error','Номер не найден');
             }
         }
 
@@ -139,15 +139,15 @@ class SiteController extends BaseController
     {
         $this->render('member');
     }
-    
-    public function actionCommits()
-    {
-        Yii::import('application.git.GitHubConnector');
-        
-        $gh=new GitHubConnector('https://github.com/RostovTeam/liza_alert/');
-        
-        $c=$gh->getCommits();
-        echo count($c);
-        var_dump($c);
-    }
+//    
+//    public function actionCommits()
+//    {
+//        Yii::import('application.git.GitHubConnector');
+//        
+//        $gh=new GitHubConnector('https://github.com/RostovTeam/liza_alert/');
+//        
+//        $c=$gh->getCommits();
+//        echo count($c);
+//        var_dump($c);
+//    }
 }
