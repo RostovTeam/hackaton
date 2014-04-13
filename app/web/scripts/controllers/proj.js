@@ -11,7 +11,7 @@ angular.module('hackatonAApp')
         var Proj = $resource("/api/project/:proj_id",{proj_id:"@id"});
 
         var pr=Proj.get({proj_id:$routeParams.id});
-        console.log(pr.name);
+        console.log(pr);
 
 
         $scope.commits_count=100;
