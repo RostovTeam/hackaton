@@ -98,9 +98,9 @@ class EventStatsController extends RESTfulController
         while ($now->diff($date)->invert)
         {
             $row=[];
-            $dates[] = $date->format('Y-m-d H:i:s');
+            $dates[] = $date->format('H:i');
             $sum = 0;
-            $nex_date = $date->add(new DateInterval('PT1H'));
+            $nex_date = $date->add(new DateInterval('PT6H'));
 
             for (; $i < count($commits); $i++)
             {
