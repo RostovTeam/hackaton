@@ -9,7 +9,7 @@ angular.module('hackatonAApp')
         ];
 
         var Stats = $resource(" /api/EventStats?event_id=:eventId", {eventId:"@id"});
-        var ListProj=$resource("/api/project?name=:name&event_id=eventId",{name:"@name",eventId:"@id"});
+        var ListProj=$resource("/api/project?name=:name&event_id=:eventId",{name:"@name",eventId:"@id"});
 
 
         var dates;
@@ -21,11 +21,27 @@ angular.module('hackatonAApp')
 
             dates=stat.commit_detail.dates;
             counts_commit=stat.commit_detail.counts;
+            
+            var lineChartData = {
+                labels: dates,
+                datasets: [
+                    {
+                        fillColor: "rgba(79,206,174,0.1)",
+                        strokeColor: "rgba(79,206,174,1)",
+                        pointColor: "rgba(79,206,174,1)",
+                        pointStrokeColor: "#f2f2f3",
+                        data: counts_commit
+                    }
+                ]
+
+            }
+
+            var myLine = new Chart(document.getElementById("canvas").getContext("2d")).Line(lineChartData);
         });
 
 
 
-        $scope.listProj=ListProj.query();
+        $scope.listProj=ListProj.get();
         //$scope.listProj=ListProj.get({name:"",eventId:""})
 
         $scope.setMedal=function(index){
@@ -44,19 +60,5 @@ angular.module('hackatonAApp')
         }
 
 
-        var lineChartData = {
-            labels: dates,
-            datasets: [
-                {
-                    fillColor: "rgba(79,206,174,0.1)",
-                    strokeColor: "rgba(79,206,174,1)",
-                    pointColor: "rgba(79,206,174,1)",
-                    pointStrokeColor: "#f2f2f3",
-                    data: counts_commit
-                }
-            ]
 
-        }
-
-        var myLine = new Chart(document.getElementById("canvas").getContext("2d")).Line(lineChartData);
     });
