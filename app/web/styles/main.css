@@ -384,3 +384,51 @@ h2{
     font-size: 11px;
     margin-top: -30px;
 }
+
+
+.b-main-loginform {
+    width: 1024px;
+    margin: 0 auto;
+    padding: 17px 17px 0 17px;
+    overflow: hidden;
+    padding-bottom: 60px;
+}
+.b-loginform__input {
+    height: 28px;
+    width: 200px;
+    padding: 0 1em;
+    border: none;
+    outline: 1px;
+}
+.b-loginform__label {
+    font-size: 11px;
+}
+.b-loginform__buttons {
+    margin-top: 10px;
+}
+.b-loginform__errormessage {
+    font-size: 11px;
+    margin-top: 10px;
+}
+.b-loginform__errormessage_red {
+    color: red;
+}
+
+.b-butons {
+    height: 30px;
+    line-height: 30px;
+    text-align: center;
+    padding: 0 1em;
+    border: none;
+    cursor: pointer;
+}
+.b-butons__green {
+    background: #4fceae;
+}
+.b-butons__green:hover {
+    background: #71d0b8;
+}
+.b-butons__title {
+    color: #ffffff;
+    font-family: "PT Sans Caption";
+}
