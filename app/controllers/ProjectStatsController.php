@@ -33,7 +33,7 @@ class ProjectStatsController extends RESTfulController
 
         $commitsCount = count($project->commits);
 
-        $start = Yii::app()->request->getParam('start', $project->created);
+        $start = Yii::app()->request->getParam('start', $project->event->created);
 
         $commmitDetail = $this->getCommitsDetail($project, $start);
 
