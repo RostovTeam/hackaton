@@ -20,6 +20,7 @@ class PhoneLoginForm extends CFormModel
     {
         return array(
             array('username', 'required'),
+            array('username', 'authenticate')
         );
     }
 
@@ -29,11 +30,20 @@ class PhoneLoginForm extends CFormModel
     public function attributeLabels()
     {
         return array(
-            'username'=>'Номер эксперта'
+            'username' => 'Номер эксперта'
         );
     }
+    
+    public function authenticate()
+    {
+        if (!$this->hasErrors())
+        {
+            $this->_identity = new PhoneUserIdentity($this->username);
+            if (!$this->_identity->authenticate())
+                    $this->addError('username', 'Номер не найден');
+        }
+    }
 
- 
     /**
      * Logs in the user using the given username and password in the model.
      * @return boolean whether login is successful
@@ -45,10 +55,10 @@ class PhoneLoginForm extends CFormModel
             $this->_identity = new PhoneUserIdentity($this->username);
             $this->_identity->authenticate();
         }
-        
+
         if ($this->_identity->errorCode === UserIdentity::ERROR_NONE)
         {
-            $duration =  3600 * 24 * 30 ; // 30 days
+            $duration = 3600 * 24 * 30; // 30 days
             Yii::app()->user->login($this->_identity, $duration);
             return true;
         } else return false;

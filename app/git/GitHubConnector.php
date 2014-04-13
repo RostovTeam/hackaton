@@ -34,7 +34,7 @@ class GitHubConnector
         
     }
 
-    public static function Sync()
+    public static function Sync($use_since)
     {
         
 
