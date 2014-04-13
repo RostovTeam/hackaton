@@ -68,7 +68,7 @@ class ProjectStatsController extends RESTfulController
             $row = [];
             $dates[] = $date->format('H:i');
             $sum = 0;
-            $nex_date = $date->add(new DateInterval('PT3H'));
+            $nex_date = $date->add(new DateInterval('PT1H'));
 
             for (; $i < count($commits); $i++)
             {
