@@ -4,8 +4,7 @@ angular.module('hackatonAApp', [
   'ngCookies',
   'ngResource',
   'ngSanitize',
-  'ngRoute',
-  'ngNestedResource'
+  'ngRoute'
 ])
   .config(function ($routeProvider) {
     $routeProvider
