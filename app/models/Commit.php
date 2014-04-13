@@ -30,8 +30,8 @@ class Commit extends ActiveRecord
 	public function rules()
 	{
 		return array(
-			array('id, member_id, project_id', 'required'),
-			array('id, member_id, project_id', 'numerical', 'integerOnly'=>true),
+			array('project_id', 'required'),
+			array('member_id, project_id', 'numerical', 'integerOnly'=>true),
 			array('hash', 'length', 'max'=>45),
 			array('date', 'safe'),
 			array('id, member_id, project_id, hash, date', 'safe', 'on'=>'search'),

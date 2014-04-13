@@ -12,6 +12,7 @@ class PhoneUserIdentity extends CUserIdentity
 
     public function __construct($phone)
     {
+        $this->phone=$phone;
         parent::__construct($phone, '');
     }
 
@@ -25,8 +26,9 @@ class PhoneUserIdentity extends CUserIdentity
             return false;
         }
 
+        $this->errorCode = UserIdentity::ERROR_NONE;
         $arrayAuthRoleItems = Yii::app()->authManager->getAuthItems(2,
-                $user->user_id);
+                $user->id);
 
         $roles = array_keys($arrayAuthRoleItems);
 
@@ -39,7 +41,7 @@ class PhoneUserIdentity extends CUserIdentity
 
         if ($role == 'expert')
         {
-            $profile = Expert::model()->findByAttributes(['expert_id' => $user->id]);
+            $profile = Expert::model()->findByAttributes(['user_id' => $user->id]);
 
             $this->setState('profile_id', $profile->id);
             $this->setState('username', $profile->full_name);

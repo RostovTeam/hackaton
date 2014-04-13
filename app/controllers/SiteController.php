@@ -131,4 +131,15 @@ class SiteController extends BaseController
     {
         $this->render('member');
     }
+    
+    public function actionCommits()
+    {
+        Yii::import('application.git.GitHubConnector');
+        
+        $gh=new GitHubConnector('https://github.com/tan-tan-kanarek/github-php-client/');
+        
+        $c=$gh->getCommits()[10];
+        var_dump($c);
+        var_dump($c->getCommitter()->getLogin());
+    }
 }

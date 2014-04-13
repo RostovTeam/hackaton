@@ -26,12 +26,13 @@ class InstallRolesCommand extends CConsoleCommand
         
         $role_expert=$auth->createRole('expert');
         $expert_user = new User('create');
-        $expert_user->login = 'admin';
+        $expert_user->login = '123';
         $expert_user->password = 'password';
         $expert_user->save();
         $expert= new Expert('create');
         $expert->full_name='Expert';
         $expert->user_id=$expert_user->id;
+        $expert->phone='123';
         $expert->save();
         $auth->assign('expert', $expert_user->id);
 
