@@ -9,6 +9,7 @@ angular.module('hackatonAApp')
             ];
             console.log($routeParams.id);
 
+
             var ListCriteria = $resource("/api/criteria");
 
             var test = {"criteria_id": 1, "value": 1, "project_id": 1};
@@ -33,3 +34,4 @@ angular.module('hackatonAApp')
                 console.log(id)
             }
         });
+
