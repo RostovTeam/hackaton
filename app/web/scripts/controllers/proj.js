@@ -9,8 +9,9 @@ angular.module('hackatonAApp')
     ];
         console.log($routeParams.id);
         var Proj = $resource("/api/project/:proj_id",{proj_id:"@id"});
-
-        $scope.Title=Proj.name;
-        $scope.Des=Proj.description;
+        var pr=Proj.query();
+        
+        $scope.Title=pr.name;
+        $scope.Des=pr.description;
 
   });
