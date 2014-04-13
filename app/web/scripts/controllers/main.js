@@ -41,6 +41,8 @@ angular.module('hackatonAApp')
 
 
 
+        $scope.listProj=ListProj.query();
+
         $scope.setMedal=function(index, mark){
             if(mark>0){
                 switch (index){
