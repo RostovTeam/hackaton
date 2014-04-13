@@ -23,9 +23,6 @@ angular.module('hackatonAApp')
             project_id: 2,
             value: "2"
         });
-        console.log(result);
-        
-        console.log(ListCriteria.query());
 
         $scope.listCriteria=ListCriteria.query();
 
