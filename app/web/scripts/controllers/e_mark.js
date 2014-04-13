@@ -9,9 +9,6 @@ angular.module('hackatonAApp')
     ];
         console.log($routeParams.id);
 
-        var ListCriteria=$resource("/json/criteria", {eventId:'@id'});
+        var ListCriteria=$resource("/api/criteria");
         $scope.listCriteria=ListCriteria.query();
-        //$scope.listCriteria=ListCriteria.get();
-
-        //$scope.listCriteria=ListCriteria.query();
   });
