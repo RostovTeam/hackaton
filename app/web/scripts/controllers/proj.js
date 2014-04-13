@@ -1,10 +1,16 @@
 'use strict';
 
 angular.module('hackatonAApp')
-  .controller('ProjCtrl', function ($scope) {
+  .controller('ProjCtrl', function ($scope, $routeParams) {
     $scope.awesomeThings = [
       'HTML5 Boilerplate',
       'AngularJS',
       'Karma'
     ];
+        console.log($routeParams.id);
+        var Proj = $resource("/api/project/:proj_id",{proj_id:"@id"});
+
+        $scope.Title=Proj.name;
+        $scope.Des=Proj.description;
+
   });

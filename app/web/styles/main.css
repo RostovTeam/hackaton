@@ -353,6 +353,15 @@ h2{
     margin: 20px 0;
     width: 362px;
 }
+
+.b-proj__info{
+    float: left;
+    width: 40%;
+}
+.b-proj__stat{
+    float: left;
+    width: 40%;
+}
 .b-footer-contener{
     float: left;
     height: 30px;

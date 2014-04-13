@@ -12,7 +12,7 @@ angular.module('hackatonAApp', [
         templateUrl: 'views/main.html',
         controller: 'MainCtrl'
       })
-      .when('/proj', {
+      .when('/proj/:id', {
         templateUrl: 'views/proj.html',
         controller: 'ProjCtrl'
       })
