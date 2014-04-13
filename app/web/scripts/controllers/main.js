@@ -41,7 +41,7 @@ angular.module('hackatonAApp')
 
 
 
-        $scope.listProj=ListProj.get();
+        $scope.listProj=ListProj.get({eventId:1});
         //$scope.listProj=ListProj.get({name:"",eventId:""})
 
         $scope.setMedal=function(index, mark){
