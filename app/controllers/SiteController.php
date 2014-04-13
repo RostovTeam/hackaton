@@ -3,6 +3,8 @@
 class SiteController extends BaseController
 {
 
+    public $layout='main';
+    
     /**
      * This is the default 'index' action that is invoked
      * when an action is not explicitly requested by users.
@@ -106,7 +108,13 @@ class SiteController extends BaseController
             $model->attributes = $_POST['PhoneLoginForm'];
             
             if ($model->validate() && $model->login())
-                    $this->redirect($this->createUrl('expert'));
+            {
+                    $this->redirect($this->createUrl('index').'#expert');
+            }
+            else
+            {
+                Yii::app()->user->setFlash('error','Номер не найден');
+            }
         }
 
         // display the login form
