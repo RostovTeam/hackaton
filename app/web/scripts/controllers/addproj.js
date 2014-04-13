@@ -18,6 +18,8 @@ angular.module('hackatonAApp')
             proj.event_id=1;
             proj.owner_id=2;
 
-            Project.create(proj);
+            Project.create(proj,function(){
+                $location.path("/#/addProj");
+            });
         }
   });
