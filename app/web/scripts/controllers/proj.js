@@ -18,7 +18,7 @@ angular.module('hackatonAApp')
         });
 
 
-        var Statistik =$resource("/api/ProjStats?project_id=:pid",{pid:"@id"});
+        var Statistik =$resource("/api/ProjectStats?project_id=:pid",{pid:"@id"});
 
 
 
