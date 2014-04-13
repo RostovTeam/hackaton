@@ -37,7 +37,7 @@ class Project extends ActiveRecord
         return array(
             array('event_id, owner_id', 'required'),
             array('event_id, owner_id', 'numerical', 'integerOnly' => true),
-            array('name', 'length', 'max' => 500),
+            array('name,git_url', 'length', 'max' => 500),
             array('description, created', 'safe'),
             array('id, event_id, owner_id, name, description, created', 'safe', 'on' => 'search'),
         );
@@ -50,7 +50,7 @@ class Project extends ActiveRecord
     {
 
         return array(
-            'commits' => array(self::HAS_MANY, Commit::className(), 'project_id'),
+            'commits' => array(self::HAS_MANY, Commit::className(), 'project_id','order'=>'date ASC'),
             'projectCriterias' => array(self::HAS_MANY, ProjectCriteria::className(),
                 'project_id'),
             'event' => array(self::BELONGS_TO, Event::className(), 'event_id'),

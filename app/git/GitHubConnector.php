@@ -34,10 +34,8 @@ class GitHubConnector
         
     }
 
-    public static function Sync($use_since)
+    public static function Sync($use_since=false)
     {
-        
-
         $projects = Project::model()->findAll();
 
         foreach ($projects as $project)
