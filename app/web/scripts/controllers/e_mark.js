@@ -7,13 +7,13 @@ angular.module('hackatonAApp')
                 'AngularJS',
                 'Karma'
             ];
-            console.log($routeParams.id);
+            var proj_id=$routeParams.id;
 
             var array_chench;
 
             var ListCriteria = $resource("/api/criteria");
 
-            var test = {"criteria_id": 1, "value": 1, "project_id": 1};
+            $scope.listCriteria = ListCriteria.query();
 
             var ProjCriter = $resource("/api/ProjectCriteria", null,
                     {
@@ -21,15 +21,16 @@ angular.module('hackatonAApp')
                     });
 
 
-            $scope.check=function(){
+            var test;
 
-            }
-            
-            $scope.listCriteria = ListCriteria.query();
+            $scope.addCheck=function(id){
+                 test = {"criteria_id": id, "value": 1, "project_id": proj_id};
 
-            $scope.send_mark = function() {
-                console.log()
+                ProjCriter.send(test,function(){
+                    Console.log("оценку принял");
+                });
             }
+
 
         });
 
