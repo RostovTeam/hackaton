@@ -21,7 +21,7 @@ angular.module('hackatonAApp')
 
             dates=stat.commit_detail.dates;
             counts_commit=stat.commit_detail.counts;
-            
+
             var lineChartData = {
                 labels: dates,
                 datasets: [
@@ -48,11 +48,11 @@ angular.module('hackatonAApp')
             switch (index){
                 case 0:
                     return "b-item__medal_gold";
-                break;
+                    break;
 
                 case 1:
                     return "b-item__medal_silver";
-                break;
+                    break;
 
                 case 2:
                     return "b-item__medal_bronze";
