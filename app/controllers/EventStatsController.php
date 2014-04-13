@@ -84,7 +84,9 @@ class EventStatsController extends RESTfulController
 //            return ['count'=>v['count'],'date'=>$date->];
 //        }, $commits);
 
-        $data = [];
+        $counts = [];
+        $dates=[];
+        
         $commits = Yii::app()->db->createCommand()
                 ->select('*')
                 ->from(Commit::model()->tableName())
@@ -96,7 +98,7 @@ class EventStatsController extends RESTfulController
         while ($now->diff($date)->invert)
         {
             $row=[];
-            $row['date'] = $date->format('Y-m-d H:i:s');
+            $dates[] = $date->format('Y-m-d H:i:s');
             $sum = 0;
             $nex_date = $date->add(new DateInterval('PT1H'));
 
@@ -109,11 +111,13 @@ class EventStatsController extends RESTfulController
             }
             
             $date = clone $nex_date;
-            $row['count'] = $sum;
+            
+            $counts[] = $sum;
+            
             $data[]=$row;
         }
 
-        return $data;
+        return ['counts'=>$counts,'dates'=>$dates];
     }
 
 }
