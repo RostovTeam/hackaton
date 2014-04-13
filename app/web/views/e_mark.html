@@ -16,18 +16,8 @@
                 {{criteria.name}}
             </div>
 
-            <div ng-repeat="value in criteria.values">
-                <!--<select>
-                    <option>
-
-                    </option>
-                </select>
-                <input type="text"/>
-                {{value.label}}
-                -->
-                <input type="checkbox" name="{{value.id}}" id="id_{{value.id}}" value="{{value.value}}"
-                       class="b-item__checkbox">
-            </div>
+            <input type="checkbox" name="{{criteria.id}}" id="id_{{criteria.id}}"
+                   class="b-item__checkbox">
         </label>
         <div class="b-button b-button__green" ng-click="">
             Отправить
