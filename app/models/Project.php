@@ -84,7 +84,7 @@ class Project extends ActiveRecord
     {
         return parent::model($className);
     }
-    
+
     /**
      * Gets critetias summary value
      * 
@@ -92,8 +92,20 @@ class Project extends ActiveRecord
      */
     public function getMark()
     {
-        return (int)array_sum(array_map(
-                function($v) { return $v->value;},
-                $this->projectCriterias));
+        return (int) array_sum(array_map(
+                                function($v)
+                        {
+                            return $v->value;
+                        }, $this->projectCriterias));
     }
+
+    public function afterSave()
+    {
+        parent::afterSave();
+
+        Yii::import('application.git.GitHubConnector');
+
+        GitHubConnector::sync();
+    }
+
 }
