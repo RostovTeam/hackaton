@@ -18,7 +18,11 @@ angular.module('hackatonAApp')
             remove: {method:'DELETE'}
         })
 
-        
+        var result=ListCriteria.post({
+            criteria_id:1,
+            project_id: 2,
+            value: "2"
+        });
 
         $scope.listCriteria=ListCriteria.query();
 
