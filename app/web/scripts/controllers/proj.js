@@ -24,7 +24,7 @@ angular.module('hackatonAApp')
 
         var dates;
         var counts_commit;
-        Statistik.get({pid:proj_id},function(){
+        var stat=Statistik.get({pid:proj_id},function(){
 
             $scope.projects_count=stat.projects_count;
             $scope.members_count=stat.members_count;
