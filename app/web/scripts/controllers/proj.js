@@ -21,35 +21,6 @@ angular.module('hackatonAApp')
         var Statistik =$resource("/api/ProjectStats?project_id=:pid",{pid:"@id"});
 
 
-
-            var dates;
-            var counts_commit;
-
-            var stat=Statistik.get({pid:proj_id},function(){
-
-            $scope.projects_count=stat.projects_count;
-            $scope.members_count=stat.members_count;
-            $scope.commits_count=stat.commits_count;
-
-            dates=stat.commit_detail.dates;
-            counts_commit=stat.commit_detail.counts;
-
-            var lineChartData = {
-                labels: dates,
-                datasets: [
-                    {
-                        fillColor: "rgba(79,206,174,0.1)",
-                        strokeColor: "rgba(79,206,174,1)",
-                        pointColor: "rgba(79,206,174,1)",
-                        pointStrokeColor: "#f2f2f3",
-                        data: counts_commit
-                    }
-                ]
-
-            }
-
-            var myLine = new Chart(document.getElementById("canvas").getContext("2d")).Line(lineChartData);
-
         })
 
 
