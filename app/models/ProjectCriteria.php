@@ -32,9 +32,9 @@ class ProjectCriteria extends ActiveRecord
     public function rules()
     {
         return array(
-            array('criterias_id, projects_id, expert_id', 'required'),
-            array('criterias_id, projects_id, value, expert_id', 'numerical', 'integerOnly' => true),
-            array('id, criterias_id, projects_id, value, expert_id', 'safe', 'on' => 'search'),
+            array('criteria_id, project_id, expert_id', 'required'),
+            array('criteria_id, project_id, value, expert_id', 'numerical', 'integerOnly' => true),
+            array('id, criteria_id, project_id, value, expert_id', 'safe', 'on' => 'search'),
         );
     }
 
@@ -44,8 +44,8 @@ class ProjectCriteria extends ActiveRecord
     public function relations()
     {
         return array(
-            'criterias' => array(self::BELONGS_TO, Criteria::className(), 'criterias_id'),
-            'projects' => array(self::BELONGS_TO, Project::className(), 'projects_id'),
+            'criterias' => array(self::BELONGS_TO, Criteria::className(), 'criteria_id'),
+            'projects' => array(self::BELONGS_TO, Project::className(), 'project_id'),
             'expert' => array(self::BELONGS_TO, Expert::className(), 'expert_id'),
         );
     }
@@ -57,8 +57,8 @@ class ProjectCriteria extends ActiveRecord
     {
         return array(
             'id' => 'ID',
-            'criterias_id' => 'Criterias',
-            'projects_id' => 'Projects',
+            'criteria_id' => 'Criterias',
+            'project_id' => 'Projects',
             'value' => 'Value',
             'expert_id' => 'Expert',
         );
