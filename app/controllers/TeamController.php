@@ -15,7 +15,7 @@ class TeamController extends RESTfulController
         $this->model = Team::className();
     }
 
-     public function accessRules()
+    public function accessRules()
     {
         return array_merge(
                 [
@@ -40,7 +40,7 @@ class TeamController extends RESTfulController
         $row = $model->attributes;
 
         $row['members'] = $model->team->members;
-        
+
         return $row;
     }
 

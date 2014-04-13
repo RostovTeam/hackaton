@@ -92,6 +92,8 @@ class Project extends ActiveRecord
      */
     public function getMark()
     {
-        return (int)array_sum(array_map(function($v){ return $v->value;},$this->projectCriterias));
+        return (int)array_sum(array_map(
+                function($v) use ($type){ return $v->value;},
+                $this->projectCriterias));
     }
 }

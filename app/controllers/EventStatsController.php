@@ -24,15 +24,21 @@ class EventStatsController extends RESTfulController
     {
 
         $event_id = Yii::app()->request->getParam('event_id');
-
+        $event_created = '';
         if (!$event_id)
         {
-            $event_id = Yii::app()->db->createCommand()
-                    ->select('id')
+            $event = Yii::app()->db->createCommand()
+                    ->select('*')
                     ->from(Event::model()->tableName())
                     ->order('created')
                     ->limit(1)
-                    ->queryScalar();
+                    ->queryRow();
+            $event_id = $event['id'];
+            $event_created = $event['created'];
+        } else
+        {
+            $event = Event::model()->findByPk($event_id);
+            $event_created = $event->created;
         }
 
         $event = Event::model()->findByPk($event_id);
@@ -43,12 +49,71 @@ class EventStatsController extends RESTfulController
 
         $commitsCount = count($event->commits);
 
+        $start = Yii::app()->request->getParam('start', $event_created);
+
+        $commmitDetail = $this->getCommitsDetail($start);
+
+
         $this->_sendResponse(200,
                 [
             'projects_count' => $projectsCount,
             'members_count' => $membersCount,
-            'commits_count' => $commitsCount
+            'commits_count' => $commitsCount,
+            'commit_detail' => $commmitDetail,
+            'start_date' => $start
         ]);
+    }
+
+    protected function getCommitsDetail($start)
+    {
+        $int = 60;
+        $date = new DateTime($start);
+
+        $now = new DateTime();
+//        $command = Yii::app()->db->createCommand()
+//                ->select([new CDbExpression(' count(*) as count'),
+//                    new CDbExpression('ROUND(UNIX_TIMESTAMP(date)/(' . $int . ' * 60)) AS timekey')])
+//                ->from(Commit::model()->tableName())
+//                ->where('date>:start', [':start' => $start])
+//                ->group('timekey');
+//        
+//        $commits = $command->queryAll();
+//
+//        $counts = array_map(function($v) use($int,&$date)
+//        {
+//            return ['count'=>v['count'],'date'=>$date->];
+//        }, $commits);
+
+        $data = [];
+        $commits = Yii::app()->db->createCommand()
+                ->select('*')
+                ->from(Commit::model()->tableName())
+                ->where('date>:start', [':start' => $start])
+                ->order('date asc')
+                ->queryAll();
+
+        $i = 0;
+        while ($now->diff($date)->invert)
+        {
+            $row=[];
+            $row['date'] = $date->format('Y-m-d H:i:s');
+            $sum = 0;
+            $nex_date = $date->add(new DateInterval('PT1H'));
+
+            for (; $i < count($commits); $i++)
+            {
+                if (!$nex_date->diff(new DateTime($commits[$i]['date']))->invert)
+                        break;
+
+                $sum++;
+            }
+            
+            $date = clone $nex_date;
+            $row['count'] = $sum;
+            $data[]=$row;
+        }
+
+        return $data;
     }
 
 }

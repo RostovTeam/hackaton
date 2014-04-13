@@ -12,8 +12,16 @@ class GitHubCommitCommitCommitter extends GitHubObject
 	protected function getAttributes()
 	{
 		return array_merge(parent::getAttributes(), array(
+                    'date'
 		));
 	}
+        
+        protected $date;
+        
+        public function getDate()
+        {
+            return $date;
+        }
 	
 }
 
