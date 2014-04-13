@@ -56,6 +56,7 @@ class EventStatsController extends RESTfulController
 
         $this->_sendResponse(200,
                 [
+            'event_id' => $event->id,
             'projects_count' => $projectsCount,
             'members_count' => $membersCount,
             'commits_count' => $commitsCount,
@@ -100,7 +101,7 @@ class EventStatsController extends RESTfulController
             $row = [];
             $dates[] = $date->format('H:i');
             $sum = 0;
-            $nex_date = $date->add(new DateInterval('PT6H'));
+            $nex_date = $date->add(new DateInterval('PT3H'));
 
             for (; $i < count($commits); $i++)
             {
