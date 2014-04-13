@@ -50,7 +50,7 @@ class Project extends ActiveRecord
     {
 
         return array(
-            'commits' => array(self::HAS_MANY, Commit::className(), 'project_id'),
+            'commits' => array(self::HAS_MANY, Commit::className(), 'project_id','order'=>'date ASC'),
             'projectCriterias' => array(self::HAS_MANY, ProjectCriteria::className(),
                 'project_id'),
             'event' => array(self::BELONGS_TO, Event::className(), 'event_id'),
