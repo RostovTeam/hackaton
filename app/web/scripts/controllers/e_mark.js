@@ -9,6 +9,7 @@ angular.module('hackatonAApp')
             ];
             console.log($routeParams.id);
 
+            var array_chench;
 
             var ListCriteria = $resource("/api/criteria");
 
@@ -20,12 +21,14 @@ angular.module('hackatonAApp')
                     });
 
 
-            
+            $scope.check=function(){
+
+            }
             
             $scope.listCriteria = ListCriteria.query();
 
             $scope.send_mark = function() {
-                console.log($scope.checkbox)
+                console.log()
             }
 
         });

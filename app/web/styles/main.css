@@ -367,6 +367,9 @@ h2{
 .b-proj__title{
     font-size: 40px;
 }
+.b-proj__des{
+    font-size: 12px;
+}
 .b-proj__stat{
     float: left;
     width: 50%;
