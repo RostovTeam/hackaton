@@ -12,6 +12,7 @@ angular.module('hackatonAApp')
         var ListCriteria=$resource("/api/criteria");
 
         
+        $scope.listCriteria=ListCriteria.query();
 
         $scope.send_mark=function(){
 
