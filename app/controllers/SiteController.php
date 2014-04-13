@@ -109,7 +109,7 @@ class SiteController extends BaseController
             
             if ($model->validate() && $model->login())
             {
-                    $this->redirect($this->createUrl('index').'#expert');
+                    $this->redirect('/#/mobile');
             }
             else
             {
