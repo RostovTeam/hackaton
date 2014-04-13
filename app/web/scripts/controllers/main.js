@@ -44,18 +44,20 @@ angular.module('hackatonAApp')
         $scope.listProj=ListProj.get();
         //$scope.listProj=ListProj.get({name:"",eventId:""})
 
-        $scope.setMedal=function(index){
-            switch (index){
-                case 0:
-                    return "b-item__medal_gold";
-                    break;
+        $scope.setMedal=function(index, mark){
+            if(mark>0){
+                switch (index){
+                    case 0:
+                        return "b-item__medal_gold";
+                        break;
 
-                case 1:
-                    return "b-item__medal_silver";
-                    break;
+                    case 1:
+                        return "b-item__medal_silver";
+                        break;
 
-                case 2:
-                    return "b-item__medal_bronze";
+                    case 2:
+                        return "b-item__medal_bronze";
+                }
             }
         }
 
