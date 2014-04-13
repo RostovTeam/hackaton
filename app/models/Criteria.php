@@ -29,7 +29,7 @@ class Criteria extends ActiveRecord
     public function rules()
     {
         return array(
-            array('max_value', 'numerical', 'integerOnly' => true),
+            array('max_value,type', 'numerical', 'integerOnly' => true),
             array('name', 'length', 'max' => 45),
             array('created', 'safe'),
             array('id, name, created', 'safe', 'on' => 'search'),
