@@ -19,9 +19,7 @@ angular.module('hackatonAApp')
                         send: {method: "POST", data: {}, isArray: false}
                     });
 
-            ProjCriter.send(test,function(){
-                console.log(1)
-            });
+
             
             
             $scope.listCriteria = ListCriteria.query();
@@ -30,8 +28,5 @@ angular.module('hackatonAApp')
                 console.log($scope.checkbox)
             }
             
-            $scope.addCheck=function(id){
-                console.log(id)
-            }
         });
 
