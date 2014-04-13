@@ -129,6 +129,9 @@ h2{
     font-size: 12px;
     text-decoration: none;
 }
+.b-menu_comment{
+    font-size: 10px;
+}
 .b-header__logo_mobile{
     float: right;
     height: 28px;

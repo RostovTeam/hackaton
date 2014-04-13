@@ -20,7 +20,6 @@ class ProjectStatsController extends RESTfulController
 
         $project_id = Yii::app()->request->getParam('project_id');
 
-
         if (!$project_id)
         {
             $this->_sendResponse(400, []);
