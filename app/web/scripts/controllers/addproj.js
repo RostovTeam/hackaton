@@ -16,7 +16,7 @@ angular.module('hackatonAApp')
         $scope.send=function(){
             var proj=$scope.project;
             proj.event_id=1;
-            proj.owner_id=5;
+            proj.owner_id=2;
 
             Project.create(proj);
         }
