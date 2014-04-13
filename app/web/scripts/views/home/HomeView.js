@@ -6,12 +6,9 @@ define([
 ], function($, _, Backbone, homeTemplate){
 
   var HomeView = Backbone.View.extend({
-    el: $("#content"),
+    el: $(".content-backbone"),
 
     render: function(){
-      
-      $('.menu li').removeClass('active');
-      $('.menu li a[href="#"]').parent().addClass('active');
       this.$el.html(homeTemplate);
  
     }

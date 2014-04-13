@@ -93,27 +93,24 @@ class SiteController extends BaseController
                 $eauth->redirect($eauth->getCancelUrl());
             }
         }
+    }
 
-        $model = new LoginForm;
+    public function actionExpertLogin()
+    {
 
-        // if it is ajax validation request
-        if (isset($_POST['ajax']) && $_POST['ajax'] === 'login-form')
-        {
-            echo CActiveForm::validate($model);
-            Yii::app()->end();
-        }
+        $model = new PhoneLoginForm;
 
         // collect user input data
-        if (isset($_POST['LoginForm']))
+        if (isset($_POST['PhoneLoginForm']))
         {
-            $model->attributes = $_POST['LoginForm'];
-            // validate user input and redirect to the previous page if valid
+            $model->attributes = $_POST['PhoneLoginForm'];
+            
             if ($model->validate() && $model->login())
-                    $this->redirect(Yii::app()->user->returnUrl);
+                    $this->redirect($this->createUrl('expert'));
         }
 
         // display the login form
-        $this->render('login', array('model' => $model));
+        $this->render('phonelogin', array('model' => $model));
     }
 
     /**
@@ -122,7 +119,27 @@ class SiteController extends BaseController
     public function actionLogout()
     {
         Yii::app()->user->logout();
-        $this->redirect(Yii::app()->homeUrl);
+        $this->redirect($this->createUrl('index'));
+    }
+    
+    public function actionExpert()
+    {
+        $this->render('expert');
     }
 
+    public function actionMember()
+    {
+        $this->render('member');
+    }
+    
+    public function actionCommits()
+    {
+        Yii::import('application.git.GitHubConnector');
+        
+        $gh=new GitHubConnector('https://github.com/tan-tan-kanarek/github-php-client/');
+        
+        $c=$gh->getCommits()[10];
+        var_dump($c);
+        var_dump($c->getCommitter()->getLogin());
+    }
 }
