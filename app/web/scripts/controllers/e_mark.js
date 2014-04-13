@@ -27,6 +27,6 @@ angular.module('hackatonAApp')
             $scope.send_mark = function() {
                 console.log($scope.checkbox)
             }
-            
+
         });
 
