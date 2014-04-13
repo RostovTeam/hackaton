@@ -56,6 +56,5 @@
         <script src="bower_components/json3/libs/json3.min.js"></script>
         <![endif]-->
 
-        <script src="scripts/libs/angular-nested-resource.js"></script>
     </body>
 </html>
