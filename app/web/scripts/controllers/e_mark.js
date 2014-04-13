@@ -11,7 +11,7 @@ angular.module('hackatonAApp')
 
         var ListCriteria=$resource("/api/criteria");
 
-        var ListProjCriteria=$resource("/api/ProjectCriteria",{},{
+        var ListProjCriteria=nestedResource("/api/ProjectCriteria",{
             query: {method:'GET'},
             post: {method:'POST'},
             update: {method:'PUT'},
