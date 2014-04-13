@@ -1,0 +1,149 @@
+<div class="b-wrapper">
+    <div class="b-header">
+        <div class="b-header__contenter">
+            <div class="b-header__logo">
+
+            </div>
+            <div class="b-header__auth">
+
+            </div>
+        </div>
+    </div>
+    <div class="b-contener">
+        <div class="b-main-dashboard">
+            <div class="b-main-dashboard__stat-block">
+                <div class="b-stat-block b-stat-block_pink">
+                    <div class="b-stat-block__icon b-stat-block__icon_user">
+                    </div>
+                    <div class="b-stat-block__stat">
+                        <div class="b-stat_val">
+                            {{members_count}}
+                        </div>
+                        <div class="b-stat_title">
+                            участников
+                        </div>
+                    </div>
+                </div>
+                <div class="b-stat-block b-stat-block_orang">
+                    <div class="b-stat-block__icon b-stat-block__icon_group">
+                    </div>
+                    <div class="b-stat-block__stat">
+                        <div class="b-stat_val">
+                            {{projects_count}}
+                        </div>
+                        <div class="b-stat_title">
+                            команды
+                        </div>
+
+                    </div>
+                </div>
+                <div class="b-stat-block b-stat-block_green">
+                    <div class="b-stat-block__icon b-stat-block__icon_commit">
+                    </div>
+                    <div class="b-stat-block__stat">
+                        <div class="b-stat_val">
+                            {{commits_count}}
+                        </div>
+                        <div class="b-stat_title">
+                            коммитов
+                        </div>
+                    </div>
+                </div>
+                <div class="b-stat-block b-stat-block_blue">
+                    <div class="b-stat-block__icon b-stat-block__icon_line">
+                    </div>
+                    <div class="b-stat-block__stat">
+                        <div class="b-stat_val">
+                            &infin;
+                        </div>
+                        <div class="b-stat_title">
+                            строк кода
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="b-main-dashboard__graph">
+                <h2>
+                    Активность команд
+                </h2>
+                <canvas id="canvas" height="208" width="512"></canvas>
+            </div>
+            <div class="b-main-dashboard__top5">
+                <h2>
+                    ТОП 5
+                </h2>
+
+                <div class="b-top5">
+                    <a href="/#/proj/" class="b-top5__item" ng-repeat="proj in listProj | orderBy:'mark':true | limitTo:5">
+                        <div class="b-item__medal " ng-class="setMedal($index)">
+                            <div class="b-medal">
+                                {{$index+1}}
+                            </div>
+                        </div>
+                        <span class="b-item__title">
+                            {{proj.name}}
+                        </span>
+
+                        <div class="b-item__rating">
+                            {{proj.mark}}
+                        </div>
+                    </a>
+                </div>
+            </div>
+            <div class="b-main-dashboard__experts">
+                <h2>Экспертный состав</h2>
+
+                <div class="b-expert">
+                    <img class="b-expert__photo" src="images/test_photo.jpg">
+
+                    <div class="b-expert__info">
+                        <a href="" class="b-expert-info__name">
+                            Антон Дементор
+                        </a>
+
+                        <div class="b-expert-info__position">
+                            эксперт по стратегическим
+                            технологиям Microsoft
+                        </div>
+                    </div>
+                </div>
+                <div class="b-expert">
+                    <img class="b-expert__photo" src="images/test_photo_1.jpg">
+
+                    <div class="b-expert__info">
+                        <a href="" class="b-expert-info__name">
+                            Юрий Богданов
+                        </a>
+
+                        <div class="b-expert-info__position">
+                            заместитель председателя
+                            правления ОАО КБ
+                            «Центр-Инвест»
+                        </div>
+                    </div>
+                </div>
+                <div class="b-expert">
+                    <img class="b-expert__photo" src="images/test_photo_2.jpg">
+
+                    <div class="b-expert__info">
+                        <a href="" class="b-expert-info__name">
+                            Сергей Наумов
+                        </a>
+
+                        <div class="b-expert-info__position">
+                            управляющий менеджер
+                            Кавказского регионального
+                            офиса ЗАО «МегаЛабс»
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="b-footer-contener">
+    <div class="b-footer-content">
+        Разработанно командой <a href="https://github.com/RostovTeam">RostovTeam</a>
+    </div>
+</div>
