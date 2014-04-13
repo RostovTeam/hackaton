@@ -18,6 +18,7 @@
         <!-- endbuild -->
         <!-- build:css({.tmp,app}) styles/main.css -->
         <script src="scripts/libs/chart.min.js"></script>
+        <script src="scripts/libs/angular-nested-resource.js"></script>
         <link href='http://fonts.googleapis.com/css?family=PT+Sans&subset=latin,cyrillic' rel='stylesheet' type='text/css'>
         <link href='http://fonts.googleapis.com/css?family=PT+Sans+Caption&subset=latin,cyrillic' rel='stylesheet' type='text/css'>
         <link rel="stylesheet" href="styles/main.css">
