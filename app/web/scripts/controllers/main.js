@@ -41,6 +41,23 @@ angular.module('hackatonAApp')
 
 
 
+        $scope.setMedal=function(index, mark){
+            if(mark>0){
+                switch (index){
+                    case 0:
+                        return "b-item__medal_gold";
+                        break;
+
+                    case 1:
+                        return "b-item__medal_silver";
+                        break;
+
+                    case 2:
+                        return "b-item__medal_bronze";
+                }
+            }
+        }
+
 
 
     });
