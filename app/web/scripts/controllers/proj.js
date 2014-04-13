@@ -12,7 +12,7 @@ angular.module('hackatonAApp')
 
         var pr=Proj.get({proj_id:$routeParams.id});
 
-        $scope.Title=pr.name;
-        $scope.Des=pr.description;
+        $scope.title=pr.name;
+        $scope.des=pr.description;
 
   });
