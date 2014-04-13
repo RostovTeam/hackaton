@@ -66,19 +66,54 @@ class EventStatsController extends RESTfulController
 
     protected function getCommitsDetail($start)
     {
+        $int = 60;
+        $date = new DateTime($start);
 
-        $command = Yii::app()->db->createCommand()
-                ->select([new CDbExpression(' count(*) as count'),
-                    new CDbExpression('ROUND(UNIX_TIMESTAMP(date)/(60 * 60)) AS timekey')])
+        $now = new DateTime();
+//        $command = Yii::app()->db->createCommand()
+//                ->select([new CDbExpression(' count(*) as count'),
+//                    new CDbExpression('ROUND(UNIX_TIMESTAMP(date)/(' . $int . ' * 60)) AS timekey')])
+//                ->from(Commit::model()->tableName())
+//                ->where('date>:start', [':start' => $start])
+//                ->group('timekey');
+//        
+//        $commits = $command->queryAll();
+//
+//        $counts = array_map(function($v) use($int,&$date)
+//        {
+//            return ['count'=>v['count'],'date'=>$date->];
+//        }, $commits);
+
+        $data = [];
+        $commits = Yii::app()->db->createCommand()
+                ->select('*')
                 ->from(Commit::model()->tableName())
                 ->where('date>:start', [':start' => $start])
-                ->group('timekey');
-        $commits = $command->queryAll();
-        $counts = array_map(function($v)
+                ->order('date asc')
+                ->queryAll();
+
+        $i = 0;
+        while ($now->diff($date)->invert)
         {
-            return $v['count'];
-        }, $commits);
-        return $counts;
+            $row=[];
+            $row['date'] = $date->format('Y-m-d H:i:s');
+            $sum = 0;
+            $nex_date = $date->add(new DateInterval('PT1H'));
+
+            for (; $i < count($commits); $i++)
+            {
+                if (!$nex_date->diff(new DateTime($commits[$i]['date']))->invert)
+                        break;
+
+                $sum++;
+            }
+            
+            $date = clone $nex_date;
+            $row['count'] = $sum;
+            $data[]=$row;
+        }
+
+        return $data;
     }
 
 }
