@@ -7,7 +7,7 @@ CREATE  TABLE IF NOT EXISTS `hackaton`.`criteria_values` (
   PRIMARY KEY (`id`) ,
   INDEX `fk_criterias_values_criterias1` (`criteria_id` ASC) 
  )
-ENGINE = InnoDB
+ENGINE = InnoDB;
 
 
 ALTER SCHEMA `hackaton`  DEFAULT CHARACTER SET utf8  DEFAULT COLLATE utf8_general_ci ;
