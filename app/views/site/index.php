@@ -14,4 +14,5 @@
 <script src="/scripts/controllers/proj.js"></script>
 <script src="/scripts/controllers/mobile.js"></script>
 <script src="/scripts/controllers/e_mark.js"></script>
+<script src="scripts/controllers/addproj.js"></script>
 <!-- endbuild -->

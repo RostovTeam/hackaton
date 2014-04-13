@@ -99,7 +99,7 @@
                 </h2>
 
                 <div class="b-top5">
-                    <a href="/#/proj/" class="b-top5__item"
+                    <a href="/#/proj/{{proj.id}}" class="b-top5__item"
                        ng-repeat="proj in listProj | orderBy:'mark':true | limitTo:5">
                         <div class="b-item__medal " ng-class="setMedal($index,proj.mark)">
                             <div class="b-medal">

@@ -1,7 +1,7 @@
 'use strict';
 
 angular.module('hackatonAApp')
-  .controller('AddprojCtrl', function ($scope,$resource) {
+  .controller('AddprojCtrl', function ($scope, $resource,  $location) {
     $scope.awesomeThings = [
       'HTML5 Boilerplate',
       'AngularJS',
@@ -15,9 +15,13 @@ angular.module('hackatonAApp')
 
         $scope.send=function(){
             var proj=$scope.project;
-            proj.event_id=1;
-            proj.owner_id=5;
+            if(proj!=null){
+                proj.event_id=1;
+                proj.owner_id=2;
 
-            Project.create(proj);
+                Project.create(proj,function(){
+                    $location.path("/#/addProj");
+                });
+            }
         }
   });

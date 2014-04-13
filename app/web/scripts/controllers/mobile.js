@@ -8,7 +8,7 @@ angular.module('hackatonAApp')
       'Karma'
     ];
 
-        var ListProj=$resource("/api/project?name=:name&event_id=eventId",{name:"@name",eventId:"@id"});
+        var ListProj=$resource("/api/project?name=:name&event_id=:eventId",{name:"@name",eventId:"@id"});
         $scope.listProj=ListProj.query();
 
         $scope.renderType=function(){

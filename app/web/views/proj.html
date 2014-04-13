@@ -1,0 +1,90 @@
+<div class="b-wrapper">
+    <div class="b-header">
+        <div class="b-header__contenter">
+            <div class="b-header__logo">
+
+            </div>
+            <div class="b-header-menu">
+                <ul class="b-menu">
+                    <li class="b-menu__item">
+                        <a href="/#/">
+                            Главная
+                        </a>
+                    </li>
+                    <li class="b-menu__item">
+                        <a href="">
+                            Мероприятие
+                        </a>
+                    </li>
+                    <li class="b-menu__item">
+                        <a href="/#/mobile">
+                            Проекты
+                        </a>
+                    </li>
+                    <li class="b-menu__item">
+                        <a href="/#/addProj">
+                            Добавить мероприятие
+                        </a>
+                    </li>
+                </ul>
+            </div>
+            <div class="b-header__auth">
+
+            </div>
+        </div>
+    </div>
+
+    <div class="b-contener">
+        <div class="b-proj">
+
+            <div class="b-proj__info">
+                <h1 class="b-proj__title">{{title}}</h1>
+                <div>
+                    <h2>Описание проекта</h2>
+                    {{des}}
+                </div>
+                <!--
+                <div>
+                    <h2>Презентации</h2>
+                </div>
+                <div>
+                    <h2>Теги</h2>
+                </div>
+                -->
+            </div>
+            <div class="b-proj__stat">
+                <div>
+                    <h2>Статистика активности</h2>
+                    <canvas id="canvas" height="208" width="512"></canvas>
+                </div>
+                <div>
+                    <h2>Статистика кода</h2>
+                    <div class="b-stat-block b-stat-block_green">
+                        <div class="b-stat-block__icon b-stat-block__icon_commit">
+                        </div>
+                        <div class="b-stat-block__stat">
+                            <div class="b-stat_val">
+                                {{commits_count}}
+                            </div>
+                            <div class="b-stat_title">
+                                коммитов
+                            </div>
+                        </div>
+                    </div>
+                    <div class="b-stat-block b-stat-block_blue">
+                        <div class="b-stat-block__icon b-stat-block__icon_line">
+                        </div>
+                        <div class="b-stat-block__stat">
+                            <div class="b-stat_val">
+                                &infin;
+                            </div>
+                            <div class="b-stat_title">
+                                строк кода
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
