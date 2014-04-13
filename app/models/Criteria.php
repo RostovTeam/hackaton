@@ -42,9 +42,9 @@ class Criteria extends ActiveRecord
     public function relations()
     {
         return array(
-            'criteriaValues' => array(self::HAS_MANY, CriteriaValues::className(),
+            'criteriaValues' => array(self::HAS_MANY, CriteriaValue::className(),
                 'criteria_id'),
-            'projectCriteriases' => array(self::HAS_MANY, ProjectCriterias::className(), 'criterias_id'),
+            'projectCriterias' => array(self::HAS_MANY, ProjectCriteria::className(), 'criteria_id'),
         );
     }
 

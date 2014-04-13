@@ -44,8 +44,8 @@ class ProjectCriteria extends ActiveRecord
     public function relations()
     {
         return array(
-            'criterias' => array(self::BELONGS_TO, Criteria::className(), 'criteria_id'),
-            'projects' => array(self::BELONGS_TO, Project::className(), 'project_id'),
+            'criteria' => array(self::BELONGS_TO, Criteria::className(), 'criteria_id'),
+            'project' => array(self::BELONGS_TO, Project::className(), 'project_id'),
             'expert' => array(self::BELONGS_TO, Expert::className(), 'expert_id'),
         );
     }
