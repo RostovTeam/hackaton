@@ -354,12 +354,15 @@ h2{
     width: 362px;
 }
 .b-proj{
-    margin: 0 auto;
+    margin: 30px auto 0;
     width: 1024px;
 }
 .b-proj__info{
     float: left;
     width: 50%;
+}
+.b-proj__title{
+    font-size: 50px;
 }
 .b-proj__stat{
     float: left;
