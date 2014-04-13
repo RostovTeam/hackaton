@@ -99,7 +99,7 @@ class SiteController extends BaseController
 
     public function actionExpertLogin()
     {
-
+        $this->layout = '//layouts/main';
         $model = new PhoneLoginForm;
 
         // collect user input data
