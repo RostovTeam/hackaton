@@ -8,11 +8,12 @@
 class PhoneUserIdentity extends CUserIdentity
 {
 
+    protected $_id;
     protected $phone;
 
     public function __construct($phone)
     {
-        $this->phone=$phone;
+        $this->phone = $phone;
         parent::__construct($phone, '');
     }
 
@@ -25,10 +26,10 @@ class PhoneUserIdentity extends CUserIdentity
             $this->errorCode = self::ERROR_USERNAME_INVALID;
             return false;
         }
+        $this->_id = $user->id;
 
         $this->errorCode = UserIdentity::ERROR_NONE;
-        $arrayAuthRoleItems = Yii::app()->authManager->getAuthItems(2,
-                $user->id);
+        $arrayAuthRoleItems = Yii::app()->authManager->getAuthItems(2, $user->id);
 
         $roles = array_keys($arrayAuthRoleItems);
 
@@ -49,6 +50,11 @@ class PhoneUserIdentity extends CUserIdentity
         }
 
         return true;
+    }
+
+    public function getId()
+    {
+        return $this->_id;
     }
 
 }

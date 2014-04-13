@@ -136,10 +136,10 @@ class SiteController extends BaseController
     {
         Yii::import('application.git.GitHubConnector');
         
-        $gh=new GitHubConnector('https://github.com/tan-tan-kanarek/github-php-client/');
+        $gh=new GitHubConnector('https://github.com/RostovTeam/liza_alert/');
         
-        $c=$gh->getCommits()[10];
+        $c=$gh->getCommits();
+        echo count($c);
         var_dump($c);
-        var_dump($c->getCommitter()->getLogin());
     }
 }
