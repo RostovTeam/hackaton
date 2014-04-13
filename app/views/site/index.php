@@ -5,7 +5,6 @@
 <script src="/bower_components/angular-cookies/angular-cookies.js"></script>
 <script src="/bower_components/angular-sanitize/angular-sanitize.js"></script>
 <script src="/bower_components/angular-route/angular-route.js"></script>
-<script src="scripts/libs/angular-nested-resource.js"></script>
 <!-- endbower -->
 <!-- endbuild -->
 
