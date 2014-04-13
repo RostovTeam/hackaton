@@ -33,4 +33,14 @@ class ProjectCriteriaController extends RESTfulController
         return $cr;
     }
 
+    protected function serializeView($model)
+    {
+        $row = $model->attributes;
+        $row['criteria'] = $model->criteria;
+        $row['project'] = $model->project;
+        $row['expert'] = $model->expert;
+
+        return $row;
+    }
+
 }
