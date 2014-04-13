@@ -1,7 +1,9 @@
 <div class="b-wrapper b-wrapper_mobile">
     <div class="b-header b-header_mobile">
         <div class="b-header__prev">
-
+            <a href="/#/mobile" class="b-prev">
+                <
+            </a>
         </div>
         <div class="b-header__title">
             Список проектов
@@ -16,10 +18,10 @@
                 {{criteria.name}}
             </div>
 
-            <input type="checkbox" name="{{criteria.id}}" id="id_{{criteria.id}}"
+            <input type="checkbox" ng-model="mark" ng-change="addCheck(criteria.id)" name="{{criteria.id}}" id="id_{{criteria.id}}"
                    class="b-item__checkbox">
         </label>
-        <div class="b-button b-button__green" ng-click="send_mark()">
+        <div class="b-button b-button__green" ng-click="send()">
             Отправить
         </div>
     </div>

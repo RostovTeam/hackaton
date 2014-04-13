@@ -4,6 +4,30 @@
             <div class="b-header__logo">
 
             </div>
+            <div class="b-header-menu">
+                <ul class="b-menu">
+                    <li class="b-menu__item">
+                        <a href="/#/">
+                            Главная
+                        </a>
+                    </li>
+                    <li class="b-menu__item">
+                        <a href="">
+                            Мероприятие
+                        </a>
+                    </li>
+                    <li class="b-menu__item">
+                        <a href="/#/mobile">
+                            Проекты
+                        </a>
+                    </li>
+                    <li class="b-menu__item">
+                        <a href="/#/addProj">
+                            Добавить мероприятие
+                        </a>
+                    </li>
+                </ul>
+            </div>
             <div class="b-header__auth">
 
             </div>
@@ -75,7 +99,8 @@
                 </h2>
 
                 <div class="b-top5">
-                    <a href="/#/proj/" class="b-top5__item" ng-repeat="proj in listProj | orderBy:'mark':true | limitTo:5">
+                    <a href="/#/proj/" class="b-top5__item"
+                       ng-repeat="proj in listProj | orderBy:'mark':true | limitTo:5">
                         <div class="b-item__medal " ng-class="setMedal($index,proj.mark)">
                             <div class="b-medal">
                                 {{$index+1}}
