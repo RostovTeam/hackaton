@@ -1,7 +1,7 @@
 'use strict';
 
 angular.module('hackatonAApp')
-  .controller('ProjCtrl', function ($scope, $routeParams) {
+  .controller('ProjCtrl', function ($scope, $routeParams, $resource) {
     $scope.awesomeThings = [
       'HTML5 Boilerplate',
       'AngularJS',
