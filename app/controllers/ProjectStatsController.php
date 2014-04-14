@@ -52,10 +52,15 @@ class ProjectStatsController extends RESTfulController
     {
 
         $int = 60;
+        $data=[];
         $date = new DateTime($start);
 
+        
+        $end=new DateTime($project->event->end_date);
         $now = new DateTime();
-
+        
+        if(!$now->diff($end)->invert)
+            $end=$now;
 
         $counts = [];
         $dates = [];
@@ -63,7 +68,7 @@ class ProjectStatsController extends RESTfulController
         $commits = $project->commits;
 
         $i = 0;
-        while ($now->diff($date)->invert)
+        while ($end->diff($date)->invert)
         {
             $row = [];
             $dates[] = $date->format('H:i');

@@ -34,11 +34,11 @@ class EventStatsController extends RESTfulController
                     ->limit(1)
                     ->queryRow();
             $event_id = $event['id'];
-            $event_created = $event['created'];
+            //$event_created = $event['created'];
         } else
         {
             $event = Event::model()->findByPk($event_id);
-            $event_created = $event->created;
+            //$event_created = $event->created;
         }
 
         $event = Event::model()->findByPk($event_id);
@@ -49,14 +49,15 @@ class EventStatsController extends RESTfulController
 
         $commitsCount = count($event->commits);
 
-        $start = Yii::app()->request->getParam('start', $event_created);
+        $start = Yii::app()->request->getParam('start', $event['start_date']);
 
-        $commmitDetail = $this->getCommitsDetail($start);
+        $commmitDetail = $this->getCommitsDetail($start, $event,
+                $event['end_date']);
 
 
         $this->_sendResponse(200,
                 [
-            'event_id' => $event->id,
+            'event_id' => $event['id'],
             'projects_count' => $projectsCount,
             'members_count' => $membersCount,
             'commits_count' => $commitsCount,
@@ -65,25 +66,14 @@ class EventStatsController extends RESTfulController
         ]);
     }
 
-    protected function getCommitsDetail($start)
+    protected function getCommitsDetail($start, $event, $_end = '')
     {
-        $int = 60;
         $date = new DateTime($start);
 
+        $end = new DateTime($_end);
         $now = new DateTime();
-//        $command = Yii::app()->db->createCommand()
-//                ->select([new CDbExpression(' count(*) as count'),
-//                    new CDbExpression('ROUND(UNIX_TIMESTAMP(date)/(' . $int . ' * 60)) AS timekey')])
-//                ->from(Commit::model()->tableName())
-//                ->where('date>:start', [':start' => $start])
-//                ->group('timekey');
-//        
-//        $commits = $command->queryAll();
-//
-//        $counts = array_map(function($v) use($int,&$date)
-//        {
-//            return ['count'=>v['count'],'date'=>$date->];
-//        }, $commits);
+
+        if (!$now->diff($end)->invert) $end = $now;
 
         $counts = [];
         $dates = [];
@@ -91,12 +81,13 @@ class EventStatsController extends RESTfulController
         $commits = Yii::app()->db->createCommand()
                 ->select('*')
                 ->from(Commit::model()->tableName())
-                ->where('date>:start', [':start' => $start])
+                ->where('date>:start and date<:end and project_id in (select id from projects where event_id =:event_id)',
+                        [':start' => $start, ':end' => $_end, ':event_id' => $event->id])
                 ->order('date asc')
                 ->queryAll();
 
         $i = 0;
-        while ($now->diff($date)->invert)
+        while ($end->diff($date)->invert)
         {
             $row = [];
             $dates[] = $date->format('H:i');
