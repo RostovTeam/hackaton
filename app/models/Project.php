@@ -35,7 +35,7 @@ class Project extends ActiveRecord
     public function rules()
     {
         return array(
-            array('event_id, owner_id', 'required'),
+            array('event_id, owner_id,git_url', 'required'),
             array('event_id, owner_id', 'numerical', 'integerOnly' => true),
             array('name,git_url', 'length', 'max' => 500),
             array('description, created', 'safe'),
@@ -108,4 +108,17 @@ class Project extends ActiveRecord
         GitHubConnector::sync();
     }
 
+    public function beforeValidate()
+    {
+        parent::beforeValidate();
+        
+        if($existing=$this->findByAttributes(['git_url'=>$this->git_url]))
+        {
+            $this->id=$existing->id;
+            
+            $this->setIsNewRecord(false);
+        }
+        
+        return true;
+    }
 }

@@ -52,6 +52,7 @@ class ProjectStatsController extends RESTfulController
     {
 
         $int = 60;
+        $data=[];
         $date = new DateTime($start);
 
         
