@@ -26,7 +26,7 @@ angular.module('hackatonAApp')
             $scope.addCheck=function(id){
                  test = {"criteria_id": id, "value": 1, "project_id": proj_id};
 
-                ProjCriter.send(test,function(){
+                ProjCriter.send(test,function(data){
                     Console.log("оценку принял");
                 });
             }
