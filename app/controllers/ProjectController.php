@@ -30,7 +30,7 @@ class ProjectController extends RESTfulController
     {
         $cr = parent::getFilterCriteria();
 
-        $cr->with = ['team'];
+        $cr->with = ['members','owner'];
 
         if ($name = Yii::app()->request->getParam('name'))
         {
@@ -49,7 +49,7 @@ class ProjectController extends RESTfulController
     {
         $row = $model->attributes;
 
-        $row['team'] = $model->team;
+        $row['owner'] = $model->owner;
         $row['members'] = $model->team->members;
         $row['mark']=$model->getMark();
         

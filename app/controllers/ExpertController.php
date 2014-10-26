@@ -19,10 +19,18 @@ class ExpertController extends RESTfulController
         return array_merge(
                 [
             ['allow',
-                'actions'=>['view','list'],
-                //'roles' => ['member','admin']
+//                'actions' => ['view', 'list'],
+//                'roles' => ['member'],
                 'users' => ['*']
             ]
                 ], parent::accessRules());
-    }    
+    }
+
+    protected function getFilterCriteria()
+    {
+        $cr = parent::getFilterCriteria();
+        
+        return $cr;
+    }
+
 }

@@ -21,8 +21,39 @@ class MemberController extends RESTfulController
                 [
             ['allow',
                 //'roles' => ['member','admin']
-                'users'=>['*']
+                'users' => ['*']
             ]
                 ], parent::accessRules());
     }
+
+    protected function getFilterCriteria()
+    {
+        $cr = parent::getFilterCriteria();
+        $cr->compare('type', Member::MEMBER_TYPE_MEMBER);
+        return $cr;
+    }
+
+    public function transform(&$model)
+    {
+        parent::transform($model);
+        $model->type = Member::MEMBER_TYPE_MEMBER;
+    }
+
+    public function actoinRegister()
+    {
+        $model = new RegisterMemberForm();
+
+        $params = Yii::app()->request->getJsonData();
+
+        $model->attributes = $params;
+
+        if (!$model->validate() || !($member = $model->register()))
+        {
+            $this->_sendResponse(400, $model->errors);
+            return;
+        }
+
+        $this->_sendResponse(200, $member->attributes);
+    }
+
 }

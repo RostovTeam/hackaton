@@ -19,7 +19,15 @@ class Expert extends ActiveRecord
      */
     public function tableName()
     {
-        return 'experts';
+        return 'members';
+    }
+
+    public function defaultScope()
+    {
+        return [
+            'condition' => 'type=:expert',
+            'params' => [':expert' => Member::MEMBER_TYPE_EXPERT]
+        ];
     }
 
     /**
@@ -28,6 +36,7 @@ class Expert extends ActiveRecord
     public function rules()
     {
         return array(
+            array('full_name,phone', 'required'),
             array('full_name', 'length', 'max' => 400),
             array('created', 'safe'),
             array('id, full_name, created', 'safe', 'on' => 'search'),
@@ -40,8 +49,22 @@ class Expert extends ActiveRecord
     public function relations()
     {
         return array(
-            'projectCriterias' => array(self::HAS_MANY, ProjectCriteria::className(), 'expert_id'),
+            'projectCriterias' => array(self::HAS_MANY, ProjectCriteria::className(),
+                'expert_id'),
         );
+    }
+
+    public function beforeValidate()
+    {
+        parent::beforeValidate();
+        $this->login = $this->phone;
+        return true;
+    }
+
+    public function afterConstruct()
+    {
+        parent::afterConstruct();
+        $this->type = Member::MEMBER_TYPE_EXPERT;
     }
 
     /**
@@ -50,9 +73,6 @@ class Expert extends ActiveRecord
     public function attributeLabels()
     {
         return array(
-            'id' => 'ID',
-            'full_name' => 'Full Name',
-            'created' => 'Created',
         );
     }
 

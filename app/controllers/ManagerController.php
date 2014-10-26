@@ -5,14 +5,14 @@
  *
  * @author Komov Roman
  */
-class TeamController extends RESTfulController
+class ManagerController  extends RESTfulController
 {
 
     protected $model;
 
     public function __construct()
     {
-        $this->model = Team::className();
+        $this->model = Member::className();
     }
 
     public function accessRules()
@@ -20,28 +20,24 @@ class TeamController extends RESTfulController
         return array_merge(
                 [
             ['allow',
-                //'roles' => ['member', 'admin']
+                //'roles' => ['member','admin']
                 'users' => ['*']
             ]
                 ], parent::accessRules());
     }
 
-    public function getFilterCriteria()
+    protected function getFilterCriteria()
     {
         $cr = parent::getFilterCriteria();
-
-        $cr->with = ['members'];
-
+        $cr->compare('type', Member::MEMBER_TYPE_MANAGER);
+        
         return $cr;
     }
 
-    public function serializeView($model)
+    public function transform(&$model)
     {
-        $row = $model->attributes;
-
-        $row['members'] = $model->team->members;
-
-        return $row;
+        parent::transform($model);
+        $model->type = Member::MEMBER_TYPE_MANAGER;
     }
 
 }

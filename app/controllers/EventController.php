@@ -34,6 +34,8 @@ class EventController extends RESTfulController
         {
             $cr->compare('name', $name,true);
         }
+        
+        return $cr;
     }
 
 }

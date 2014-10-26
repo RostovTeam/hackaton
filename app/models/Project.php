@@ -48,14 +48,12 @@ class Project extends ActiveRecord
      */
     public function relations()
     {
-
         return array(
-            'commits' => array(self::HAS_MANY, Commit::className(), 'project_id','order'=>'date ASC'),
             'projectCriterias' => array(self::HAS_MANY, ProjectCriteria::className(),
                 'project_id'),
             'event' => array(self::BELONGS_TO, Event::className(), 'event_id'),
             'owner' => array(self::BELONGS_TO, Member::className(), 'owner_id'),
-            'team' => array(self::HAS_ONE, Team::className(), 'project_id', 'with' => 'members'),
+            'members'=>array(self::MANY_MANY,Member::className(),'project_members(project_id,member_id)')
         );
     }
 
