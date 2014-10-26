@@ -35,7 +35,7 @@ class Project extends ActiveRecord
     public function rules()
     {
         return array(
-            array('event_id, owner_id,git_url', 'required'),
+            array('event_id, owner_id', 'required'),
             array('event_id, owner_id', 'numerical', 'integerOnly' => true),
             array('name,git_url', 'length', 'max' => 500),
             array('description, created', 'safe'),
@@ -53,7 +53,7 @@ class Project extends ActiveRecord
                 'project_id'),
             'event' => array(self::BELONGS_TO, Event::className(), 'event_id'),
             'owner' => array(self::BELONGS_TO, Member::className(), 'owner_id'),
-            'members'=>array(self::MANY_MANY,Member::className(),'project_members(project_id,member_id)')
+            'members'=>array(self::MANY_MANY,Member::className(),'projects_members(project_id,member_id)')
         );
     }
 
@@ -109,14 +109,7 @@ class Project extends ActiveRecord
     public function beforeValidate()
     {
         parent::beforeValidate();
-        
-        if($existing=$this->findByAttributes(['git_url'=>$this->git_url]))
-        {
-            $this->id=$existing->id;
-            
-            $this->setIsNewRecord(false);
-        }
-        
+                
         return true;
     }
 }

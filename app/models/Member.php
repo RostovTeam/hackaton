@@ -23,6 +23,8 @@ class Member extends ActiveRecord
     const MEMBER_TYPE_MANAGER = 'manager';
     const MEMBER_TYPE_EXPERT = 'expert';
 
+    public $event_id;
+    
     /**
      * @return string the associated database table name
      */
@@ -92,7 +94,7 @@ class Member extends ActiveRecord
     }
 
     /**
-     * hash password before save user
+     * 
      * 
      * @return boolean
      */
@@ -104,7 +106,19 @@ class Member extends ActiveRecord
             $this->salt = $this->generateSalt();
             $this->password = $this->hashPassword($this->password, $this->salt);
         }
+        
+        if($this->isNewRecord && $this->event_id)
+        {
+            $this->addToEvent($this->event_id);
+        }
+        
         return true;
+    }
+
+    public function addToEvent($event_id)
+    {
+        return Yii::app()->db->createCommand()->insert('event_members',
+                ['member_id' => $this->id, 'event_id' => $event_id]);
     }
 
     /**

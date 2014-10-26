@@ -15,6 +15,8 @@
 class Criteria extends ActiveRecord
 {
 
+    public $event_id;
+
     /**
      * @return string the associated database table name
      */
@@ -44,8 +46,32 @@ class Criteria extends ActiveRecord
         return array(
             'criteriaValues' => array(self::HAS_MANY, CriteriaValue::className(),
                 'criteria_id'),
-            'projectCriterias' => array(self::HAS_MANY, ProjectCriteria::className(), 'criteria_id'),
+            'projectCriterias' => array(self::HAS_MANY, ProjectCriteria::className(),
+                'criteria_id'),
         );
+    }
+
+    /**
+     * 
+     * 
+     * @return boolean
+     */
+    public function beforeSave()
+    {
+        parent::beforeSave();
+
+        if ($this->isNewRecord && $this->event_id)
+        {
+            $this->addToEvent($this->event_id);
+        }
+
+        return true;
+    }
+
+    public function addToEvent($event_id)
+    {
+        return Yii::app()->db->createCommand()->insert('event_members',
+                        ['member_id' => $this->id, 'event_id' => $event_id]);
     }
 
     /**
@@ -54,9 +80,6 @@ class Criteria extends ActiveRecord
     public function attributeLabels()
     {
         return array(
-            'id' => 'ID',
-            'name' => 'Name',
-            'created' => 'Created',
         );
     }
 
