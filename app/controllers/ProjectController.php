@@ -50,7 +50,7 @@ class ProjectController extends RESTfulController
         $row = $model->attributes;
 
         $row['owner'] = $model->owner;
-        $row['members'] = $model->team->members;
+        $row['members'] = $model->members;
         $row['mark']=$model->getMark();
         
         return $row;

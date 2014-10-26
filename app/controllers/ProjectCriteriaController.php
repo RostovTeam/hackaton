@@ -23,9 +23,9 @@ class ProjectCriteriaController extends RESTfulController
 
     protected function transform(&$model)
     {
-        if (Yii::app()->user->getState('role') == 'expert')
+        if (Yii::app()->user->checkAccess('expert'))
         {
-            $model->expert_id = Yii::app()->user->getState('profile_id');
+            $model->expert_id = Yii::app()->user->getState('id');
         }
     }
 

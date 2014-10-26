@@ -56,4 +56,5 @@ class MemberController extends RESTfulController
         $this->_sendResponse(200, $member->attributes);
     }
 
+    
 }
