@@ -9,4 +9,3 @@ app/config/main.php
 app/config/params.php
 app/runtime/application.log
 app/web/assets/*
-doc/*
