@@ -15,7 +15,7 @@ class UserIdentity extends CUserIdentity
      */
     public function authenticate()
     {
-        $user = User::model()->find('login=?', array($this->username));
+        $user = Member::model()->find('login=?', array($this->username));
 
         if ($user === null)
         {
@@ -28,16 +28,6 @@ class UserIdentity extends CUserIdentity
             $this->_id = $user->user_id;
             $this->username = $user->login;
             $this->errorCode = self::ERROR_NONE;
-
-            $arrayAuthRoleItems = Yii::app()->authManager->getAuthItems(2,
-                    $user->user_id);
-            $roles = array_keys($arrayAuthRoleItems);
-
-            if ($roles[0])
-            {
-                $role = strtolower($roles[0]);
-                $this->setState('role', $role);
-            }
         }
         return !$this->errorCode;
     }
