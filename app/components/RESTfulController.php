@@ -324,7 +324,7 @@ abstract class RESTfulController extends BaseController
 
         $_relation = $modelName::model()->relations()[$relation];
 
-        if ($_relation[0] != BaseActiveRecord::HAS_MANY && $_relation[0] != BaseActiveRecord::HAS_ONE)
+        if ($_relation[0] != ActiveRecord::HAS_MANY && $_relation[0] != ActiveRecord::HAS_ONE)
         {
             $this->_sendResponse(404, ['error' => 'Undefined relation 1']);
         }
@@ -374,21 +374,36 @@ abstract class RESTfulController extends BaseController
 
         $_relation = $modelName::model()->relations()[$relation];
 
-        if ($_relation[0] != BaseActiveRecord::HAS_MANY && $_relation[0] != BaseActiveRecord::HAS_ONE)
-        {
-            $this->_sendResponse(404, ['error' => 'Undefined relation 1']);
-        }
-
         $relationModelName = $_relation[1];
 
         $fk = $_relation[2];
 
-        $relationModel = $relationModelName::model()->findByAttributes(['id' => $relation_id,
-            $fk => $id]);
+        $relationModel = $relationModelName::model()->findByAttributes(['id' => $relation_id]);
+
+        if ($_relation[0] != ActiveRecord::HAS_MANY && $_relation[0] != ActiveRecord::HAS_ONE && $_relation[0] != ActiveRecord::MANY_MANY)
+        {
+            $this->_sendResponse(404,
+                    ['error' => 'Undefined relation: bad relation type ']);
+        } 
+        
+        if ($_relation[0] == ActiveRecord::MANY_MANY)
+        {
+            $_tmp = str_replace(')', '', $_relation[2]);
+            $_tmp = str_replace('(', ',', $_tmp);
+
+            $data = explode(',', $_tmp);
+
+            $table = trim($data[0]);
+            $model_fk = trim($data[1]);
+            $rel_fk = trim($data[2]);
+            Yii::log('id:'.$id.'rel_id:'.$relation_id);
+            Yii::app()->db->createCommand()->insert($table,
+                    [ $model_fk => $id, $rel_fk => $relation_id]);
+        } 
 
         if (!$relationModel)
         {
-            $this->_sendResponse(404, ['error' => 'Relation not found']);
+            $this->_sendResponse(404, array('error' => 'model not found'));
         }
 
         $params = Yii::app()->request->getJsonData();
@@ -445,7 +460,7 @@ abstract class RESTfulController extends BaseController
 
         $_relation = $modelName::model()->relations()[$relation];
 
-        if ($_relation[0] != BaseActiveRecord::HAS_MANY && $_relation[0] != BaseActiveRecord::HAS_ONE)
+        if ($_relation[0] != ActiveRecord::HAS_MANY && $_relation[0] != ActiveRecord::HAS_ONE)
         {
             $this->_sendResponse(404, ['error' => 'Undefined relation 1']);
         }
@@ -476,26 +491,44 @@ abstract class RESTfulController extends BaseController
 
         $_relation = $modelName::model()->relations()[$relation];
 
-        if ($_relation[0] != BaseActiveRecord::HAS_MANY && $_relation[0] != BaseActiveRecord::HAS_ONE)
+        if ($_relation[0] == ActiveRecord::HAS_MANY || $_relation[0] == ActiveRecord::HAS_ONE)
         {
-            $this->_sendResponse(404, ['error' => 'Undefined relation 1']);
+            $relationModelName = $_relation[1];
+
+            $fk = $_relation[2];
+
+            $relationModel = $relationModelName::model()->findByAttributes(['id' => $relation_id,
+                $fk => $id]);
+
+            $num = $relationModel->delete();
+            if ($num > 0)
+            {
+                $this->_sendResponse(200, array('error' => 0));
+            } else
+            {
+                $this->_sendResponse(500,
+                        array('error' => "Couldn't delete model."));
+            }
         }
 
-        $relationModelName = $_relation[1];
-
-        $fk = $_relation[2];
-
-        $relationModel = $relationModelName::model()->findByAttributes(['id' => $relation_id,
-            $fk => $id]);
-
-        $num = $relationModel->delete();
-        if ($num > 0)
+        if ($_relation[0] == ActiveRecord::MANY_MANY)
         {
+            $_tmp = str_replace(')', '', $_relation[2]);
+            $_tmp = str_replace('(', ',', $_tmp);
+
+            $data = explode(',', $_tmp);
+
+            $table =trim( $data[0]);
+            $model_fk = trim($data[1]);
+            $rel_fk = trim($data[2]);
+            Yii::app()->db->createCommand()->delete($table,
+                    $model_fk . '=:' . $model_fk . ' and ' . $rel_fk . "=:" . $rel_fk,
+                    [':' . $model_fk => $id, ':' . $rel_fk => $relation_id]);
+
             $this->_sendResponse(200, array('error' => 0));
-        } else
-        {
-            $this->_sendResponse(500, array('error' => "Couldn't delete model."));
         }
+
+        $this->_sendResponse(404, ['error' => 'Undefined relation 1']);
     }
 
     protected function getUpdateModel($id)
@@ -517,27 +550,27 @@ abstract class RESTfulController extends BaseController
             $content_type = 'application/json')
     {
         $status_header = 'HTTP/1.1 ' . $status . ' ' . $this->_getStatusCodeMessage($status);
-        // set the status
+// set the status
         header($status_header);
-        // set the content type
+// set the content type
         header('Content-type: ' . $content_type);
 
-        // pages with body are easy
+// pages with body are easy
         if ($body != '')
         {
-            // send the body
+// send the body
             echo $this->_getObjectEncoded($body);
             exit;
         }
-        // we need to create the body if none is passed
+// we need to create the body if none is passed
         else
         {
-            // create some body messages
+// create some body messages
             $message = '';
 
-            // this is purely optional, but makes the pages a little nicer to read
-            // for your users.  Since you won't likely send a lot of different status codes,
-            // this also shouldn't be too ponderous to maintain
+// this is purely optional, but makes the pages a little nicer to read
+// for your users.  Since you won't likely send a lot of different status codes,
+// this also shouldn't be too ponderous to maintain
             switch ($status)
             {
                 case 401:
@@ -554,10 +587,10 @@ abstract class RESTfulController extends BaseController
                     break;
             }
 
-            // servers don't always have a signature turned on (this is an apache directive "ServerSignature On")
+// servers don't always have a signature turned on (this is an apache directive "ServerSignature On")
             $signature = ($_SERVER['SERVER_SIGNATURE'] == '') ? $_SERVER['SERVER_SOFTWARE'] . ' Server at ' . $_SERVER['SERVER_NAME'] . ' Port ' . $_SERVER['SERVER_PORT'] : $_SERVER['SERVER_SIGNATURE'];
 
-            // this should be templatized in a real-world solution
+// this should be templatized in a real-world solution
             $body = '<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
                         <html>
                             <head>
@@ -586,9 +619,9 @@ abstract class RESTfulController extends BaseController
      */
     protected function _getStatusCodeMessage($status)
     {
-        // these could be stored in a .ini file and loaded
-        // via parse_ini_file()... however, this will suffice
-        // for an example
+// these could be stored in a .ini file and loaded
+// via parse_ini_file()... however, this will suffice
+// for an example
         $codes = Array(
             100 => 'Continue',
             101 => 'Switching Protocols',
@@ -644,24 +677,24 @@ abstract class RESTfulController extends BaseController
      */
     protected function _checkAuth()
     {
-        // Check if we have the USERNAME and PASSWORD HTTP headers set?
+// Check if we have the USERNAME and PASSWORD HTTP headers set?
         if (!(isset($_SERVER['HTTP_X_' . self::APPLICATION_ID . '_USERNAME']) and isset($_SERVER['HTTP_X_' . self::APPLICATION_ID . '_PASSWORD'])))
         {
-            // Error: Unauthorized
+// Error: Unauthorized
             $this->_sendResponse(401);
         }
         $username = $_SERVER['HTTP_X_' . self::APPLICATION_ID . '_USERNAME'];
         $password = $_SERVER['HTTP_X_' . self::APPLICATION_ID . '_PASSWORD'];
-        // Find the user
+// Find the user
         $user = User::model()->find('LOWER(username)=?',
                 array(strtolower($username)));
         if ($user === null)
         {
-            // Error: Unauthorized
+// Error: Unauthorized
             $this->_sendResponse(401, 'Error: User Name is invalid');
         } else if (!$user->validatePassword($password))
         {
-            // Error: Unauthorized
+// Error: Unauthorized
             $this->_sendResponse(401, 'Error: User Password is invalid');
         }
     }
