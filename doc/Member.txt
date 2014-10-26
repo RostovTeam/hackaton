@@ -6,7 +6,8 @@ Resourse POST /api/Member
 Request: 
 {
     "full_name": "Elon Mask",
-    "phone": "79054447777"
+    "phone": "79054447777",
+    "event_id": 1
 }
 Response: 
 {
@@ -19,7 +20,7 @@ Response:
 
         ]
     },
-    "id": "17",
+    "id": "3",
     "number": null,
     "email": null,
     "git_nickname": null,
@@ -38,12 +39,12 @@ FILTER   full_name
 Response: 
 [
     {
-        "id": "4",
+        "id": "1",
         "full_name": "Elon Mask",
         "number": null,
         "email": null,
         "phone": "79054447777",
-        "created": "2014-10-26 20:01:24",
+        "created": null,
         "git_nickname": null,
         "vk_link": null,
         "active_event": null,
@@ -54,76 +55,12 @@ Response:
         "salt": null
     },
     {
-        "id": "5",
+        "id": "3",
         "full_name": "Elon Mask",
         "number": null,
         "email": null,
         "phone": "79054447777",
-        "created": "2014-10-26 20:01:44",
-        "git_nickname": null,
-        "vk_link": null,
-        "active_event": null,
-        "vk_token": null,
-        "login": null,
-        "password": null,
-        "type": "member",
-        "salt": null
-    },
-    {
-        "id": "7",
-        "full_name": "Elon Mask",
-        "number": null,
-        "email": null,
-        "phone": "79054447777",
-        "created": "2014-10-26 20:03:55",
-        "git_nickname": null,
-        "vk_link": null,
-        "active_event": null,
-        "vk_token": null,
-        "login": null,
-        "password": null,
-        "type": "member",
-        "salt": null
-    },
-    {
-        "id": "9",
-        "full_name": "Elon Mask",
-        "number": null,
-        "email": null,
-        "phone": "79054447777",
-        "created": "2014-10-26 20:04:53",
-        "git_nickname": null,
-        "vk_link": null,
-        "active_event": null,
-        "vk_token": null,
-        "login": null,
-        "password": null,
-        "type": "member",
-        "salt": null
-    },
-    {
-        "id": "11",
-        "full_name": "Elon Mask",
-        "number": null,
-        "email": null,
-        "phone": "79054447777",
-        "created": "2014-10-26 20:05:56",
-        "git_nickname": null,
-        "vk_link": null,
-        "active_event": null,
-        "vk_token": null,
-        "login": null,
-        "password": null,
-        "type": "member",
-        "salt": null
-    },
-    {
-        "id": "17",
-        "full_name": "Elon Mask",
-        "number": null,
-        "email": null,
-        "phone": "79054447777",
-        "created": "2014-10-26 20:21:39",
+        "created": "2014-10-27 00:36:02",
         "git_nickname": null,
         "vk_link": null,
         "active_event": null,
@@ -140,12 +77,12 @@ Response:
 Resourse GET /api/Member/{id}
 Response: 
 {
-    "id": "17",
+    "id": "3",
     "full_name": "Elon Mask",
     "number": null,
     "email": null,
     "phone": "79054447777",
-    "created": "2014-10-26 20:21:39",
+    "created": "2014-10-27 00:36:02",
     "git_nickname": null,
     "vk_link": null,
     "active_event": null,
@@ -162,16 +99,17 @@ Resourse PUT /api/Member/{id}
 Request: 
 {
     "full_name": "Elon Mask",
-    "phone": "79054447777"
+    "phone": "79054447777",
+    "event_id": 1
 }
 Response: 
 {
-    "id": "17",
+    "id": "3",
     "full_name": "Elon Mask",
     "number": null,
     "email": null,
     "phone": "79054447777",
-    "created": "2014-10-26 20:21:39",
+    "created": "2014-10-27 00:36:02",
     "git_nickname": null,
     "vk_link": null,
     "active_event": null,

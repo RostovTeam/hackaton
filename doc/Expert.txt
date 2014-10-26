@@ -20,7 +20,7 @@ Response:
         ]
     },
     "login": "79054447777",
-    "id": "16",
+    "id": "2",
     "number": null,
     "email": null,
     "git_nickname": null,
@@ -38,76 +38,12 @@ FILTER   full_name
 Response: 
 [
     {
-        "id": "3",
+        "id": "2",
         "full_name": "Elon Mask",
         "number": null,
         "email": null,
         "phone": "79054447777",
-        "created": "2014-10-26 20:01:18",
-        "git_nickname": null,
-        "vk_link": null,
-        "active_event": null,
-        "vk_token": null,
-        "login": "79054447777",
-        "password": null,
-        "type": "expert",
-        "salt": null
-    },
-    {
-        "id": "6",
-        "full_name": "Elon Mask",
-        "number": null,
-        "email": null,
-        "phone": "79054447777",
-        "created": "2014-10-26 20:03:50",
-        "git_nickname": null,
-        "vk_link": null,
-        "active_event": null,
-        "vk_token": null,
-        "login": "79054447777",
-        "password": null,
-        "type": "expert",
-        "salt": null
-    },
-    {
-        "id": "8",
-        "full_name": "Elon Mask",
-        "number": null,
-        "email": null,
-        "phone": "79054447777",
-        "created": "2014-10-26 20:04:48",
-        "git_nickname": null,
-        "vk_link": null,
-        "active_event": null,
-        "vk_token": null,
-        "login": "79054447777",
-        "password": null,
-        "type": "expert",
-        "salt": null
-    },
-    {
-        "id": "10",
-        "full_name": "Elon Mask",
-        "number": null,
-        "email": null,
-        "phone": "79054447777",
-        "created": "2014-10-26 20:05:50",
-        "git_nickname": null,
-        "vk_link": null,
-        "active_event": null,
-        "vk_token": null,
-        "login": "79054447777",
-        "password": null,
-        "type": "expert",
-        "salt": null
-    },
-    {
-        "id": "16",
-        "full_name": "Elon Mask",
-        "number": null,
-        "email": null,
-        "phone": "79054447777",
-        "created": "2014-10-26 20:21:33",
+        "created": "2014-10-27 00:35:56",
         "git_nickname": null,
         "vk_link": null,
         "active_event": null,
@@ -124,12 +60,12 @@ Response:
 Resourse GET /api/Expert/{id}
 Response: 
 {
-    "id": "16",
+    "id": "2",
     "full_name": "Elon Mask",
     "number": null,
     "email": null,
     "phone": "79054447777",
-    "created": "2014-10-26 20:21:33",
+    "created": "2014-10-27 00:35:56",
     "git_nickname": null,
     "vk_link": null,
     "active_event": null,
@@ -150,12 +86,12 @@ Request:
 }
 Response: 
 {
-    "id": "16",
+    "id": "2",
     "full_name": "Elon Mask",
     "number": null,
     "email": null,
     "phone": "79054447777",
-    "created": "2014-10-26 20:21:33",
+    "created": "2014-10-27 00:35:56",
     "git_nickname": null,
     "vk_link": null,
     "active_event": null,
@@ -170,6 +106,4 @@ Response:
  DELETE 
 Resourse DELETE /api/Expert/{id}
 Response: 
-{
-    "error": 0
-}
+null
