@@ -5,28 +5,28 @@
  *
  * @author Komov Roman
  */
-class PhoneUserIdentity extends CUserIdentity
+class FullNameUserIdentity extends CUserIdentity
 {
 
     protected $_id;
-    protected $phone;
+    protected $fullname;
 
-    public function __construct($phone)
+    public function __construct($fullname)
     {
-        $this->phone = $phone;
-        parent::__construct($phone, '');
+        $this->fullname = $fullname;
+        parent::__construct($fullname, '');
     }
 
     public function authenticate()
     {
-        $user = Member::model()->findByAttributes(['login' => $this->phone]);
+        $user = Member::model()->findByAttributes(['full_name' => $this->fullname]);
 
         if ($user === null)
         {
             $this->errorCode = self::ERROR_USERNAME_INVALID;
             return false;
         }
-        
+
         $this->_id = $user->id;
 
         $this->errorCode = UserIdentity::ERROR_NONE;
