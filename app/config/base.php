@@ -72,7 +72,7 @@ return array(
         'authManager' => array(
             'class' => 'CDbAuthManager',
             'itemTable'=>'roles',
-            'itemChildTable'=>'member_roles'
+            'assignmentTable'=>'member_roles'
         ),
         'errorHandler' => array(
             'errorAction' => 'site/error',
