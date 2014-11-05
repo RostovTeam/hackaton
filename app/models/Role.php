@@ -7,8 +7,17 @@
  */
 class Role extends ActiveRecord
 {
+
     public function tableName()
     {
-        return 'roles';        
+        return 'roles';
     }
+
+    public function rules()
+    {
+        return [
+            ['name,type', 'required']
+        ];
+    }
+
 }

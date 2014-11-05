@@ -11,4 +11,11 @@ class MemberRole extends ActiveRecord
     {
         return 'member_roles';
     }
+    
+    public function rules()
+    {
+        return [
+            ['itemname,userid','required']
+        ];
+    }
 }

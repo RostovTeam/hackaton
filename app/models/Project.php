@@ -42,6 +42,13 @@ class Project extends ActiveRecord
             array('id, event_id, owner_id, name, description, created', 'safe', 'on' => 'search'),
         );
     }
+    
+    public function defaultScope()
+    {
+        return [
+            'with'=>'event'
+        ];
+    }
 
     /**
      * @return array relational rules.
@@ -53,7 +60,7 @@ class Project extends ActiveRecord
                 'project_id'),
             'event' => array(self::BELONGS_TO, Event::className(), 'event_id'),
             'owner' => array(self::BELONGS_TO, Member::className(), 'owner_id'),
-            'members'=>array(self::MANY_MANY,Member::className(),'projects_members(project_id,member_id)')
+            'members' => array(self::MANY_MANY, Member::className(), 'projects_members(project_id,member_id)')
         );
     }
 
@@ -97,6 +104,11 @@ class Project extends ActiveRecord
                         }, $this->projectCriterias));
     }
 
+    public function isActive()
+    {
+        return $this->event->isActive();
+    }
+
     public function afterSave()
     {
         parent::afterSave();
@@ -109,7 +121,8 @@ class Project extends ActiveRecord
     public function beforeValidate()
     {
         parent::beforeValidate();
-                
+
         return true;
     }
+
 }

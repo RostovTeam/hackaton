@@ -47,6 +47,7 @@ class Member extends ActiveRecord
             array('git_nickname', 'length', 'max' => 50),
             array('vk_link', 'length', 'max' => 100),
             array('user_id,vk_link', 'unsafe'),
+            array('active_event','numerical','integerOnly'=>true),
             array('type', 'in', 'range' => ['member', 'manager', 'expert']),
             array('type', 'unsafe'),
             array('type', 'required'),
@@ -66,7 +67,7 @@ class Member extends ActiveRecord
         return array(
             'events' => array(self::MANY_MANY, Event::className(), 'event_members(members_id, event_id)'),
             'projects' => array(self::HAS_MANY, Project::className(), 'owner_id'),
-            'roles' => array(self::HAS_MANY, Role::className(), 'userid'),
+            'roles' => array(self::MANY_MANY, Role::className(), 'member_roles(userid,itemname)'),
             'activeEvent' => array(self::BELONGS_TO, Event::className(), 'active_event')
         );
     }
