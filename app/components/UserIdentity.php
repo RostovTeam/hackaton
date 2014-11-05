@@ -20,14 +20,19 @@ class UserIdentity extends CUserIdentity
         if ($user === null)
         {
             $this->errorCode = self::ERROR_USERNAME_INVALID;
-        } elseif (!$user->validatePassword($this->password))
+        } 
+//        elseif (!$user->validatePassword($this->password))
+//        {
+//            $this->errorCode = self::ERROR_PASSWORD_INVALID;
+//        } 
+        else
         {
-            $this->errorCode = self::ERROR_PASSWORD_INVALID;
-        } else
-        {
-            $this->_id = $user->user_id;
+            $this->_id = $user->id;
             $this->username = $user->login;
             $this->errorCode = self::ERROR_NONE;
+
+            $this->setState('active_event', $user->active_event);
+            $this->setState('role', $user->roles ? $user->roles[0]->name : '');
         }
         return !$this->errorCode;
     }
