@@ -14,18 +14,18 @@ Response:
     "full_name": "Elon Mask",
     "phone": "79054447777",
     "type": "member",
+    "active_event": "1",
     "created": {
         "expression": "CURRENT_TIMESTAMP",
         "params": [
 
         ]
     },
-    "id": "3",
+    "id": "4",
     "number": null,
     "email": null,
     "git_nickname": null,
     "vk_link": null,
-    "active_event": null,
     "vk_token": null,
     "login": null,
     "password": null,
@@ -47,7 +47,7 @@ Response:
         "created": null,
         "git_nickname": null,
         "vk_link": null,
-        "active_event": null,
+        "active_event": "1",
         "vk_token": null,
         "login": null,
         "password": null,
@@ -55,15 +55,15 @@ Response:
         "salt": null
     },
     {
-        "id": "3",
+        "id": "4",
         "full_name": "Elon Mask",
         "number": null,
         "email": null,
         "phone": "79054447777",
-        "created": "2014-10-27 00:36:02",
+        "created": "2014-11-05 05:57:53",
         "git_nickname": null,
         "vk_link": null,
-        "active_event": null,
+        "active_event": "1",
         "vk_token": null,
         "login": null,
         "password": null,
@@ -77,15 +77,15 @@ Response:
 Resourse GET /api/Member/{id}
 Response: 
 {
-    "id": "3",
+    "id": "4",
     "full_name": "Elon Mask",
     "number": null,
     "email": null,
     "phone": "79054447777",
-    "created": "2014-10-27 00:36:02",
+    "created": "2014-11-05 05:57:53",
     "git_nickname": null,
     "vk_link": null,
-    "active_event": null,
+    "active_event": "1",
     "vk_token": null,
     "login": null,
     "password": null,
@@ -104,15 +104,15 @@ Request:
 }
 Response: 
 {
-    "id": "3",
+    "id": "4",
     "full_name": "Elon Mask",
     "number": null,
     "email": null,
     "phone": "79054447777",
-    "created": "2014-10-27 00:36:02",
+    "created": "2014-11-05 05:57:53",
     "git_nickname": null,
     "vk_link": null,
-    "active_event": null,
+    "active_event": "1",
     "vk_token": null,
     "login": null,
     "password": null,

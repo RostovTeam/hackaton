@@ -1,0 +1,85 @@
+CriteriaValue
+
+
+ CREATE 
+Resourse POST /api/CriteriaValue
+Request: 
+{
+    "criteria_id": "1",
+    "value": "1",
+    "label": "test"
+}
+Response: 
+{
+    "value": "1",
+    "criteria_id": "1",
+    "id": "5",
+    "label": null
+}
+
+ 
+ LIST 
+Resourse GET /api/CriteriaValue
+Response: 
+[
+    {
+        "id": "1",
+        "criteria_id": "1",
+        "value": "10",
+        "label": "lol"
+    },
+    {
+        "id": "2",
+        "criteria_id": "1",
+        "value": "1",
+        "label": null
+    },
+    {
+        "id": "3",
+        "criteria_id": "1",
+        "value": "1",
+        "label": null
+    },
+    {
+        "id": "5",
+        "criteria_id": "1",
+        "value": "1",
+        "label": null
+    }
+]
+
+ 
+ VIEW 
+Resourse GET /api/CriteriaValue/{id}
+Response: 
+{
+    "id": "5",
+    "criteria_id": "1",
+    "value": "1",
+    "label": null
+}
+
+
+ UPDATE 
+Resourse PUT /api/CriteriaValue/{id}
+Request: 
+{
+    "criteria_id": "1",
+    "value": "1",
+    "label": "test"
+}
+Response: 
+{
+    "id": "5",
+    "criteria_id": "1",
+    "value": "1",
+    "label": null
+}
+
+ 
+ DELETE 
+Resourse DELETE /api/CriteriaValue/{id}
+Response: 
+{
+    "error": 0
+}

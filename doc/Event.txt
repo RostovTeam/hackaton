@@ -20,6 +20,7 @@ Response:
         ]
     },
     "id": "2",
+    "is_active": null,
     "start_date": null
 }
 
@@ -32,16 +33,18 @@ Response:
     {
         "id": "1",
         "name": "best future development",
+        "is_active": "1",
         "start_date": null,
         "end_date": "2014-12-03 19:00:00",
-        "created": "2014-10-27 00:35:09"
+        "created": "2014-11-05 05:57:26"
     },
     {
         "id": "2",
         "name": "best future development",
+        "is_active": null,
         "start_date": null,
         "end_date": "2014-12-03 19:00:00",
-        "created": "2014-10-27 00:35:47"
+        "created": "2014-11-05 05:57:28"
     }
 ]
 
@@ -52,9 +55,10 @@ Response:
 {
     "id": "2",
     "name": "best future development",
+    "is_active": null,
     "start_date": null,
     "end_date": "2014-12-03 19:00:00",
-    "created": "2014-10-27 00:35:47"
+    "created": "2014-11-05 05:57:28"
 }
 
 
@@ -70,9 +74,10 @@ Response:
 {
     "id": "2",
     "name": "best future development",
+    "is_active": null,
     "start_date": null,
     "end_date": "2014-12-03 19:00:00",
-    "created": "2014-10-27 00:35:47"
+    "created": "2014-11-05 05:57:28"
 }
 
  

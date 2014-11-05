@@ -14,8 +14,8 @@ Response:
 {
     "name": "Tesla Motors",
     "description": "revolution in auto industry",
-    "owner_id": 1,
-    "event_id": 1,
+    "owner_id": "1",
+    "event_id": "1",
     "created": {
         "expression": "CURRENT_TIMESTAMP",
         "params": [
@@ -34,7 +34,7 @@ Response:
         "created": null,
         "git_nickname": null,
         "vk_link": null,
-        "active_event": null,
+        "active_event": "1",
         "vk_token": null,
         "login": null,
         "password": null,
@@ -44,7 +44,8 @@ Response:
     "members": [
 
     ],
-    "mark": 10
+    "mark": 10,
+    "is_active": "1"
 }
 
  
@@ -71,7 +72,7 @@ Response:
             "created": null,
             "git_nickname": null,
             "vk_link": null,
-            "active_event": null,
+            "active_event": "1",
             "vk_token": null,
             "login": null,
             "password": null,
@@ -81,7 +82,8 @@ Response:
         "members": [
 
         ],
-        "mark": 43
+        "mark": 43,
+        "is_active": "1"
     },
     {
         "id": "2",
@@ -90,7 +92,7 @@ Response:
         "name": "Tesla Motors",
         "description": "revolution in auto industry",
         "git_url": null,
-        "created": "2014-10-27 00:36:08",
+        "created": "2014-11-05 05:58:00",
         "code_lines": null,
         "owner": {
             "id": "1",
@@ -101,7 +103,7 @@ Response:
             "created": null,
             "git_nickname": null,
             "vk_link": null,
-            "active_event": null,
+            "active_event": "1",
             "vk_token": null,
             "login": null,
             "password": null,
@@ -111,7 +113,8 @@ Response:
         "members": [
 
         ],
-        "mark": 10
+        "mark": 10,
+        "is_active": "1"
     }
 ]
 
@@ -126,7 +129,7 @@ Response:
     "name": "Tesla Motors",
     "description": "revolution in auto industry",
     "git_url": null,
-    "created": "2014-10-27 00:36:08",
+    "created": "2014-11-05 05:58:00",
     "code_lines": null,
     "owner": {
         "id": "1",
@@ -137,7 +140,7 @@ Response:
         "created": null,
         "git_nickname": null,
         "vk_link": null,
-        "active_event": null,
+        "active_event": "1",
         "vk_token": null,
         "login": null,
         "password": null,
@@ -147,7 +150,8 @@ Response:
     "members": [
 
     ],
-    "mark": 10
+    "mark": 10,
+    "is_active": "1"
 }
 
 
@@ -163,12 +167,12 @@ Request:
 Response: 
 {
     "id": "2",
-    "event_id": 1,
-    "owner_id": 1,
+    "event_id": "1",
+    "owner_id": "1",
     "name": "Tesla Motors",
     "description": "revolution in auto industry",
     "git_url": null,
-    "created": "2014-10-27 00:36:08",
+    "created": "2014-11-05 05:58:00",
     "code_lines": null,
     "owner": {
         "id": "1",
@@ -179,7 +183,7 @@ Response:
         "created": null,
         "git_nickname": null,
         "vk_link": null,
-        "active_event": null,
+        "active_event": "1",
         "vk_token": null,
         "login": null,
         "password": null,
@@ -189,7 +193,8 @@ Response:
     "members": [
 
     ],
-    "mark": 10
+    "mark": 10,
+    "is_active": "1"
 }
 
  

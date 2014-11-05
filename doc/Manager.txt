@@ -1,19 +1,20 @@
-Expert
+Manager
 
 
  CREATE 
-Resourse POST /api/Expert
+Resourse POST /api/Manager
 Request: 
 {
-    "full_name": "Elon Mask",
-    "phone": "79054447777"
+    "full_name": "Larry Page",
+    "phone": "79054447777",
+    "active_event": 1
 }
 Response: 
 {
-    "type": "expert",
-    "full_name": "Elon Mask",
+    "full_name": "Larry Page",
     "phone": "79054447777",
-    "login": "79054447777",
+    "active_event": 1,
+    "type": "manager",
     "created": {
         "expression": "CURRENT_TIMESTAMP",
         "params": [
@@ -25,21 +26,21 @@ Response:
     "email": null,
     "git_nickname": null,
     "vk_link": null,
-    "active_event": null,
     "vk_token": null,
+    "login": null,
     "password": null,
     "salt": null
 }
 
  
  LIST 
-Resourse GET /api/Expert
+Resourse GET /api/Manager
 FILTER   full_name
 Response: 
 [
     {
-        "id": "2",
-        "full_name": "Elon Mask 1",
+        "id": "3",
+        "full_name": "Elon Mask 2",
         "number": null,
         "email": null,
         "phone": "79054447777",
@@ -48,79 +49,80 @@ Response:
         "vk_link": null,
         "active_event": "1",
         "vk_token": null,
-        "login": null,
-        "password": null,
-        "type": "expert",
+        "login": "manager",
+        "password": "password",
+        "type": "manager",
         "salt": null
     },
     {
         "id": "4",
-        "full_name": "Elon Mask",
+        "full_name": "Larry Page",
         "number": null,
         "email": null,
         "phone": "79054447777",
-        "created": "2014-11-05 05:57:40",
+        "created": "2014-11-05 05:57:46",
         "git_nickname": null,
         "vk_link": null,
-        "active_event": null,
+        "active_event": "1",
         "vk_token": null,
-        "login": "79054447777",
+        "login": null,
         "password": null,
-        "type": "expert",
+        "type": "manager",
         "salt": null
     }
 ]
 
  
  VIEW 
-Resourse GET /api/Expert/{id}
+Resourse GET /api/Manager/{id}
 Response: 
 {
     "id": "4",
-    "full_name": "Elon Mask",
+    "full_name": "Larry Page",
     "number": null,
     "email": null,
     "phone": "79054447777",
-    "created": "2014-11-05 05:57:40",
+    "created": "2014-11-05 05:57:46",
     "git_nickname": null,
     "vk_link": null,
-    "active_event": null,
+    "active_event": "1",
     "vk_token": null,
-    "login": "79054447777",
+    "login": null,
     "password": null,
-    "type": "expert",
+    "type": "manager",
     "salt": null
 }
 
 
  UPDATE 
-Resourse PUT /api/Expert/{id}
+Resourse PUT /api/Manager/{id}
 Request: 
 {
-    "full_name": "Elon Mask",
-    "phone": "79054447777"
+    "full_name": "Larry Page",
+    "phone": "79054447777",
+    "active_event": 1
 }
 Response: 
 {
     "id": "4",
-    "full_name": "Elon Mask",
+    "full_name": "Larry Page",
     "number": null,
     "email": null,
     "phone": "79054447777",
-    "created": "2014-11-05 05:57:40",
+    "created": "2014-11-05 05:57:46",
     "git_nickname": null,
     "vk_link": null,
-    "active_event": null,
+    "active_event": 1,
     "vk_token": null,
-    "login": "79054447777",
+    "login": null,
     "password": null,
-    "type": "expert",
+    "type": "manager",
     "salt": null
 }
 
  
  DELETE 
-Resourse DELETE /api/Expert/{id}
+Resourse DELETE /api/Manager/{id}
 Response: 
 {
     "error": 0
