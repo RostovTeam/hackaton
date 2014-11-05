@@ -20,8 +20,11 @@ class MemberController extends RESTfulController
         return array_merge(
                 [
             ['allow',
-                //'roles' => ['member','admin']
-                'users' => ['*']
+                'actions' => ['view'],
+                 'roles' => ['member'],
+            ],
+            ['allow',
+                'roles' => ['manager']
             ]
                 ], parent::accessRules());
     }
@@ -30,6 +33,7 @@ class MemberController extends RESTfulController
     {
         $cr = parent::getFilterCriteria();
         $cr->compare('type', Member::MEMBER_TYPE_MEMBER);
+
         return $cr;
     }
 
@@ -37,6 +41,11 @@ class MemberController extends RESTfulController
     {
         parent::transform($model);
         $model->type = Member::MEMBER_TYPE_MEMBER;
+
+        if (Yii::app()->user->role == 'manager')
+        {
+            $model->active_event = Yii::app()->user->active_event;
+        }
     }
 
     public function actoinRegister()
@@ -56,5 +65,4 @@ class MemberController extends RESTfulController
         $this->_sendResponse(200, $member->attributes);
     }
 
-    
 }

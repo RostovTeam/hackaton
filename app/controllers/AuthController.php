@@ -7,11 +7,21 @@
  */
 class AuthController extends RESTfulController
 {
+    
+    public function accessRules()
+    {
+        return [
+            [
+                'allow',
+                'users'=>'*'
+            ]
+        ];
+    }
 
     /**
      * Displays the login page
      */
-    public function actionLogin()
+    public function actionSNLogin()
     {
         if (!$this->user()->isGuest)
         {
@@ -79,6 +89,31 @@ class AuthController extends RESTfulController
         }
     }
 
+    public function actionLogin()
+    {
+        $this->layout = '//layouts/main';
+        $model = new LoginForm;
+
+
+        $params = Yii::app()->request->getJsonData();
+
+        if (!$params)
+        {
+            $this->_sendResponse(400, ['error' => 'empty request']);
+            return;
+        }
+
+        $model->attributes = $params;
+
+        if ($model->validate() && $model->login())
+        {
+            $this->_sendResponse(200, []);
+        } else
+        {
+            $this->_sendResponse(400, ['error' => $model->errors]);
+        }
+    }
+    
     public function actionExpertLogin()
     {
         $this->layout = '//layouts/main';
@@ -94,14 +129,37 @@ class AuthController extends RESTfulController
             return;
         }
 
-        $model->attributes = $data;
+        $model->attributes = $params;
 
         if ($model->validate() && $model->login())
         {
             $this->_sendResponse(200, []);
         } else
         {
-            $this->_sendResponse(400, ['error'=>'failed to find expert']);
+            $this->_sendResponse(400, ['error' => 'failed to find expert']);
+        }
+    }
+
+    public function actionFullNameLogin()
+    {
+        $model = new FullNameLoginForm;
+
+        $params = Yii::app()->request->getJsonData();
+
+        if (!$params)
+        {
+            $this->_sendResponse(400, ['error' => 'empty request']);
+            return;
+        }
+
+        $model->attributes = $params;
+
+        if ($model->validate() && $model->login())
+        {
+            $this->_sendResponse(200, []);
+        } else
+        {
+            $this->_sendResponse(400, ['error' => 'failed to find member']);
         }
     }
 

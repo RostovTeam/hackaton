@@ -15,8 +15,12 @@ class ProjectCriteriaController extends RESTfulController
         return array_merge(
                 [
             ['allow',
-                //'roles' => ['member', 'admin']
-                'users' => ['*']
+                'roles' => ['expert'],
+                'actions' => ['create','update']
+            ],
+            ['allow',
+                'roles' => ['manager','member'],
+                'actions' => ['view','list']
             ]
                 ], parent::accessRules());
     }
@@ -56,5 +60,4 @@ class ProjectCriteriaController extends RESTfulController
 
         return $row;
     }
-
 }

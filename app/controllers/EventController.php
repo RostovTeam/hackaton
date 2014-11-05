@@ -20,21 +20,24 @@ class EventController extends RESTfulController
         return array_merge(
                 [
             ['allow',
-                //'roles' => ['member','admin']
-                'users' => ['*']
+                'roles' => ['manager'],
+            ],
+            ['allow',
+                'actions' => ['view', 'list'],
+                'roles' => ['member', 'expert'],
             ]
                 ], parent::accessRules());
     }
-    
+
     public function getFilterCriteria()
     {
-        $cr=parent::getFilterCriteria();
-        
-        if($name=Yii::app()->request->getParam('name'))
+        $cr = parent::getFilterCriteria();
+
+        if ($name = Yii::app()->request->getParam('name'))
         {
-            $cr->compare('name', $name,true);
+            $cr->compare('name', $name, true);
         }
-        
+
         return $cr;
     }
 

@@ -5,10 +5,10 @@
  *
  * @author Komov Roman
  */
-class CriteriaController extends RESTfulController
+class CriteriaValueController extends RESTfulController
 {
 
-    protected $model = 'Criteria';
+    protected $model = 'CriteriaValue';
 
     public function accessRules()
     {
@@ -27,7 +27,6 @@ class CriteriaController extends RESTfulController
     public function serializeView($model)
     {
         $row = $model->attributes;
-        $row['values'] = $model->criteriaValues;
 
         return $row;
     }
