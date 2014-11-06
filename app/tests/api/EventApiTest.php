@@ -23,6 +23,7 @@ class EventApiTest extends RESTfulApiTestCase
         'members' => 'Member',
         'roles' => 'Role',
         'member_roles' => 'MemberRole',
+        'event_members'=>':event_members'
     ];
 
     public function auth()

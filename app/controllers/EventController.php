@@ -29,9 +29,23 @@ class EventController extends RESTfulController
                 ], parent::accessRules());
     }
 
+    protected function transform(&$model)
+    {
+        parent::transform($model);
+        $model->creator=Yii::app()->user->id;
+    }
+
     public function getFilterCriteria()
     {
         $cr = parent::getFilterCriteria();
+        
+        $member = Member::model()->findByPk(Yii::app()->user->id);
+        
+        $cr->compare('id',
+                array_map(function($v)
+                {
+                    return $v->id;
+                }, $member->events));
 
         if ($name = Yii::app()->request->getParam('name'))
         {
@@ -40,5 +54,4 @@ class EventController extends RESTfulController
 
         return $cr;
     }
-
 }
