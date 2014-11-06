@@ -22,7 +22,7 @@ class MemberController extends RESTfulController
         return array_merge(
                 [
             ['allow',
-                'actions' => ['view', 'update', 'changePassword'],
+                'actions' => ['list', 'view', 'update', 'changePassword'],
                 'roles' => ['member'],
             ],
             ['allow',
@@ -36,6 +36,22 @@ class MemberController extends RESTfulController
         $cr = parent::getFilterCriteria();
         $cr->compare('type', Member::MEMBER_TYPE_MEMBER);
 
+        if (Yii::app()->user->role == 'member')
+        {
+            $cr->limit = 7;
+
+            if ($fullname = Yii::app()->request->getParam('full_name') && count($fullname) >= 3)
+            {
+                //too hardcore... i know
+                $cr->condition = 'LOWER(full_name like) LIKE :fullname';
+                $cr[':fullname'] = '%' . strtolower(trim($fullname)) . '%';
+            } else
+            {
+                //fo not show list of members without filter
+                return null;
+            }
+        }
+
         return $cr;
     }
 
@@ -48,6 +64,17 @@ class MemberController extends RESTfulController
 //        {
 //            $model->active_event = Yii::app()->user->active_event;
 //        }
+    }
+
+    public function getUpdateModel($id)
+    {
+        if (Yii::app()->user->role == 'member')
+        {
+            return Member::model()->findByPk(Yii::app()->user->id);
+        } else
+        {
+            return parent::getUpdateModel($id);
+        }
     }
 
     public function actoinRegister()

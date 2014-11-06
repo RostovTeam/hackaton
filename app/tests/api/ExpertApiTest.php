@@ -21,7 +21,8 @@ class ExpertApiTest extends RESTfulApiTestCase
         'events' => 'Event',
         'members' => 'Member',
         'roles' => 'Role',
-        'member_roles' => 'MemberRole',
+        'member_roles' => 'MemberRole',        
+        'event_members'=>':event_members'
     ];
 
     public function auth()
