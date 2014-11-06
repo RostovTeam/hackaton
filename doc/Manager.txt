@@ -1,0 +1,129 @@
+Manager
+
+
+ CREATE 
+Resourse POST /api/Manager
+Request: 
+{
+    "full_name": "Larry Page",
+    "phone": "79054447777",
+    "active_event": 1
+}
+Response: 
+{
+    "full_name": "Larry Page",
+    "phone": "79054447777",
+    "active_event": 1,
+    "type": "manager",
+    "created": {
+        "expression": "CURRENT_TIMESTAMP",
+        "params": [
+
+        ]
+    },
+    "id": "4",
+    "number": null,
+    "email": null,
+    "git_nickname": null,
+    "vk_link": null,
+    "vk_token": null,
+    "login": null,
+    "password": null,
+    "salt": null
+}
+
+ 
+ LIST 
+Resourse GET /api/Manager
+FILTER   full_name
+Response: 
+[
+    {
+        "id": "3",
+        "full_name": "Elon Mask 2",
+        "number": null,
+        "email": null,
+        "phone": "79054447777",
+        "created": null,
+        "git_nickname": null,
+        "vk_link": null,
+        "active_event": "1",
+        "vk_token": null,
+        "login": "manager",
+        "password": "password",
+        "type": "manager",
+        "salt": null
+    },
+    {
+        "id": "4",
+        "full_name": "Larry Page",
+        "number": null,
+        "email": null,
+        "phone": "79054447777",
+        "created": "2014-11-05 05:57:46",
+        "git_nickname": null,
+        "vk_link": null,
+        "active_event": "1",
+        "vk_token": null,
+        "login": null,
+        "password": null,
+        "type": "manager",
+        "salt": null
+    }
+]
+
+ 
+ VIEW 
+Resourse GET /api/Manager/{id}
+Response: 
+{
+    "id": "4",
+    "full_name": "Larry Page",
+    "number": null,
+    "email": null,
+    "phone": "79054447777",
+    "created": "2014-11-05 05:57:46",
+    "git_nickname": null,
+    "vk_link": null,
+    "active_event": "1",
+    "vk_token": null,
+    "login": null,
+    "password": null,
+    "type": "manager",
+    "salt": null
+}
+
+
+ UPDATE 
+Resourse PUT /api/Manager/{id}
+Request: 
+{
+    "full_name": "Larry Page",
+    "phone": "79054447777",
+    "active_event": 1
+}
+Response: 
+{
+    "id": "4",
+    "full_name": "Larry Page",
+    "number": null,
+    "email": null,
+    "phone": "79054447777",
+    "created": "2014-11-05 05:57:46",
+    "git_nickname": null,
+    "vk_link": null,
+    "active_event": 1,
+    "vk_token": null,
+    "login": null,
+    "password": null,
+    "type": "manager",
+    "salt": null
+}
+
+ 
+ DELETE 
+Resourse DELETE /api/Manager/{id}
+Response: 
+{
+    "error": 0
+}

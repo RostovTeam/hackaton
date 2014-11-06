@@ -106,4 +106,18 @@ class ActiveRecord extends CActiveRecord
         $transaction->rollback();
     }
 
+    public function safeDelete()
+    {
+        if (isset($this->getMetaData()->tableSchema->columns['status']))
+        {
+            $this->status = BaseActiveRecord::RECORD_STATUS_DELETED;
+            $this->save();
+        } else
+        {
+            return $this->delete();
+        }
+
+        return true;
+    }
+
 }

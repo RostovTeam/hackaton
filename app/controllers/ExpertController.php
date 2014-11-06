@@ -7,6 +7,7 @@
  */
 class ExpertController extends RESTfulController
 {
+
     protected $model;
 
     public function __construct()
@@ -19,10 +20,28 @@ class ExpertController extends RESTfulController
         return array_merge(
                 [
             ['allow',
+                'roles' => ['manager'],
+                'users' => ['*']
+            ],
+            ['allow',
                 'actions'=>['view','list'],
-                //'roles' => ['member','admin']
+                'roles' => ['member','expert'],
                 'users' => ['*']
             ]
                 ], parent::accessRules());
-    }    
+    }
+
+    protected function transform(&$model)
+    {
+        parent::transform($model);
+        $model->login = $model->phone;
+    }
+
+    protected function getFilterCriteria()
+    {
+        $cr = parent::getFilterCriteria();
+
+        return $cr;
+    }
+
 }

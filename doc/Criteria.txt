@@ -1,0 +1,116 @@
+Criteria
+
+
+ CREATE 
+Resourse POST /api/Criteria
+Request: 
+{
+    "name": "Coolness"
+}
+Response: 
+{
+    "name": "Coolness",
+    "created": {
+        "expression": "CURRENT_TIMESTAMP",
+        "params": [
+
+        ]
+    },
+    "id": "2",
+    "max_value": null,
+    "type": null,
+    "weight": null,
+    "values": [
+
+    ]
+}
+
+ 
+ LIST 
+Resourse GET /api/Criteria
+Response: 
+[
+    {
+        "id": "1",
+        "name": "Coolness",
+        "created": "2014-11-05 05:57:12",
+        "max_value": null,
+        "type": null,
+        "weight": null,
+        "values": [
+            {
+                "id": "1",
+                "criteria_id": "1",
+                "value": "10",
+                "label": "lol"
+            },
+            {
+                "id": "2",
+                "criteria_id": "1",
+                "value": "1",
+                "label": null
+            },
+            {
+                "id": "3",
+                "criteria_id": "1",
+                "value": "1",
+                "label": null
+            }
+        ]
+    },
+    {
+        "id": "2",
+        "name": "Coolness",
+        "created": "2014-11-05 05:57:14",
+        "max_value": null,
+        "type": null,
+        "weight": null,
+        "values": [
+
+        ]
+    }
+]
+
+ 
+ VIEW 
+Resourse GET /api/Criteria/{id}
+Response: 
+{
+    "id": "2",
+    "name": "Coolness",
+    "created": "2014-11-05 05:57:14",
+    "max_value": null,
+    "type": null,
+    "weight": null,
+    "values": [
+
+    ]
+}
+
+
+ UPDATE 
+Resourse PUT /api/Criteria/{id}
+Request: 
+{
+    "name": "Coolness"
+}
+Response: 
+{
+    "id": "2",
+    "name": "Coolness",
+    "created": "2014-11-05 05:57:14",
+    "max_value": null,
+    "type": null,
+    "weight": null,
+    "values": [
+
+    ]
+}
+
+ 
+ DELETE 
+Resourse DELETE /api/Criteria/{id}
+Response: 
+{
+    "error": 0
+}

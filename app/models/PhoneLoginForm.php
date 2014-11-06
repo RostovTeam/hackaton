@@ -8,19 +8,19 @@
 class PhoneLoginForm extends CFormModel
 {
 
-    public $username;
+    public $phone;
     private $_identity;
 
     /**
      * Declares the validation rules.
-     * The rules state that username and password are required,
+     * The rules state that phone and password are required,
      * and password needs to be authenticated.
      */
     public function rules()
     {
         return array(
-            array('username', 'required'),
-            array('username', 'authenticate')
+            array('phone', 'required'),
+            array('phone', 'authenticate')
         );
     }
 
@@ -30,7 +30,7 @@ class PhoneLoginForm extends CFormModel
     public function attributeLabels()
     {
         return array(
-            'username' => 'Номер эксперта'
+            'phone' => 'Номер эксперта'
         );
     }
     
@@ -38,21 +38,21 @@ class PhoneLoginForm extends CFormModel
     {
         if (!$this->hasErrors())
         {
-            $this->_identity = new PhoneUserIdentity($this->username);
+            $this->_identity = new PhoneUserIdentity($this->phone);
             if (!$this->_identity->authenticate())
-                    $this->addError('username', 'Номер не найден');
+                    $this->addError('phone', 'Номер не найден');
         }
     }
 
     /**
-     * Logs in the user using the given username and password in the model.
+     * Logs in the user using the given phone and password in the model.
      * @return boolean whether login is successful
      */
     public function login()
     {
         if ($this->_identity === null)
         {
-            $this->_identity = new PhoneUserIdentity($this->username);
+            $this->_identity = new PhoneUserIdentity($this->phone);
             $this->_identity->authenticate();
         }
 

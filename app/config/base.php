@@ -27,24 +27,52 @@ return array(
             'showScriptName' => false,
             'caseSensitive' => true,
             'rules' => array(
+               // Hard-code patterns
+                
+                
+                //RESTful patterns
                 array('<controller>/list', 'pattern' => 'api/<controller:[a-zA-Z]+>',
                     'verb' => 'GET'),
                 array('<controller>/view', 'pattern' => 'api/<controller:[a-zA-Z]+>/<id:\d+>',
                     'verb' => 'GET'),
+                array('<controller>/update', 'pattern' => 'api/<controller:[a-zA-Z]+>',
+                    'verb' => 'PUT'),
                 array('<controller>/update', 'pattern' => 'api/<controller:[a-zA-Z]+>/<id:\d+>',
                     'verb' => 'PUT'),
                 array('<controller>/delete', 'pattern' => 'api/<controller:[a-zA-Z]+>/<id:\d+>',
                     'verb' => 'DELETE'),
+                array('<controller>/delete', 'pattern' => 'api/<controller:[a-zA-Z]+>',
+                    'verb' => 'DELETE'),
                 array('<controller>/create', 'pattern' => 'api/<controller:[a-zA-Z]+>',
                     'verb' => 'POST'),
                 
-                '<controller:[a-zA-Z]+>/<id:\d+>' => '<controller>/view',
-                '<controller:[a-zA-Z]+>/<action:[a-zA-Z]+>/<id:\d+>' => '<controller>/<action>',
-                '<controller:[a-zA-Z]+>/<action:[a-zA-Z]+>' => '<controller>/<action>',
+                //relation patterns
+                array('<controller>/viewRelation',
+                    'pattern' => 'api/<controller:[a-zA-Z]+>/<id:\d+>/<relation:[a-zA-Z]+>/<relation_id:\d+>',
+                    'verb' => 'GET'),
+                array('<controller>/updateRelation', 
+                    'pattern' => 'api/<controller:[a-zA-Z]+>/<id:\d+>/<relation:[a-zA-Z]+>/<relation_id:\d+>',
+                    'verb' => 'PUT'),
+                array('<controller>/deleteRelation', 
+                    'pattern' => 'api/<controller:[a-zA-Z]+>/<id:\d+>/<relation:[a-zA-Z]+>/<relation_id:\d+>',
+                    'verb' => 'DELETE'),
+                array('<controller>/createRelation', 
+                    'pattern' => 'api/<controller:[a-zA-Z]+>/<id:\d+>/<relation:[a-zA-Z]+>',
+                    'verb' => 'POST'),
+                array('<controller>/listRelation', 
+                    'pattern' => 'api/<controller:[a-zA-Z]+>/<id:\d+>/<relation:[a-zA-Z]+>',
+                    'verb' => 'GET'),
+                
+                //standard patterns
+                '<controller:\w+>/<id:\d+>' => '<controller>/view',
+                '<controller:\w+>/<action:\w+>/<id:\d+>' => '<controller>/<action>',
+                '<controller:\w+>/<action:\w+>' => '<controller>/<action>',
             ),
         ),
         'authManager' => array(
             'class' => 'CDbAuthManager',
+            'itemTable'=>'roles',
+            'assignmentTable'=>'member_roles'
         ),
         'errorHandler' => array(
             'errorAction' => 'site/error',

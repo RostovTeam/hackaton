@@ -1,0 +1,89 @@
+Event
+
+
+ CREATE 
+Resourse POST /api/Event
+Request: 
+{
+    "name": "best future development",
+    "stat_date": "2014-12-01 17:00:00",
+    "end_date": "2014-12-03 19:00:00"
+}
+Response: 
+{
+    "name": "best future development",
+    "end_date": "2014-12-03 19:00:00",
+    "created": {
+        "expression": "CURRENT_TIMESTAMP",
+        "params": [
+
+        ]
+    },
+    "id": "2",
+    "is_active": null,
+    "start_date": null
+}
+
+ 
+ LIST 
+Resourse GET /api/Event
+FILTER   name
+Response: 
+[
+    {
+        "id": "1",
+        "name": "best future development",
+        "is_active": "1",
+        "start_date": null,
+        "end_date": "2014-12-03 19:00:00",
+        "created": "2014-11-05 05:57:26"
+    },
+    {
+        "id": "2",
+        "name": "best future development",
+        "is_active": null,
+        "start_date": null,
+        "end_date": "2014-12-03 19:00:00",
+        "created": "2014-11-05 05:57:28"
+    }
+]
+
+ 
+ VIEW 
+Resourse GET /api/Event/{id}
+Response: 
+{
+    "id": "2",
+    "name": "best future development",
+    "is_active": null,
+    "start_date": null,
+    "end_date": "2014-12-03 19:00:00",
+    "created": "2014-11-05 05:57:28"
+}
+
+
+ UPDATE 
+Resourse PUT /api/Event/{id}
+Request: 
+{
+    "name": "best future development",
+    "stat_date": "2014-12-01 17:00:00",
+    "end_date": "2014-12-03 19:00:00"
+}
+Response: 
+{
+    "id": "2",
+    "name": "best future development",
+    "is_active": null,
+    "start_date": null,
+    "end_date": "2014-12-03 19:00:00",
+    "created": "2014-11-05 05:57:28"
+}
+
+ 
+ DELETE 
+Resourse DELETE /api/Event/{id}
+Response: 
+{
+    "error": 0
+}

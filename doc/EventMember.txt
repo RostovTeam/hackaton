@@ -1,0 +1,73 @@
+EventMember
+
+
+ UPDATE 
+Resourse PUT /api/Event/1/members/{id}
+Request: 
+{
+    "id": 1
+}
+Response: 
+{
+    "id": "1",
+    "full_name": "Elon Mask",
+    "number": null,
+    "email": null,
+    "phone": "79054447777",
+    "created": null,
+    "git_nickname": null,
+    "vk_link": null,
+    "active_event": "1",
+    "vk_token": null,
+    "login": null,
+    "password": null,
+    "type": "member",
+    "salt": null
+}
+
+ 
+ LIST 
+Resourse GET /api/Event/1/members
+Response: 
+[
+    {
+        "id": "1",
+        "full_name": "Elon Mask",
+        "number": null,
+        "email": null,
+        "phone": "79054447777",
+        "created": null,
+        "git_nickname": null,
+        "vk_link": null,
+        "active_event": "1",
+        "vk_token": null,
+        "login": null,
+        "password": null,
+        "type": "member",
+        "salt": null
+    },
+    {
+        "id": "2",
+        "full_name": "Elon Mask 1",
+        "number": null,
+        "email": null,
+        "phone": "79054447777",
+        "created": null,
+        "git_nickname": null,
+        "vk_link": null,
+        "active_event": "1",
+        "vk_token": null,
+        "login": null,
+        "password": null,
+        "type": "expert",
+        "salt": null
+    }
+]
+
+ 
+ DELETE 
+Resourse DELETE /api/Event/1/members/{id}
+Response: 
+{
+    "error": 0
+}

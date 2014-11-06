@@ -15,8 +15,11 @@ class CriteriaController extends RESTfulController
         return array_merge(
                 [
             ['allow',
-                //'roles' => ['member', 'admin']
-                'users' => ['*']
+                'actions' => ['list', 'view'],
+                'roles' => ['member','expert']
+            ],
+            ['allow',
+                'roles' => ['manager']
             ]
                 ], parent::accessRules());
     }

@@ -15,17 +15,21 @@ class ProjectCriteriaController extends RESTfulController
         return array_merge(
                 [
             ['allow',
-                //'roles' => ['member', 'admin']
-                'users' => ['*']
+                'roles' => ['expert'],
+                'actions' => ['create','update']
+            ],
+            ['allow',
+                'roles' => ['manager','member'],
+                'actions' => ['view','list']
             ]
                 ], parent::accessRules());
     }
 
     protected function transform(&$model)
     {
-        if (Yii::app()->user->getState('role') == 'expert')
+        if (Yii::app()->user->checkAccess('expert'))
         {
-            $model->expert_id = Yii::app()->user->getState('profile_id');
+            $model->expert_id = Yii::app()->user->getState('id');
         }
     }
 
@@ -56,5 +60,4 @@ class ProjectCriteriaController extends RESTfulController
 
         return $row;
     }
-
 }

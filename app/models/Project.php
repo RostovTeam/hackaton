@@ -35,12 +35,19 @@ class Project extends ActiveRecord
     public function rules()
     {
         return array(
-            array('event_id, owner_id,git_url', 'required'),
+            array('event_id, owner_id', 'required'),
             array('event_id, owner_id', 'numerical', 'integerOnly' => true),
             array('name,git_url', 'length', 'max' => 500),
             array('description, created', 'safe'),
             array('id, event_id, owner_id, name, description, created', 'safe', 'on' => 'search'),
         );
+    }
+    
+    public function defaultScope()
+    {
+        return [
+            'with'=>'event'
+        ];
     }
 
     /**
@@ -48,14 +55,12 @@ class Project extends ActiveRecord
      */
     public function relations()
     {
-
         return array(
-            'commits' => array(self::HAS_MANY, Commit::className(), 'project_id','order'=>'date ASC'),
             'projectCriterias' => array(self::HAS_MANY, ProjectCriteria::className(),
                 'project_id'),
             'event' => array(self::BELONGS_TO, Event::className(), 'event_id'),
             'owner' => array(self::BELONGS_TO, Member::className(), 'owner_id'),
-            'team' => array(self::HAS_ONE, Team::className(), 'project_id', 'with' => 'members'),
+            'members' => array(self::MANY_MANY, Member::className(), 'projects_members(project_id,member_id)')
         );
     }
 
@@ -99,6 +104,11 @@ class Project extends ActiveRecord
                         }, $this->projectCriterias));
     }
 
+    public function isActive()
+    {
+        return $this->event->isActive();
+    }
+
     public function afterSave()
     {
         parent::afterSave();
@@ -111,14 +121,8 @@ class Project extends ActiveRecord
     public function beforeValidate()
     {
         parent::beforeValidate();
-        
-        if($existing=$this->findByAttributes(['git_url'=>$this->git_url]))
-        {
-            $this->id=$existing->id;
-            
-            $this->setIsNewRecord(false);
-        }
-        
+
         return true;
     }
+
 }

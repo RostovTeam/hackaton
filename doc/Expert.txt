@@ -1,0 +1,127 @@
+Expert
+
+
+ CREATE 
+Resourse POST /api/Expert
+Request: 
+{
+    "full_name": "Elon Mask",
+    "phone": "79054447777"
+}
+Response: 
+{
+    "type": "expert",
+    "full_name": "Elon Mask",
+    "phone": "79054447777",
+    "login": "79054447777",
+    "created": {
+        "expression": "CURRENT_TIMESTAMP",
+        "params": [
+
+        ]
+    },
+    "id": "4",
+    "number": null,
+    "email": null,
+    "git_nickname": null,
+    "vk_link": null,
+    "active_event": null,
+    "vk_token": null,
+    "password": null,
+    "salt": null
+}
+
+ 
+ LIST 
+Resourse GET /api/Expert
+FILTER   full_name
+Response: 
+[
+    {
+        "id": "2",
+        "full_name": "Elon Mask 1",
+        "number": null,
+        "email": null,
+        "phone": "79054447777",
+        "created": null,
+        "git_nickname": null,
+        "vk_link": null,
+        "active_event": "1",
+        "vk_token": null,
+        "login": null,
+        "password": null,
+        "type": "expert",
+        "salt": null
+    },
+    {
+        "id": "4",
+        "full_name": "Elon Mask",
+        "number": null,
+        "email": null,
+        "phone": "79054447777",
+        "created": "2014-11-05 05:57:40",
+        "git_nickname": null,
+        "vk_link": null,
+        "active_event": null,
+        "vk_token": null,
+        "login": "79054447777",
+        "password": null,
+        "type": "expert",
+        "salt": null
+    }
+]
+
+ 
+ VIEW 
+Resourse GET /api/Expert/{id}
+Response: 
+{
+    "id": "4",
+    "full_name": "Elon Mask",
+    "number": null,
+    "email": null,
+    "phone": "79054447777",
+    "created": "2014-11-05 05:57:40",
+    "git_nickname": null,
+    "vk_link": null,
+    "active_event": null,
+    "vk_token": null,
+    "login": "79054447777",
+    "password": null,
+    "type": "expert",
+    "salt": null
+}
+
+
+ UPDATE 
+Resourse PUT /api/Expert/{id}
+Request: 
+{
+    "full_name": "Elon Mask",
+    "phone": "79054447777"
+}
+Response: 
+{
+    "id": "4",
+    "full_name": "Elon Mask",
+    "number": null,
+    "email": null,
+    "phone": "79054447777",
+    "created": "2014-11-05 05:57:40",
+    "git_nickname": null,
+    "vk_link": null,
+    "active_event": null,
+    "vk_token": null,
+    "login": "79054447777",
+    "password": null,
+    "type": "expert",
+    "salt": null
+}
+
+ 
+ DELETE 
+Resourse DELETE /api/Expert/{id}
+Response: 
+{
+    "error": 0
+}

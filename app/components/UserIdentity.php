@@ -15,29 +15,24 @@ class UserIdentity extends CUserIdentity
      */
     public function authenticate()
     {
-        $user = User::model()->find('login=?', array($this->username));
+        $user = Member::model()->find('login=?', array($this->username));
 
         if ($user === null)
         {
             $this->errorCode = self::ERROR_USERNAME_INVALID;
-        } elseif (!$user->validatePassword($this->password))
+        } 
+//        elseif (!$user->validatePassword($this->password))
+//        {
+//            $this->errorCode = self::ERROR_PASSWORD_INVALID;
+//        } 
+        else
         {
-            $this->errorCode = self::ERROR_PASSWORD_INVALID;
-        } else
-        {
-            $this->_id = $user->user_id;
+            $this->_id = $user->id;
             $this->username = $user->login;
             $this->errorCode = self::ERROR_NONE;
 
-            $arrayAuthRoleItems = Yii::app()->authManager->getAuthItems(2,
-                    $user->user_id);
-            $roles = array_keys($arrayAuthRoleItems);
-
-            if ($roles[0])
-            {
-                $role = strtolower($roles[0]);
-                $this->setState('role', $role);
-            }
+            $this->setState('active_event', $user->active_event);
+            $this->setState('role', $user->roles ? $user->roles[0]->name : '');
         }
         return !$this->errorCode;
     }

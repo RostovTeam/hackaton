@@ -6,10 +6,20 @@ abstract class RESTfulController extends BaseController
     /**
      * Key which has to be in HTTP USERNAME and PASSWORD headers 
      */
-    Const APPLICATION_ID = 'ASCCPE';
+    const APPLICATION_ID = 'ASCCPE';
 
     private $format = 'json';
+
+    /**
+     *
+     * 
+     */
     protected $model;
+
+    /**
+     * 
+     */
+    protected $formModel;
 
     /**
      * Defines criteria that is used to search models.
@@ -19,14 +29,40 @@ abstract class RESTfulController extends BaseController
      */
     protected function getFilterCriteria()
     {
-        return new CDbCriteria();
+        $cr = new CDbCriteria();
+
+        if ($perpage = Yii::app()->request->getParam('per_page'))
+        {
+            $cr->limit = $perpage;
+        }
+
+        if ($page = Yii::app()->request->getParam('page'))
+        {
+            $cr->offset = $perpage ? $perpage * ($page - 1) : 0;
+        }
+
+        return $cr;
     }
 
+    /**
+     * Prepare single  models for serialization
+     * Returned data will be converted to output format
+     * 
+     * @param type $model
+     * @return type
+     */
     protected function serializeView($model)
     {
         return $model->attributes;
     }
 
+    /**
+     * Prepare array of models for serialization
+     * Returned data will be converted to output format
+     * 
+     * @param array $models
+     * @return type
+     */
     protected function serializeList(array $models)
     {
         $result = array();
@@ -37,6 +73,12 @@ abstract class RESTfulController extends BaseController
         return $result;
     }
 
+    /**
+     * Allows to change model data before in will be processed
+     * 
+     * @param type $model
+     * @return type
+     */
     protected function transform(&$model)
     {
         return $model;
@@ -47,7 +89,7 @@ abstract class RESTfulController extends BaseController
      */
     public function filters()
     {
-        return array('accessControl');
+        return ['accessControl'];
     }
 
     public function accessRules()
@@ -100,7 +142,14 @@ abstract class RESTfulController extends BaseController
     {
         $modelname = $this->model;
 
-        $model = $modelname::model()->findByPk($id);
+        $criteria = $this->getFilterCriteria();
+
+        if ($criteria == null)
+        {
+            $this->_sendResponse(400, array());
+        }
+
+        $model = $modelname::model()->findByPk($id, $criteria);
 
         if (!$model)
         {
@@ -120,8 +169,13 @@ abstract class RESTfulController extends BaseController
     public function actionCreate()
     {
         $modelname = $this->model;
-
-        $model = new $modelname('create');
+        $formModelName = $this->formModel;
+        if (!$this->formModel ||
+                !($model = new $formModelName('create')) || !method_exists($model,
+                        'create'))
+        {
+            $model = new $modelname('create');
+        }
 
         $params = Yii::app()->request->getJsonData();
 
@@ -140,13 +194,20 @@ abstract class RESTfulController extends BaseController
                     array('error' => 'validation_errors', 'errors_list' => $model->errors));
         }
 
-
-        if (!$model->save())
+        if (get_class($model) == $formModelName)
         {
-            $this->_sendResponse(500, array('error' => 'internal_error'));
+            if (!($result = $model->create()))
+                    $this->_sendResponse(500, array('error' => $model->errors));
+        }
+        else
+        {
+            if (!$model->save())
+                    $this->_sendResponse(500, array('error' => 'intenal_error'));
+
+            $result = $model;
         }
 
-        $this->_sendResponse(200, $model->attributes);
+        $this->_sendResponse(200, $this->serializeView($result));
     }
 
     /**
@@ -158,37 +219,56 @@ abstract class RESTfulController extends BaseController
     public function actionUpdate($id)
     {
         $modelname = $this->model;
+        $formModelName = $this->formModel;
 
-        $model = $modelname::model()->findByPk($id);
+        $_model = $this->getUpdateModel($id);
 
-        if (!$model)
+        if (!$_model)
                 $this->_sendResponse(400,
                     array('error' => "Couldn't find model."));
 
-        $params = $params = Yii::app()->request->getJsonData();
+        if ($formModelName &&
+                ($formModel = new $formModelName('update')) && method_exists($formModel,
+                        'update'))
+        {
+            $model = $formModel;
+            $model->attributes = $_model->attributes;
+        } else
+        {
+            $model = $_model;
+        }
+
+        $params = Yii::app()->request->getJsonData();
 
         if (!$params)
         {
-            $this->_sendResponse(400,
-                    array('error' => 'PUT array should contain model name as key'));
+            $this->_sendResponse(400, array('error' => 'Empty request'));
         }
 
         $model->attributes = $params;
 
         $this->transform($model);
-        
+
         if (!$model->validate())
         {
             $this->_sendResponse(500,
                     array('error' => 'validation_errors', 'errors_list' => $model->errors));
         }
 
-        if (!$model->save())
+        if (get_class($model) == $formModelName)
         {
-            $this->_sendResponse(500, array('error' => 'internal_error'));
+            if (!($result = $model->update($_model)))
+                    $this->_sendResponse(500, array('error' => $model->errors));
+        }
+        else
+        {
+            if (!$model->save())
+                    $this->_sendResponse(500, array('error' => 'intenal_error'));
+
+            $result = $model;
         }
 
-        $this->_sendResponse(200, $model->attributes);
+        $this->_sendResponse(200, $this->serializeView($result));
     }
 
     /**
@@ -209,11 +289,252 @@ abstract class RESTfulController extends BaseController
             $this->_sendResponse(400, array('error' => "Couldn't find model."));
         }
 
-        $num = $model->delete();
-        if ($num > 0) $this->_sendResponse(200, array('error' => 0));
+        $num = $model->safeDelete();
+        if ($num) $this->_sendResponse(200, array('error' => 0));
         else
                 $this->_sendResponse(500,
                     array('error' => "Couldn't delete model."));
+    }
+
+    public function getRecordsTotalCount()
+    {
+        $modelname = $this->model;
+
+        $cr = $this->getFilterCriteria();
+
+        $cr->limit = 0;
+        $cr->offset = 0;
+
+        return $modelname::model()->count($cr);
+    }
+
+    public function actionCreateRelation($id, $relation)
+    {
+        $modelName = $this->model;
+
+        if (!array_key_exists($relation, $modelName::model()->relations()))
+        {
+            $this->_sendResponse(404, ['error' => 'Undefined relation']);
+        }
+
+        if (!$model = $this->getUpdateModel($id))
+        {
+            $this->_sendResponse(404, ['error' => 'Model not found']);
+        }
+
+        $_relation = $modelName::model()->relations()[$relation];
+
+        if ($_relation[0] != ActiveRecord::HAS_MANY && $_relation[0] != ActiveRecord::HAS_ONE)
+        {
+            $this->_sendResponse(404, ['error' => 'Undefined relation 1']);
+        }
+
+        $relationModelName = $_relation[1];
+
+        $fk = $_relation[2];
+
+        $relationModel = new $relationModelName('create');
+
+        $params = Yii::app()->request->getJsonData();
+
+        if (!$params)
+        {
+            $this->_sendResponse(400, array('error' => 'Empty request'));
+        }
+
+        $relationModel->attributes = $params;
+
+        $relationModel->$fk = $model->id;
+
+        if (!$relationModel->validate())
+        {
+            $this->_sendResponse(500,
+                    array('error' => 'validation_errors', 'errors_list' => $relationModel->errors));
+        }
+
+        if (!$relationModel->save())
+                $this->_sendResponse(500, array('error' => 'intenal_error'));
+
+        $this->_sendResponse(200, $relationModel->attributes);
+    }
+
+    public function actionUpdateRelation($id, $relation, $relation_id)
+    {
+        $modelName = $this->model;
+
+        if (!array_key_exists($relation, $modelName::model()->relations()))
+        {
+            $this->_sendResponse(404, ['error' => 'Undefined relation']);
+        }
+
+        if (!$model = $this->getUpdateModel($id))
+        {
+            $this->_sendResponse(404, ['error' => 'Model not found']);
+        }
+
+        $_relation = $modelName::model()->relations()[$relation];
+
+        $relationModelName = $_relation[1];
+
+        $fk = $_relation[2];
+
+        $relationModel = $relationModelName::model()->findByAttributes(['id' => $relation_id]);
+
+        if ($_relation[0] != ActiveRecord::HAS_MANY && $_relation[0] != ActiveRecord::HAS_ONE && $_relation[0] != ActiveRecord::MANY_MANY)
+        {
+            $this->_sendResponse(404,
+                    ['error' => 'Undefined relation: bad relation type ']);
+        } 
+        
+        if ($_relation[0] == ActiveRecord::MANY_MANY)
+        {
+            $_tmp = str_replace(')', '', $_relation[2]);
+            $_tmp = str_replace('(', ',', $_tmp);
+
+            $data = explode(',', $_tmp);
+
+            $table = trim($data[0]);
+            $model_fk = trim($data[1]);
+            $rel_fk = trim($data[2]);
+            Yii::log('id:'.$id.'rel_id:'.$relation_id);
+            Yii::app()->db->createCommand()->insert($table,
+                    [ $model_fk => $id, $rel_fk => $relation_id]);
+        } 
+
+        if (!$relationModel)
+        {
+            $this->_sendResponse(404, array('error' => 'model not found'));
+        }
+
+        $params = Yii::app()->request->getJsonData();
+
+        if (!$params)
+        {
+            $this->_sendResponse(400, array('error' => 'Empty request'));
+        }
+
+        $relationModel->attributes = $params;
+
+        if (!$relationModel->validate())
+        {
+            $this->_sendResponse(500,
+                    array('error' => 'validation_errors', 'errors_list' => $relationModel->errors));
+        }
+
+        if (!$relationModel->save())
+                $this->_sendResponse(500, array('error' => 'intenal_error'));
+
+        $this->_sendResponse(200, $relationModel->attributes);
+    }
+
+    public function actionListRelation($id, $relation)
+    {
+        $modelName = $this->model;
+
+        if (!array_key_exists($relation, $modelName::model()->relations()))
+        {
+            $this->_sendResponse(404, ['error' => 'Undefined relation']);
+        }
+
+        if (!$model = $this->getUpdateModel($id))
+        {
+            $this->_sendResponse(404, ['error' => 'Model not found']);
+        }
+
+        $this->_sendResponse(200, $model->$relation);
+    }
+
+    public function actionViewRelation($id, $relation, $relation_id)
+    {
+        $modelName = $this->model;
+
+        if (!array_key_exists($relation, $modelName::model()->relations()))
+        {
+            $this->_sendResponse(404, ['error' => 'Undefined relation']);
+        }
+
+        if (!$model = $this->getUpdateModel($id))
+        {
+            $this->_sendResponse(404, ['error' => 'Model not found']);
+        }
+
+        $_relation = $modelName::model()->relations()[$relation];
+
+        if ($_relation[0] != ActiveRecord::HAS_MANY && $_relation[0] != ActiveRecord::HAS_ONE)
+        {
+            $this->_sendResponse(404, ['error' => 'Undefined relation 1']);
+        }
+
+        $relationModelName = $_relation[1];
+
+        $fk = $_relation[2];
+
+        $relationModel = $relationModelName::model()->findByAttributes(['id' => $relation_id,
+            $fk => $id]);
+
+        $this->_sendResponse(200, $relationModel->attributes);
+    }
+
+    public function actionDeleteRelation($id, $relation, $relation_id)
+    {
+        $modelName = $this->model;
+
+        if (!array_key_exists($relation, $modelName::model()->relations()))
+        {
+            $this->_sendResponse(404, ['error' => 'Undefined relation']);
+        }
+
+        if (!$model = $this->getUpdateModel($id))
+        {
+            $this->_sendResponse(404, ['error' => 'Model not found']);
+        }
+
+        $_relation = $modelName::model()->relations()[$relation];
+
+        if ($_relation[0] == ActiveRecord::HAS_MANY || $_relation[0] == ActiveRecord::HAS_ONE)
+        {
+            $relationModelName = $_relation[1];
+
+            $fk = $_relation[2];
+
+            $relationModel = $relationModelName::model()->findByAttributes(['id' => $relation_id,
+                $fk => $id]);
+
+            $num = $relationModel->delete();
+            if ($num > 0)
+            {
+                $this->_sendResponse(200, array('error' => 0));
+            } else
+            {
+                $this->_sendResponse(500,
+                        array('error' => "Couldn't delete model."));
+            }
+        }
+
+        if ($_relation[0] == ActiveRecord::MANY_MANY)
+        {
+            $_tmp = str_replace(')', '', $_relation[2]);
+            $_tmp = str_replace('(', ',', $_tmp);
+
+            $data = explode(',', $_tmp);
+
+            $table =trim( $data[0]);
+            $model_fk = trim($data[1]);
+            $rel_fk = trim($data[2]);
+            Yii::app()->db->createCommand()->delete($table,
+                    $model_fk . '=:' . $model_fk . ' and ' . $rel_fk . "=:" . $rel_fk,
+                    [':' . $model_fk => $id, ':' . $rel_fk => $relation_id]);
+
+            $this->_sendResponse(200, array('error' => 0));
+        }
+
+        $this->_sendResponse(404, ['error' => 'Undefined relation 1']);
+    }
+
+    protected function getUpdateModel($id)
+    {
+        $modelname = $this->model;
+        return $modelname::model()->findByPk($id);
     }
 
     /**
@@ -229,27 +550,27 @@ abstract class RESTfulController extends BaseController
             $content_type = 'application/json')
     {
         $status_header = 'HTTP/1.1 ' . $status . ' ' . $this->_getStatusCodeMessage($status);
-        // set the status
+// set the status
         header($status_header);
-        // set the content type
+// set the content type
         header('Content-type: ' . $content_type);
 
-        // pages with body are easy
+// pages with body are easy
         if ($body != '')
         {
-            // send the body
+// send the body
             echo $this->_getObjectEncoded($body);
             exit;
         }
-        // we need to create the body if none is passed
+// we need to create the body if none is passed
         else
         {
-            // create some body messages
+// create some body messages
             $message = '';
 
-            // this is purely optional, but makes the pages a little nicer to read
-            // for your users.  Since you won't likely send a lot of different status codes,
-            // this also shouldn't be too ponderous to maintain
+// this is purely optional, but makes the pages a little nicer to read
+// for your users.  Since you won't likely send a lot of different status codes,
+// this also shouldn't be too ponderous to maintain
             switch ($status)
             {
                 case 401:
@@ -266,10 +587,10 @@ abstract class RESTfulController extends BaseController
                     break;
             }
 
-            // servers don't always have a signature turned on (this is an apache directive "ServerSignature On")
+// servers don't always have a signature turned on (this is an apache directive "ServerSignature On")
             $signature = ($_SERVER['SERVER_SIGNATURE'] == '') ? $_SERVER['SERVER_SOFTWARE'] . ' Server at ' . $_SERVER['SERVER_NAME'] . ' Port ' . $_SERVER['SERVER_PORT'] : $_SERVER['SERVER_SIGNATURE'];
 
-            // this should be templatized in a real-world solution
+// this should be templatized in a real-world solution
             $body = '<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
                         <html>
                             <head>
@@ -298,9 +619,9 @@ abstract class RESTfulController extends BaseController
      */
     protected function _getStatusCodeMessage($status)
     {
-        // these could be stored in a .ini file and loaded
-        // via parse_ini_file()... however, this will suffice
-        // for an example
+// these could be stored in a .ini file and loaded
+// via parse_ini_file()... however, this will suffice
+// for an example
         $codes = Array(
             100 => 'Continue',
             101 => 'Switching Protocols',
@@ -356,24 +677,24 @@ abstract class RESTfulController extends BaseController
      */
     protected function _checkAuth()
     {
-        // Check if we have the USERNAME and PASSWORD HTTP headers set?
+// Check if we have the USERNAME and PASSWORD HTTP headers set?
         if (!(isset($_SERVER['HTTP_X_' . self::APPLICATION_ID . '_USERNAME']) and isset($_SERVER['HTTP_X_' . self::APPLICATION_ID . '_PASSWORD'])))
         {
-            // Error: Unauthorized
+// Error: Unauthorized
             $this->_sendResponse(401);
         }
         $username = $_SERVER['HTTP_X_' . self::APPLICATION_ID . '_USERNAME'];
         $password = $_SERVER['HTTP_X_' . self::APPLICATION_ID . '_PASSWORD'];
-        // Find the user
+// Find the user
         $user = User::model()->find('LOWER(username)=?',
                 array(strtolower($username)));
         if ($user === null)
         {
-            // Error: Unauthorized
+// Error: Unauthorized
             $this->_sendResponse(401, 'Error: User Name is invalid');
         } else if (!$user->validatePassword($password))
         {
-            // Error: Unauthorized
+// Error: Unauthorized
             $this->_sendResponse(401, 'Error: User Password is invalid');
         }
     }
