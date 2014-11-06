@@ -9,9 +9,11 @@ class MemberController extends RESTfulController
 {
 
     protected $model;
+    protected $formModel;
 
     public function __construct()
     {
+        $this->formModel = MemberForm::className();
         $this->model = Member::className();
     }
 
@@ -20,8 +22,8 @@ class MemberController extends RESTfulController
         return array_merge(
                 [
             ['allow',
-                'actions' => ['view'],
-                 'roles' => ['member'],
+                'actions' => ['view', 'update', 'changePassword'],
+                'roles' => ['member'],
             ],
             ['allow',
                 'roles' => ['manager']
@@ -42,10 +44,10 @@ class MemberController extends RESTfulController
         parent::transform($model);
         $model->type = Member::MEMBER_TYPE_MEMBER;
 
-        if (Yii::app()->user->role == 'manager')
-        {
-            $model->active_event = Yii::app()->user->active_event;
-        }
+//        if (Yii::app()->user->role == 'manager')
+//        {
+//            $model->active_event = Yii::app()->user->active_event;
+//        }
     }
 
     public function actoinRegister()
@@ -63,6 +65,28 @@ class MemberController extends RESTfulController
         }
 
         $this->_sendResponse(200, $member->attributes);
+    }
+
+    public function actionChangePassword()
+    {
+        $member = Member::model()->find('id=:id and type=:type',
+                [':id' => Yii::app()->user->id, ':type' => 'member']);
+
+        if (!$member)
+        {
+            $this->_sendResponse('404', 'Member not found');
+        }
+
+        $member->scenario = 'change_password';
+
+        $member->attributes = Yii::app()->request->getJsonData();
+
+        if (!$member->save())
+        {
+            $this->_sendResponse('400', ['validation_erros' => $member->errors]);
+        }
+
+        $this->_sendResponse('200', ['ok']);
     }
 
 }
