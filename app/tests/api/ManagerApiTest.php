@@ -13,7 +13,8 @@ class ManagerController extends RESTfulApiTestCase
     public $data = [
         'full_name' => 'Larry Page',
         'phone' => '79054447777',
-        'active_event' => 1
+        'login'=>'login',
+        'password'=>'password'
     ];
     public $filter = [
         'full_name' => 'Larry'
