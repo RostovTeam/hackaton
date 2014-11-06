@@ -11,9 +11,9 @@ Response:
 {
     "id": "1",
     "full_name": "Elon Mask",
-    "number": null,
     "email": null,
     "phone": "79054447777",
+    "occupation": null,
     "created": null,
     "git_nickname": null,
     "vk_link": null,
@@ -33,9 +33,9 @@ Response:
     {
         "id": "1",
         "full_name": "Elon Mask",
-        "number": null,
         "email": null,
         "phone": "79054447777",
+        "occupation": null,
         "created": null,
         "git_nickname": null,
         "vk_link": null,
@@ -44,22 +44,6 @@ Response:
         "login": null,
         "password": null,
         "type": "member",
-        "salt": null
-    },
-    {
-        "id": "2",
-        "full_name": "Elon Mask 1",
-        "number": null,
-        "email": null,
-        "phone": "79054447777",
-        "created": null,
-        "git_nickname": null,
-        "vk_link": null,
-        "active_event": "1",
-        "vk_token": null,
-        "login": null,
-        "password": null,
-        "type": "expert",
         "salt": null
     }
 ]

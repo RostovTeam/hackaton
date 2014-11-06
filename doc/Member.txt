@@ -13,8 +13,14 @@ Response:
 {
     "full_name": "Elon Mask",
     "phone": "79054447777",
+    "email": null,
+    "git_nickname": null,
+    "occupation": null,
+    "active_event": 1,
+    "login": null,
+    "password": null,
+    "salt": null,
     "type": "member",
-    "active_event": "1",
     "created": {
         "expression": "CURRENT_TIMESTAMP",
         "params": [
@@ -22,14 +28,8 @@ Response:
         ]
     },
     "id": "4",
-    "number": null,
-    "email": null,
-    "git_nickname": null,
     "vk_link": null,
-    "vk_token": null,
-    "login": null,
-    "password": null,
-    "salt": null
+    "vk_token": null
 }
 
  
@@ -41,9 +41,9 @@ Response:
     {
         "id": "1",
         "full_name": "Elon Mask",
-        "number": null,
         "email": null,
         "phone": "79054447777",
+        "occupation": null,
         "created": null,
         "git_nickname": null,
         "vk_link": null,
@@ -57,10 +57,10 @@ Response:
     {
         "id": "4",
         "full_name": "Elon Mask",
-        "number": null,
         "email": null,
         "phone": "79054447777",
-        "created": "2014-11-05 05:57:53",
+        "occupation": null,
+        "created": "2014-11-07 02:10:19",
         "git_nickname": null,
         "vk_link": null,
         "active_event": "1",
@@ -79,10 +79,10 @@ Response:
 {
     "id": "4",
     "full_name": "Elon Mask",
-    "number": null,
     "email": null,
     "phone": "79054447777",
-    "created": "2014-11-05 05:57:53",
+    "occupation": null,
+    "created": "2014-11-07 02:10:19",
     "git_nickname": null,
     "vk_link": null,
     "active_event": "1",
@@ -106,10 +106,10 @@ Response:
 {
     "id": "4",
     "full_name": "Elon Mask",
-    "number": null,
     "email": null,
     "phone": "79054447777",
-    "created": "2014-11-05 05:57:53",
+    "occupation": null,
+    "created": "2014-11-07 02:10:19",
     "git_nickname": null,
     "vk_link": null,
     "active_event": "1",
@@ -124,6 +124,4 @@ Response:
  DELETE 
 Resourse DELETE /api/Member/{id}
 Response: 
-{
-    "error": 0
-}
+null
