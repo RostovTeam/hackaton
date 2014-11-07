@@ -35,7 +35,7 @@ Response:
  
  LIST 
 Resourse GET /api/Expert
-FILTER   full_name
+FILTER   full_name, event_id
 Response: 
 [
     {
@@ -60,7 +60,7 @@ Response:
         "email": null,
         "phone": "79054447777",
         "occupation": null,
-        "created": "2014-11-07 05:58:54",
+        "created": "2014-11-07 12:57:17",
         "git_nickname": null,
         "vk_link": null,
         "active_event": "1",
@@ -82,7 +82,7 @@ Response:
     "email": null,
     "phone": "79054447777",
     "occupation": null,
-    "created": "2014-11-07 05:58:54",
+    "created": "2014-11-07 12:57:17",
     "git_nickname": null,
     "vk_link": null,
     "active_event": "1",
@@ -109,7 +109,7 @@ Response:
     "email": null,
     "phone": "79054447777",
     "occupation": null,
-    "created": "2014-11-07 05:58:54",
+    "created": "2014-11-07 12:57:17",
     "git_nickname": null,
     "vk_link": null,
     "active_event": "1",
@@ -124,4 +124,6 @@ Response:
  DELETE 
 Resourse DELETE /api/Expert/{id}
 Response: 
-null
+{
+    "error": 0
+}

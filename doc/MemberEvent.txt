@@ -8,10 +8,10 @@ Response:
     {
         "id": "1",
         "name": "best future development",
-        "is_active": "1",
         "start_date": null,
         "end_date": "2014-12-03 19:00:00",
-        "created": "2014-11-07 04:57:18",
-        "creator": "0"
+        "created": "2014-11-07 12:57:40",
+        "creator": "0",
+        "is_active": "1"
     }
 ]

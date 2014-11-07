@@ -1,8 +1,8 @@
-EventMember
+EventManager
 
 
  UPDATE 
-Resourse PUT /api/Event/1/managers/{id}
+Resourse PUT /api/Event/1/members/{id}
 Request: 
 {
     "id": 1
@@ -27,12 +27,12 @@ Response:
 
  
  LIST 
-Resourse GET /api/Event/1/managers
+Resourse GET /api/Event/1/members
 Response: 
 [
     {
-        "id": "3",
-        "full_name": "Elon Mask 2",
+        "id": "1",
+        "full_name": "Elon Mask",
         "email": null,
         "phone": "79054447777",
         "occupation": null,
@@ -41,16 +41,16 @@ Response:
         "vk_link": null,
         "active_event": "1",
         "vk_token": null,
-        "login": "manager",
-        "password": "password",
-        "type": "manager",
+        "login": null,
+        "password": null,
+        "type": "member",
         "salt": null
     }
 ]
 
  
  DELETE 
-Resourse DELETE /api/Event/1/managers/{id}
+Resourse DELETE /api/Event/1/members/{id}
 Response: 
 {
     "error": 0

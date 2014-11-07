@@ -15,7 +15,7 @@ Response:
     "full_name": "Larry Page",
     "phone": "79054447777",
     "login": "login",
-    "password": "3220862ee2d3ac145c40d547f619332d",
+    "password": "5d0a5c0340eddf64dbfd398276bd327a",
     "type": "manager",
     "created": {
         "expression": "CURRENT_TIMESTAMP",
@@ -23,7 +23,7 @@ Response:
 
         ]
     },
-    "salt": "545c18e06ed350.86228403",
+    "salt": "545c89761689a5.84713828",
     "id": "4",
     "email": null,
     "occupation": null,
@@ -61,15 +61,15 @@ Response:
         "email": null,
         "phone": "79054447777",
         "occupation": null,
-        "created": "2014-11-07 04:57:04",
+        "created": "2014-11-07 12:57:26",
         "git_nickname": null,
         "vk_link": null,
         "active_event": null,
         "vk_token": null,
         "login": "login",
-        "password": "3220862ee2d3ac145c40d547f619332d",
+        "password": "5d0a5c0340eddf64dbfd398276bd327a",
         "type": "manager",
-        "salt": "545c18e06ed350.86228403"
+        "salt": "545c89761689a5.84713828"
     }
 ]
 
@@ -83,15 +83,15 @@ Response:
     "email": null,
     "phone": "79054447777",
     "occupation": null,
-    "created": "2014-11-07 04:57:04",
+    "created": "2014-11-07 12:57:26",
     "git_nickname": null,
     "vk_link": null,
     "active_event": null,
     "vk_token": null,
     "login": "login",
-    "password": "3220862ee2d3ac145c40d547f619332d",
+    "password": "5d0a5c0340eddf64dbfd398276bd327a",
     "type": "manager",
-    "salt": "545c18e06ed350.86228403"
+    "salt": "545c89761689a5.84713828"
 }
 
 
@@ -111,7 +111,7 @@ Response:
     "email": null,
     "phone": "79054447777",
     "occupation": null,
-    "created": "2014-11-07 04:57:04",
+    "created": "2014-11-07 12:57:26",
     "git_nickname": null,
     "vk_link": null,
     "active_event": null,
@@ -119,7 +119,7 @@ Response:
     "login": "login",
     "password": "password",
     "type": "manager",
-    "salt": "545c18e06ed350.86228403"
+    "salt": "545c89761689a5.84713828"
 }
 
  

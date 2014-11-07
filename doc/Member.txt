@@ -60,7 +60,7 @@ Response:
         "email": null,
         "phone": "79054447777",
         "occupation": null,
-        "created": "2014-11-07 04:57:13",
+        "created": "2014-11-07 12:57:35",
         "git_nickname": null,
         "vk_link": null,
         "active_event": "1",
@@ -82,7 +82,7 @@ Response:
     "email": null,
     "phone": "79054447777",
     "occupation": null,
-    "created": "2014-11-07 04:57:13",
+    "created": "2014-11-07 12:57:35",
     "git_nickname": null,
     "vk_link": null,
     "active_event": "1",
@@ -109,7 +109,7 @@ Response:
     "email": null,
     "phone": "79054447777",
     "occupation": null,
-    "created": "2014-11-07 04:57:13",
+    "created": "2014-11-07 12:57:35",
     "git_nickname": null,
     "vk_link": null,
     "active_event": "1",
@@ -124,4 +124,6 @@ Response:
  DELETE 
 Resourse DELETE /api/Member/{id}
 Response: 
-null
+{
+    "error": 0
+}

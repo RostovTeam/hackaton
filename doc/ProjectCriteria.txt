@@ -15,11 +15,11 @@ Response:
     "criteria_id": 1,
     "value": 100,
     "expert_id": "2",
-    "id": "29",
+    "id": "32",
     "criteria": {
         "id": "1",
         "name": "Coolness",
-        "created": "2014-11-07 04:57:31",
+        "created": "2014-11-07 12:57:54",
         "max_value": null,
         "type": null,
         "weight": null
@@ -37,7 +37,7 @@ Request:
 }
 Response: 
 {
-    "id": "29",
+    "id": "32",
     "criteria_id": 1,
     "project_id": 1,
     "value": 100,
@@ -45,7 +45,7 @@ Response:
     "criteria": {
         "id": "1",
         "name": "Coolness",
-        "created": "2014-11-07 04:57:31",
+        "created": "2014-11-07 12:57:54",
         "max_value": null,
         "type": null,
         "weight": null
@@ -66,22 +66,7 @@ Response:
         "criteria": {
             "id": "1",
             "name": "Coolness",
-            "created": "2014-11-07 04:57:31",
-            "max_value": null,
-            "type": null,
-            "weight": null
-        }
-    },
-    {
-        "id": "2",
-        "criteria_id": "1",
-        "project_id": "2",
-        "value": "10",
-        "expert_id": "0",
-        "criteria": {
-            "id": "1",
-            "name": "Coolness",
-            "created": "2014-11-07 04:57:31",
+            "created": "2014-11-07 12:57:54",
             "max_value": null,
             "type": null,
             "weight": null
@@ -96,7 +81,7 @@ Response:
         "criteria": {
             "id": "1",
             "name": "Coolness",
-            "created": "2014-11-07 04:57:31",
+            "created": "2014-11-07 12:57:54",
             "max_value": null,
             "type": null,
             "weight": null
@@ -111,7 +96,7 @@ Response:
         "criteria": {
             "id": "1",
             "name": "Coolness",
-            "created": "2014-11-07 04:57:31",
+            "created": "2014-11-07 12:57:54",
             "max_value": null,
             "type": null,
             "weight": null
@@ -126,7 +111,7 @@ Response:
         "criteria": {
             "id": "1",
             "name": "Coolness",
-            "created": "2014-11-07 04:57:31",
+            "created": "2014-11-07 12:57:54",
             "max_value": null,
             "type": null,
             "weight": null
@@ -141,7 +126,7 @@ Response:
         "criteria": {
             "id": "1",
             "name": "Coolness",
-            "created": "2014-11-07 04:57:31",
+            "created": "2014-11-07 12:57:54",
             "max_value": null,
             "type": null,
             "weight": null
@@ -156,7 +141,7 @@ Response:
         "criteria": {
             "id": "1",
             "name": "Coolness",
-            "created": "2014-11-07 04:57:31",
+            "created": "2014-11-07 12:57:54",
             "max_value": null,
             "type": null,
             "weight": null
@@ -171,7 +156,7 @@ Response:
         "criteria": {
             "id": "1",
             "name": "Coolness",
-            "created": "2014-11-07 04:57:31",
+            "created": "2014-11-07 12:57:54",
             "max_value": null,
             "type": null,
             "weight": null
@@ -186,7 +171,7 @@ Response:
         "criteria": {
             "id": "1",
             "name": "Coolness",
-            "created": "2014-11-07 04:57:31",
+            "created": "2014-11-07 12:57:54",
             "max_value": null,
             "type": null,
             "weight": null
@@ -201,7 +186,7 @@ Response:
         "criteria": {
             "id": "1",
             "name": "Coolness",
-            "created": "2014-11-07 04:57:31",
+            "created": "2014-11-07 12:57:54",
             "max_value": null,
             "type": null,
             "weight": null
@@ -216,7 +201,7 @@ Response:
         "criteria": {
             "id": "1",
             "name": "Coolness",
-            "created": "2014-11-07 04:57:31",
+            "created": "2014-11-07 12:57:54",
             "max_value": null,
             "type": null,
             "weight": null
@@ -231,7 +216,7 @@ Response:
         "criteria": {
             "id": "1",
             "name": "Coolness",
-            "created": "2014-11-07 04:57:31",
+            "created": "2014-11-07 12:57:54",
             "max_value": null,
             "type": null,
             "weight": null
@@ -246,7 +231,7 @@ Response:
         "criteria": {
             "id": "1",
             "name": "Coolness",
-            "created": "2014-11-07 04:57:31",
+            "created": "2014-11-07 12:57:54",
             "max_value": null,
             "type": null,
             "weight": null
@@ -261,7 +246,7 @@ Response:
         "criteria": {
             "id": "1",
             "name": "Coolness",
-            "created": "2014-11-07 04:57:31",
+            "created": "2014-11-07 12:57:54",
             "max_value": null,
             "type": null,
             "weight": null
@@ -276,7 +261,7 @@ Response:
         "criteria": {
             "id": "1",
             "name": "Coolness",
-            "created": "2014-11-07 04:57:31",
+            "created": "2014-11-07 12:57:54",
             "max_value": null,
             "type": null,
             "weight": null
@@ -291,7 +276,7 @@ Response:
         "criteria": {
             "id": "1",
             "name": "Coolness",
-            "created": "2014-11-07 04:57:31",
+            "created": "2014-11-07 12:57:54",
             "max_value": null,
             "type": null,
             "weight": null
@@ -306,7 +291,7 @@ Response:
         "criteria": {
             "id": "1",
             "name": "Coolness",
-            "created": "2014-11-07 04:57:31",
+            "created": "2014-11-07 12:57:54",
             "max_value": null,
             "type": null,
             "weight": null
@@ -321,7 +306,7 @@ Response:
         "criteria": {
             "id": "1",
             "name": "Coolness",
-            "created": "2014-11-07 04:57:31",
+            "created": "2014-11-07 12:57:54",
             "max_value": null,
             "type": null,
             "weight": null
@@ -336,7 +321,7 @@ Response:
         "criteria": {
             "id": "1",
             "name": "Coolness",
-            "created": "2014-11-07 04:57:31",
+            "created": "2014-11-07 12:57:54",
             "max_value": null,
             "type": null,
             "weight": null
@@ -351,7 +336,7 @@ Response:
         "criteria": {
             "id": "1",
             "name": "Coolness",
-            "created": "2014-11-07 04:57:31",
+            "created": "2014-11-07 12:57:54",
             "max_value": null,
             "type": null,
             "weight": null
@@ -366,7 +351,7 @@ Response:
         "criteria": {
             "id": "1",
             "name": "Coolness",
-            "created": "2014-11-07 04:57:31",
+            "created": "2014-11-07 12:57:54",
             "max_value": null,
             "type": null,
             "weight": null
@@ -381,7 +366,7 @@ Response:
         "criteria": {
             "id": "1",
             "name": "Coolness",
-            "created": "2014-11-07 04:57:31",
+            "created": "2014-11-07 12:57:54",
             "max_value": null,
             "type": null,
             "weight": null
@@ -396,7 +381,7 @@ Response:
         "criteria": {
             "id": "1",
             "name": "Coolness",
-            "created": "2014-11-07 04:57:31",
+            "created": "2014-11-07 12:57:54",
             "max_value": null,
             "type": null,
             "weight": null
@@ -411,7 +396,7 @@ Response:
         "criteria": {
             "id": "1",
             "name": "Coolness",
-            "created": "2014-11-07 04:57:31",
+            "created": "2014-11-07 12:57:54",
             "max_value": null,
             "type": null,
             "weight": null
@@ -426,7 +411,7 @@ Response:
         "criteria": {
             "id": "1",
             "name": "Coolness",
-            "created": "2014-11-07 04:57:31",
+            "created": "2014-11-07 12:57:54",
             "max_value": null,
             "type": null,
             "weight": null
@@ -441,7 +426,7 @@ Response:
         "criteria": {
             "id": "1",
             "name": "Coolness",
-            "created": "2014-11-07 04:57:31",
+            "created": "2014-11-07 12:57:54",
             "max_value": null,
             "type": null,
             "weight": null
@@ -456,7 +441,7 @@ Response:
         "criteria": {
             "id": "1",
             "name": "Coolness",
-            "created": "2014-11-07 04:57:31",
+            "created": "2014-11-07 12:57:54",
             "max_value": null,
             "type": null,
             "weight": null
@@ -471,7 +456,7 @@ Response:
         "criteria": {
             "id": "1",
             "name": "Coolness",
-            "created": "2014-11-07 04:57:31",
+            "created": "2014-11-07 12:57:54",
             "max_value": null,
             "type": null,
             "weight": null
@@ -486,7 +471,52 @@ Response:
         "criteria": {
             "id": "1",
             "name": "Coolness",
-            "created": "2014-11-07 04:57:31",
+            "created": "2014-11-07 12:57:54",
+            "max_value": null,
+            "type": null,
+            "weight": null
+        }
+    },
+    {
+        "id": "30",
+        "criteria_id": "1",
+        "project_id": "1",
+        "value": "100",
+        "expert_id": "2",
+        "criteria": {
+            "id": "1",
+            "name": "Coolness",
+            "created": "2014-11-07 12:57:54",
+            "max_value": null,
+            "type": null,
+            "weight": null
+        }
+    },
+    {
+        "id": "31",
+        "criteria_id": "1",
+        "project_id": "1",
+        "value": "100",
+        "expert_id": "2",
+        "criteria": {
+            "id": "1",
+            "name": "Coolness",
+            "created": "2014-11-07 12:57:54",
+            "max_value": null,
+            "type": null,
+            "weight": null
+        }
+    },
+    {
+        "id": "32",
+        "criteria_id": "1",
+        "project_id": "1",
+        "value": "100",
+        "expert_id": "2",
+        "criteria": {
+            "id": "1",
+            "name": "Coolness",
+            "created": "2014-11-07 12:57:54",
             "max_value": null,
             "type": null,
             "weight": null
@@ -499,7 +529,7 @@ Response:
 Resourse GET /api/ProjectCriteria/{id}
 Response: 
 {
-    "id": "29",
+    "id": "32",
     "criteria_id": "1",
     "project_id": "1",
     "value": "100",
@@ -507,7 +537,7 @@ Response:
     "criteria": {
         "id": "1",
         "name": "Coolness",
-        "created": "2014-11-07 04:57:31",
+        "created": "2014-11-07 12:57:54",
         "max_value": null,
         "type": null,
         "weight": null

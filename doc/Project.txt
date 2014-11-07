@@ -44,14 +44,14 @@ Response:
     "members": [
 
     ],
-    "mark": 10,
+    "mark": 0,
     "is_active": "1"
 }
 
  
  LIST 
 Resourse GET /api/Project
-FILTER   name
+FILTER   name, event_id
 Response: 
 [
     {
@@ -82,7 +82,7 @@ Response:
         "members": [
 
         ],
-        "mark": 423,
+        "mark": 723,
         "is_active": "1"
     },
     {
@@ -92,7 +92,7 @@ Response:
         "name": "Tesla Motors",
         "description": "revolution in auto industry",
         "git_url": null,
-        "created": "2014-11-07 04:57:25",
+        "created": "2014-11-07 12:57:48",
         "code_lines": null,
         "owner": {
             "id": "1",
@@ -113,7 +113,7 @@ Response:
         "members": [
 
         ],
-        "mark": 10,
+        "mark": 0,
         "is_active": "1"
     }
 ]
@@ -129,7 +129,7 @@ Response:
     "name": "Tesla Motors",
     "description": "revolution in auto industry",
     "git_url": null,
-    "created": "2014-11-07 04:57:25",
+    "created": "2014-11-07 12:57:48",
     "code_lines": null,
     "owner": {
         "id": "1",
@@ -150,7 +150,7 @@ Response:
     "members": [
 
     ],
-    "mark": 10,
+    "mark": 0,
     "is_active": "1"
 }
 
@@ -172,7 +172,7 @@ Response:
     "name": "Tesla Motors",
     "description": "revolution in auto industry",
     "git_url": null,
-    "created": "2014-11-07 04:57:25",
+    "created": "2014-11-07 12:57:48",
     "code_lines": null,
     "owner": {
         "id": "1",
@@ -193,7 +193,7 @@ Response:
     "members": [
 
     ],
-    "mark": 10,
+    "mark": 0,
     "is_active": "1"
 }
 
@@ -201,4 +201,6 @@ Response:
  DELETE 
 Resourse DELETE /api/Project/{id}
 Response: 
-null
+{
+    "error": 0
+}
