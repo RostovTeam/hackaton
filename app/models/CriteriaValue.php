@@ -27,7 +27,7 @@ class CriteriaValue extends ActiveRecord
 	public function rules()
 	{
 		return array(
-			array('criteria_id,value', 'required'),
+			array('criteria_id,value,label', 'required'),
 			array('criteria_id, value', 'numerical', 'integerOnly'=>true),
 			array('criteria_id, value', 'safe', 'on'=>'search'),
 		);
