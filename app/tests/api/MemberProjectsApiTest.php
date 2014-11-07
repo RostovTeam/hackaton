@@ -43,6 +43,9 @@ class MemberProjectsApiTest extends RESTfulApiTestCase
                 'phone' => $phone
             ]
         ]);
+        
+//        var_dump($r);
+//        exit();
     }
 
 }

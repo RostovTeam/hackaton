@@ -54,12 +54,13 @@ class ProjectCriteriaController extends RESTfulApiTestCase
     public function authMember()
     {
         $login = $this->members('member1')['full_name'];
-
+        $phone=  $this->members('member1')['phone'];
+        
         $r = $this->request([
             'url' => '/index.php/auth/FullNameLogin',
             'data' => [
                 'fullname' => $login,
-//                'password' => $password
+                'phone' => $phone
             ]
         ]);
     }
