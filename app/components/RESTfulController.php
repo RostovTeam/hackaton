@@ -384,8 +384,8 @@ abstract class RESTfulController extends BaseController
         {
             $this->_sendResponse(404,
                     ['error' => 'Undefined relation: bad relation type ']);
-        } 
-        
+        }
+
         if ($_relation[0] == ActiveRecord::MANY_MANY)
         {
             $_tmp = str_replace(')', '', $_relation[2]);
@@ -396,10 +396,17 @@ abstract class RESTfulController extends BaseController
             $table = trim($data[0]);
             $model_fk = trim($data[1]);
             $rel_fk = trim($data[2]);
-            Yii::log('id:'.$id.'rel_id:'.$relation_id);
-            Yii::app()->db->createCommand()->insert($table,
-                    [ $model_fk => $id, $rel_fk => $relation_id]);
-        } 
+            Yii::log('id:' . $id . 'rel_id:' . $relation_id);
+
+            $exists = Yii::app()->db->createCommand()->select($model_fk)
+                    ->from($table)
+                    ->where($model_fk . '=:' . $model_fk . ' and ' . $rel_fk . '=:' . $rel_fk,
+                            [ ':' . $model_fk => $id, ':' . $rel_fk => $relation_id])
+                    ->queryScalar();
+            if (!$exists)
+                    Yii::app()->db->createCommand()->insert($table,
+                        [ $model_fk => $id, $rel_fk => $relation_id]);
+        }
 
         if (!$relationModel)
         {
@@ -518,7 +525,7 @@ abstract class RESTfulController extends BaseController
 
             $data = explode(',', $_tmp);
 
-            $table =trim( $data[0]);
+            $table = trim($data[0]);
             $model_fk = trim($data[1]);
             $rel_fk = trim($data[2]);
             Yii::app()->db->createCommand()->delete($table,
