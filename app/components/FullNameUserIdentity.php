@@ -27,13 +27,20 @@ class FullNameUserIdentity extends CUserIdentity
 
         if (!$user)
         {
-            $parts=explode(' ',$normalized);
-            
-            if(count($parts)>=2)
-            $user = Member::model()->findByAttributes(['LOWER(full_name)' => strtolower($parts[1].' '.$parts[0]),
-                'phone' => $this->phone]);
+            $parts = explode(' ', $normalized);
+
+            if (count($parts) >= 2)
+                    $user = Member::model()->findByAttributes(['LOWER(full_name)' => strtolower($parts[1] . ' ' . $parts[0]),
+                    'phone' => $this->phone]);
         }
+        
         if ($user === null)
+        {
+            $this->errorCode = self::ERROR_USERNAME_INVALID;
+            return false;
+        }
+
+        if ($user->is_perfomed_simple_login && $user->login && $user->password)
         {
             $this->errorCode = self::ERROR_USERNAME_INVALID;
             return false;
