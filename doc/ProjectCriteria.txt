@@ -15,11 +15,11 @@ Response:
     "criteria_id": 1,
     "value": 100,
     "expert_id": "2",
-    "id": "34",
+    "id": "36",
     "criteria": {
         "id": "1",
         "name": "Coolness",
-        "created": "2014-11-07 13:54:59",
+        "created": "2014-11-07 17:04:20",
         "max_value": null,
         "type": null,
         "weight": null
@@ -37,7 +37,7 @@ Request:
 }
 Response: 
 {
-    "id": "34",
+    "id": "36",
     "criteria_id": 1,
     "project_id": 1,
     "value": 100,
@@ -45,7 +45,7 @@ Response:
     "criteria": {
         "id": "1",
         "name": "Coolness",
-        "created": "2014-11-07 13:54:59",
+        "created": "2014-11-07 17:04:20",
         "max_value": null,
         "type": null,
         "weight": null

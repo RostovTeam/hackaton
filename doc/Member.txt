@@ -1,1 +1,134 @@
 Member
+
+
+ CREATE 
+Resourse POST /api/Member
+Request: 
+{
+    "full_name": "Elon Mask",
+    "phone": "79054447777",
+    "event_id": 1
+}
+Response: 
+{
+    "is_perfomed_simple_login": 0,
+    "full_name": "Elon Mask",
+    "phone": "79054447777",
+    "email": null,
+    "git_nickname": null,
+    "occupation": null,
+    "active_event": 1,
+    "login": null,
+    "password": null,
+    "salt": null,
+    "type": "member",
+    "created": {
+        "expression": "CURRENT_TIMESTAMP",
+        "params": [
+
+        ]
+    },
+    "id": "4",
+    "vk_link": null,
+    "vk_token": null
+}
+
+ 
+ LIST 
+Resourse GET /api/Member
+FILTER   full_name
+Response: 
+[
+    {
+        "id": "1",
+        "full_name": "Elon Mask",
+        "email": null,
+        "phone": "79054447777",
+        "occupation": null,
+        "created": null,
+        "git_nickname": null,
+        "vk_link": null,
+        "active_event": "1",
+        "vk_token": null,
+        "login": null,
+        "password": null,
+        "type": "member",
+        "salt": null,
+        "is_perfomed_simple_login": "0"
+    },
+    {
+        "id": "4",
+        "full_name": "Elon Mask",
+        "email": null,
+        "phone": "79054447777",
+        "occupation": null,
+        "created": "2014-11-07 17:04:09",
+        "git_nickname": null,
+        "vk_link": null,
+        "active_event": "1",
+        "vk_token": null,
+        "login": null,
+        "password": null,
+        "type": "member",
+        "salt": null,
+        "is_perfomed_simple_login": "0"
+    }
+]
+
+ 
+ VIEW 
+Resourse GET /api/Member/{id}
+Response: 
+{
+    "id": "4",
+    "full_name": "Elon Mask",
+    "email": null,
+    "phone": "79054447777",
+    "occupation": null,
+    "created": "2014-11-07 17:04:09",
+    "git_nickname": null,
+    "vk_link": null,
+    "active_event": "1",
+    "vk_token": null,
+    "login": null,
+    "password": null,
+    "type": "member",
+    "salt": null,
+    "is_perfomed_simple_login": "0"
+}
+
+
+ UPDATE 
+Resourse PUT /api/Member/{id}
+Request: 
+{
+    "full_name": "Elon Mask",
+    "phone": "79054447777",
+    "event_id": 1
+}
+Response: 
+{
+    "id": "4",
+    "full_name": "Elon Mask",
+    "email": null,
+    "phone": "79054447777",
+    "occupation": null,
+    "created": "2014-11-07 17:04:09",
+    "git_nickname": null,
+    "vk_link": null,
+    "active_event": "1",
+    "vk_token": null,
+    "login": null,
+    "password": null,
+    "type": "member",
+    "salt": null,
+    "is_perfomed_simple_login": "0"
+}
+
+ 
+ DELETE 
+Resourse DELETE /api/Member/{id}
+Response: 
+{
+    "error": 0
+}
