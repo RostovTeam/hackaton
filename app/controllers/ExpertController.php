@@ -21,12 +21,14 @@ class ExpertController extends RESTfulController
                 [
             ['allow',
                 'roles' => ['manager'],
-                'users' => ['*']
             ],
             ['allow',
-                'actions'=>['view','list'],
-                'roles' => ['member','expert'],
-                'users' => ['*']
+                'actions' => ['view', 'list'],
+                'roles' => ['member', 'expert'],
+            ],
+            ['allow',
+                'actions' => ['update', 'events'],
+                'roles' => [ 'expert'],
             ]
                 ], parent::accessRules());
     }
@@ -37,11 +39,33 @@ class ExpertController extends RESTfulController
         $model->login = $model->phone;
     }
 
+    public function getUpdateModel($id = false)
+    {
+        if (Yii::app()->user->hasState('role') && Yii::app()->user->role == 'expert')
+        {
+            return Member::model()->findByPk(Yii::app()->user->id);
+        } else
+        {
+            return parent::getUpdateModel($id);
+        }
+    }
+
     protected function getFilterCriteria()
     {
         $cr = parent::getFilterCriteria();
 
         return $cr;
+    }
+
+    public function actionEvents()
+    {
+        if ($model = $this->getUpdateModel())
+        {
+            $this->_sendResponse(200, $model->events);
+        } else
+        {
+            $this->_sendResponse(403, '');
+        }
     }
 
 }

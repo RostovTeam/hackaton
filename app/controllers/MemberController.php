@@ -21,11 +21,14 @@ class MemberController extends RESTfulController
     {
         return array_merge(
                 [
-            ['allow',
-                'actions' => ['list', 'view', 'update', 'changePassword'],
+            [
+                'allow',
+                'actions' => ['list', 'view', 'update', 'changePassword', 'events',
+                    'projects'],
                 'roles' => ['member'],
             ],
-            ['allow',
+            [
+                'allow',
                 'roles' => ['manager']
             ]
                 ], parent::accessRules());
@@ -36,7 +39,7 @@ class MemberController extends RESTfulController
         $cr = parent::getFilterCriteria();
         $cr->compare('type', Member::MEMBER_TYPE_MEMBER);
 
-        if (Yii::app()->user->role == 'member')
+        if (Yii::app()->user->hasState('role') && Yii::app()->user->role == 'member')
         {
             $cr->limit = 7;
 
@@ -47,7 +50,7 @@ class MemberController extends RESTfulController
                 $cr[':fullname'] = '%' . strtolower(trim($fullname)) . '%';
             } else
             {
-                //fo not show list of members without filter
+                //do not show list of members without filter
                 return null;
             }
         }
@@ -55,6 +58,7 @@ class MemberController extends RESTfulController
         return $cr;
     }
 
+    
     public function transform(&$model)
     {
         parent::transform($model);
@@ -66,7 +70,7 @@ class MemberController extends RESTfulController
 //        }
     }
 
-    public function getUpdateModel($id)
+    public function getUpdateModel($id = false)
     {
         if (Yii::app()->user->role == 'member')
         {
@@ -114,6 +118,28 @@ class MemberController extends RESTfulController
         }
 
         $this->_sendResponse('200', ['ok']);
+    }
+
+    public function actionEvents()
+    {
+        if ($model = $this->getUpdateModel())
+        {
+            $this->_sendResponse(200, $model->events);
+        } else
+        {
+            $this->_sendResponse(403, '');
+        }
+    }
+
+    public function actionProjects()
+    {
+        if ($model = $this->getUpdateModel())
+        {
+            $this->_sendResponse(200, $model->projects);
+        } else
+        {
+            $this->_sendResponse(403, '');
+        }
     }
 
 }
