@@ -1,1 +1,491 @@
 Project
+
+
+ CREATE 
+Resourse POST /api/Project
+Request: 
+{
+    "name": "Tesla Motors",
+    "description": "revolution in auto industry",
+    "owner_id": 1,
+    "event_id": 1
+}
+Response: 
+{
+    "name": "Tesla Motors",
+    "description": "revolution in auto industry",
+    "owner_id": "1",
+    "event_id": "1",
+    "created": {
+        "expression": "CURRENT_TIMESTAMP",
+        "params": [
+
+        ]
+    },
+    "id": "2",
+    "git_url": null,
+    "code_lines": null,
+    "members": [
+
+    ],
+    "owner": {
+        "id": "1",
+        "full_name": "Elon Mask",
+        "email": null,
+        "phone": "79054447777",
+        "occupation": null,
+        "created": null,
+        "git_nickname": null,
+        "vk_link": null,
+        "active_event": "1",
+        "vk_token": null,
+        "login": null,
+        "password": null,
+        "type": "member",
+        "salt": null,
+        "is_perfomed_simple_login": "0"
+    },
+    "mark": 0,
+    "is_active": "1",
+    "criterias": [
+
+    ]
+}
+
+ 
+ LIST 
+Resourse GET /api/Project
+FILTER   name, event_id, attended
+Response: 
+[
+    {
+        "id": "1",
+        "event_id": "1",
+        "owner_id": "1",
+        "name": "Test project",
+        "description": "test project desc",
+        "git_url": null,
+        "created": null,
+        "code_lines": null,
+        "members": [
+
+        ],
+        "owner": {
+            "id": "1",
+            "full_name": "Elon Mask",
+            "email": null,
+            "phone": "79054447777",
+            "occupation": null,
+            "created": null,
+            "git_nickname": null,
+            "vk_link": null,
+            "active_event": "1",
+            "vk_token": null,
+            "login": null,
+            "password": null,
+            "type": "member",
+            "salt": null,
+            "is_perfomed_simple_login": "0"
+        },
+        "mark": 1523,
+        "is_active": "1",
+        "criterias": [
+            {
+                "id": "1",
+                "criteria_id": "1",
+                "project_id": "1",
+                "value": "100",
+                "expert_id": "2"
+            },
+            {
+                "id": "3",
+                "criteria_id": "1",
+                "project_id": "1",
+                "value": "1",
+                "expert_id": "0"
+            },
+            {
+                "id": "4",
+                "criteria_id": "1",
+                "project_id": "1",
+                "value": "1",
+                "expert_id": "0"
+            },
+            {
+                "id": "5",
+                "criteria_id": "1",
+                "project_id": "1",
+                "value": "1",
+                "expert_id": "0"
+            },
+            {
+                "id": "6",
+                "criteria_id": "1",
+                "project_id": "1",
+                "value": "1",
+                "expert_id": "0"
+            },
+            {
+                "id": "7",
+                "criteria_id": "1",
+                "project_id": "1",
+                "value": "1",
+                "expert_id": "0"
+            },
+            {
+                "id": "8",
+                "criteria_id": "1",
+                "project_id": "1",
+                "value": "1",
+                "expert_id": "0"
+            },
+            {
+                "id": "9",
+                "criteria_id": "1",
+                "project_id": "1",
+                "value": "1",
+                "expert_id": "0"
+            },
+            {
+                "id": "10",
+                "criteria_id": "1",
+                "project_id": "1",
+                "value": "1",
+                "expert_id": "0"
+            },
+            {
+                "id": "11",
+                "criteria_id": "1",
+                "project_id": "1",
+                "value": "1",
+                "expert_id": "0"
+            },
+            {
+                "id": "12",
+                "criteria_id": "1",
+                "project_id": "1",
+                "value": "1",
+                "expert_id": "0"
+            },
+            {
+                "id": "13",
+                "criteria_id": "1",
+                "project_id": "1",
+                "value": "1",
+                "expert_id": "0"
+            },
+            {
+                "id": "14",
+                "criteria_id": "1",
+                "project_id": "1",
+                "value": "1",
+                "expert_id": "0"
+            },
+            {
+                "id": "15",
+                "criteria_id": "1",
+                "project_id": "1",
+                "value": "1",
+                "expert_id": "0"
+            },
+            {
+                "id": "16",
+                "criteria_id": "1",
+                "project_id": "1",
+                "value": "1",
+                "expert_id": "0"
+            },
+            {
+                "id": "17",
+                "criteria_id": "1",
+                "project_id": "1",
+                "value": "1",
+                "expert_id": "0"
+            },
+            {
+                "id": "18",
+                "criteria_id": "1",
+                "project_id": "1",
+                "value": "1",
+                "expert_id": "0"
+            },
+            {
+                "id": "19",
+                "criteria_id": "1",
+                "project_id": "1",
+                "value": "1",
+                "expert_id": "0"
+            },
+            {
+                "id": "20",
+                "criteria_id": "1",
+                "project_id": "1",
+                "value": "1",
+                "expert_id": "0"
+            },
+            {
+                "id": "21",
+                "criteria_id": "1",
+                "project_id": "1",
+                "value": "1",
+                "expert_id": "0"
+            },
+            {
+                "id": "22",
+                "criteria_id": "1",
+                "project_id": "1",
+                "value": "1",
+                "expert_id": "0"
+            },
+            {
+                "id": "23",
+                "criteria_id": "1",
+                "project_id": "1",
+                "value": "1",
+                "expert_id": "0"
+            },
+            {
+                "id": "24",
+                "criteria_id": "1",
+                "project_id": "1",
+                "value": "1",
+                "expert_id": "0"
+            },
+            {
+                "id": "25",
+                "criteria_id": "1",
+                "project_id": "1",
+                "value": "1",
+                "expert_id": "0"
+            },
+            {
+                "id": "26",
+                "criteria_id": "1",
+                "project_id": "1",
+                "value": "100",
+                "expert_id": "2"
+            },
+            {
+                "id": "27",
+                "criteria_id": "1",
+                "project_id": "1",
+                "value": "100",
+                "expert_id": "2"
+            },
+            {
+                "id": "28",
+                "criteria_id": "1",
+                "project_id": "1",
+                "value": "100",
+                "expert_id": "2"
+            },
+            {
+                "id": "29",
+                "criteria_id": "1",
+                "project_id": "1",
+                "value": "100",
+                "expert_id": "2"
+            },
+            {
+                "id": "30",
+                "criteria_id": "1",
+                "project_id": "1",
+                "value": "100",
+                "expert_id": "2"
+            },
+            {
+                "id": "31",
+                "criteria_id": "1",
+                "project_id": "1",
+                "value": "100",
+                "expert_id": "2"
+            },
+            {
+                "id": "32",
+                "criteria_id": "1",
+                "project_id": "1",
+                "value": "100",
+                "expert_id": "2"
+            },
+            {
+                "id": "33",
+                "criteria_id": "1",
+                "project_id": "1",
+                "value": "100",
+                "expert_id": "2"
+            },
+            {
+                "id": "34",
+                "criteria_id": "1",
+                "project_id": "1",
+                "value": "100",
+                "expert_id": "2"
+            },
+            {
+                "id": "35",
+                "criteria_id": "1",
+                "project_id": "1",
+                "value": "100",
+                "expert_id": "2"
+            },
+            {
+                "id": "36",
+                "criteria_id": "1",
+                "project_id": "1",
+                "value": "100",
+                "expert_id": "2"
+            },
+            {
+                "id": "37",
+                "criteria_id": "1",
+                "project_id": "1",
+                "value": "100",
+                "expert_id": "2"
+            },
+            {
+                "id": "38",
+                "criteria_id": "1",
+                "project_id": "1",
+                "value": "100",
+                "expert_id": "2"
+            },
+            {
+                "id": "39",
+                "criteria_id": "1",
+                "project_id": "1",
+                "value": "100",
+                "expert_id": "2"
+            }
+        ]
+    },
+    {
+        "id": "2",
+        "event_id": "1",
+        "owner_id": "1",
+        "name": "Tesla Motors",
+        "description": "revolution in auto industry",
+        "git_url": null,
+        "created": "2014-11-07 17:23:17",
+        "code_lines": null,
+        "members": [
+
+        ],
+        "owner": {
+            "id": "1",
+            "full_name": "Elon Mask",
+            "email": null,
+            "phone": "79054447777",
+            "occupation": null,
+            "created": null,
+            "git_nickname": null,
+            "vk_link": null,
+            "active_event": "1",
+            "vk_token": null,
+            "login": null,
+            "password": null,
+            "type": "member",
+            "salt": null,
+            "is_perfomed_simple_login": "0"
+        },
+        "mark": 0,
+        "is_active": "1",
+        "criterias": [
+
+        ]
+    }
+]
+
+ 
+ VIEW 
+Resourse GET /api/Project/{id}
+Response: 
+{
+    "id": "2",
+    "event_id": "1",
+    "owner_id": "1",
+    "name": "Tesla Motors",
+    "description": "revolution in auto industry",
+    "git_url": null,
+    "created": "2014-11-07 17:23:17",
+    "code_lines": null,
+    "members": [
+
+    ],
+    "owner": {
+        "id": "1",
+        "full_name": "Elon Mask",
+        "email": null,
+        "phone": "79054447777",
+        "occupation": null,
+        "created": null,
+        "git_nickname": null,
+        "vk_link": null,
+        "active_event": "1",
+        "vk_token": null,
+        "login": null,
+        "password": null,
+        "type": "member",
+        "salt": null,
+        "is_perfomed_simple_login": "0"
+    },
+    "mark": 0,
+    "is_active": "1",
+    "criterias": [
+
+    ]
+}
+
+
+ UPDATE 
+Resourse PUT /api/Project/{id}
+Request: 
+{
+    "name": "Tesla Motors",
+    "description": "revolution in auto industry",
+    "owner_id": 1,
+    "event_id": 1
+}
+Response: 
+{
+    "id": "2",
+    "event_id": "1",
+    "owner_id": "1",
+    "name": "Tesla Motors",
+    "description": "revolution in auto industry",
+    "git_url": null,
+    "created": "2014-11-07 17:23:17",
+    "code_lines": null,
+    "members": [
+
+    ],
+    "owner": {
+        "id": "1",
+        "full_name": "Elon Mask",
+        "email": null,
+        "phone": "79054447777",
+        "occupation": null,
+        "created": null,
+        "git_nickname": null,
+        "vk_link": null,
+        "active_event": "1",
+        "vk_token": null,
+        "login": null,
+        "password": null,
+        "type": "member",
+        "salt": null,
+        "is_perfomed_simple_login": "0"
+    },
+    "mark": 0,
+    "is_active": "1",
+    "criterias": [
+
+    ]
+}
+
+ 
+ DELETE 
+Resourse DELETE /api/Project/{id}
+Response: 
+{
+    "error": 0
+}

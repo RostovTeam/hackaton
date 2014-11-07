@@ -12,10 +12,11 @@ Request:
 }
 Response: 
 {
+    "is_perfomed_simple_login": 0,
     "full_name": "Larry Page",
     "phone": "79054447777",
     "login": "login",
-    "password": "9f1ced568e7314f876af6b1f9d9e44f6",
+    "password": "eb11147dcc1a2188d73aeae0950bdab8",
     "type": "manager",
     "created": {
         "expression": "CURRENT_TIMESTAMP",
@@ -23,7 +24,7 @@ Response:
 
         ]
     },
-    "salt": "545c96e224cf47.20439844",
+    "salt": "545cc7b05807f9.90475760",
     "id": "4",
     "email": null,
     "occupation": null,
@@ -53,7 +54,8 @@ Response:
         "login": "manager",
         "password": "password",
         "type": "manager",
-        "salt": null
+        "salt": null,
+        "is_perfomed_simple_login": "0"
     },
     {
         "id": "4",
@@ -61,15 +63,16 @@ Response:
         "email": null,
         "phone": "79054447777",
         "occupation": null,
-        "created": "2014-11-07 13:54:42",
+        "created": "2014-11-07 17:22:56",
         "git_nickname": null,
         "vk_link": null,
         "active_event": null,
         "vk_token": null,
         "login": "login",
-        "password": "9f1ced568e7314f876af6b1f9d9e44f6",
+        "password": "eb11147dcc1a2188d73aeae0950bdab8",
         "type": "manager",
-        "salt": "545c96e224cf47.20439844"
+        "salt": "545cc7b05807f9.90475760",
+        "is_perfomed_simple_login": "0"
     }
 ]
 
@@ -83,15 +86,16 @@ Response:
     "email": null,
     "phone": "79054447777",
     "occupation": null,
-    "created": "2014-11-07 13:54:42",
+    "created": "2014-11-07 17:22:56",
     "git_nickname": null,
     "vk_link": null,
     "active_event": null,
     "vk_token": null,
     "login": "login",
-    "password": "9f1ced568e7314f876af6b1f9d9e44f6",
+    "password": "eb11147dcc1a2188d73aeae0950bdab8",
     "type": "manager",
-    "salt": "545c96e224cf47.20439844"
+    "salt": "545cc7b05807f9.90475760",
+    "is_perfomed_simple_login": "0"
 }
 
 
@@ -111,7 +115,7 @@ Response:
     "email": null,
     "phone": "79054447777",
     "occupation": null,
-    "created": "2014-11-07 13:54:42",
+    "created": "2014-11-07 17:22:56",
     "git_nickname": null,
     "vk_link": null,
     "active_event": null,
@@ -119,7 +123,8 @@ Response:
     "login": "login",
     "password": "password",
     "type": "manager",
-    "salt": "545c96e224cf47.20439844"
+    "salt": "545cc7b05807f9.90475760",
+    "is_perfomed_simple_login": "0"
 }
 
  

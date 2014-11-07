@@ -15,11 +15,11 @@ Response:
     "criteria_id": 1,
     "value": 100,
     "expert_id": "2",
-    "id": "34",
+    "id": "40",
     "criteria": {
         "id": "1",
         "name": "Coolness",
-        "created": "2014-11-07 13:54:59",
+        "created": "2014-11-07 17:23:22",
         "max_value": null,
         "type": null,
         "weight": null
@@ -37,7 +37,7 @@ Request:
 }
 Response: 
 {
-    "id": "34",
+    "id": "40",
     "criteria_id": 1,
     "project_id": 1,
     "value": 100,
@@ -45,7 +45,619 @@ Response:
     "criteria": {
         "id": "1",
         "name": "Coolness",
-        "created": "2014-11-07 13:54:59",
+        "created": "2014-11-07 17:23:22",
+        "max_value": null,
+        "type": null,
+        "weight": null
+    }
+}
+
+ 
+ LIST 
+Resourse GET /api/ProjectCriteria
+Response: 
+[
+    {
+        "id": "1",
+        "criteria_id": "1",
+        "project_id": "1",
+        "value": "100",
+        "expert_id": "2",
+        "criteria": {
+            "id": "1",
+            "name": "Coolness",
+            "created": "2014-11-07 17:23:22",
+            "max_value": null,
+            "type": null,
+            "weight": null
+        }
+    },
+    {
+        "id": "3",
+        "criteria_id": "1",
+        "project_id": "1",
+        "value": "1",
+        "expert_id": "0",
+        "criteria": {
+            "id": "1",
+            "name": "Coolness",
+            "created": "2014-11-07 17:23:22",
+            "max_value": null,
+            "type": null,
+            "weight": null
+        }
+    },
+    {
+        "id": "4",
+        "criteria_id": "1",
+        "project_id": "1",
+        "value": "1",
+        "expert_id": "0",
+        "criteria": {
+            "id": "1",
+            "name": "Coolness",
+            "created": "2014-11-07 17:23:22",
+            "max_value": null,
+            "type": null,
+            "weight": null
+        }
+    },
+    {
+        "id": "5",
+        "criteria_id": "1",
+        "project_id": "1",
+        "value": "1",
+        "expert_id": "0",
+        "criteria": {
+            "id": "1",
+            "name": "Coolness",
+            "created": "2014-11-07 17:23:22",
+            "max_value": null,
+            "type": null,
+            "weight": null
+        }
+    },
+    {
+        "id": "6",
+        "criteria_id": "1",
+        "project_id": "1",
+        "value": "1",
+        "expert_id": "0",
+        "criteria": {
+            "id": "1",
+            "name": "Coolness",
+            "created": "2014-11-07 17:23:22",
+            "max_value": null,
+            "type": null,
+            "weight": null
+        }
+    },
+    {
+        "id": "7",
+        "criteria_id": "1",
+        "project_id": "1",
+        "value": "1",
+        "expert_id": "0",
+        "criteria": {
+            "id": "1",
+            "name": "Coolness",
+            "created": "2014-11-07 17:23:22",
+            "max_value": null,
+            "type": null,
+            "weight": null
+        }
+    },
+    {
+        "id": "8",
+        "criteria_id": "1",
+        "project_id": "1",
+        "value": "1",
+        "expert_id": "0",
+        "criteria": {
+            "id": "1",
+            "name": "Coolness",
+            "created": "2014-11-07 17:23:22",
+            "max_value": null,
+            "type": null,
+            "weight": null
+        }
+    },
+    {
+        "id": "9",
+        "criteria_id": "1",
+        "project_id": "1",
+        "value": "1",
+        "expert_id": "0",
+        "criteria": {
+            "id": "1",
+            "name": "Coolness",
+            "created": "2014-11-07 17:23:22",
+            "max_value": null,
+            "type": null,
+            "weight": null
+        }
+    },
+    {
+        "id": "10",
+        "criteria_id": "1",
+        "project_id": "1",
+        "value": "1",
+        "expert_id": "0",
+        "criteria": {
+            "id": "1",
+            "name": "Coolness",
+            "created": "2014-11-07 17:23:22",
+            "max_value": null,
+            "type": null,
+            "weight": null
+        }
+    },
+    {
+        "id": "11",
+        "criteria_id": "1",
+        "project_id": "1",
+        "value": "1",
+        "expert_id": "0",
+        "criteria": {
+            "id": "1",
+            "name": "Coolness",
+            "created": "2014-11-07 17:23:22",
+            "max_value": null,
+            "type": null,
+            "weight": null
+        }
+    },
+    {
+        "id": "12",
+        "criteria_id": "1",
+        "project_id": "1",
+        "value": "1",
+        "expert_id": "0",
+        "criteria": {
+            "id": "1",
+            "name": "Coolness",
+            "created": "2014-11-07 17:23:22",
+            "max_value": null,
+            "type": null,
+            "weight": null
+        }
+    },
+    {
+        "id": "13",
+        "criteria_id": "1",
+        "project_id": "1",
+        "value": "1",
+        "expert_id": "0",
+        "criteria": {
+            "id": "1",
+            "name": "Coolness",
+            "created": "2014-11-07 17:23:22",
+            "max_value": null,
+            "type": null,
+            "weight": null
+        }
+    },
+    {
+        "id": "14",
+        "criteria_id": "1",
+        "project_id": "1",
+        "value": "1",
+        "expert_id": "0",
+        "criteria": {
+            "id": "1",
+            "name": "Coolness",
+            "created": "2014-11-07 17:23:22",
+            "max_value": null,
+            "type": null,
+            "weight": null
+        }
+    },
+    {
+        "id": "15",
+        "criteria_id": "1",
+        "project_id": "1",
+        "value": "1",
+        "expert_id": "0",
+        "criteria": {
+            "id": "1",
+            "name": "Coolness",
+            "created": "2014-11-07 17:23:22",
+            "max_value": null,
+            "type": null,
+            "weight": null
+        }
+    },
+    {
+        "id": "16",
+        "criteria_id": "1",
+        "project_id": "1",
+        "value": "1",
+        "expert_id": "0",
+        "criteria": {
+            "id": "1",
+            "name": "Coolness",
+            "created": "2014-11-07 17:23:22",
+            "max_value": null,
+            "type": null,
+            "weight": null
+        }
+    },
+    {
+        "id": "17",
+        "criteria_id": "1",
+        "project_id": "1",
+        "value": "1",
+        "expert_id": "0",
+        "criteria": {
+            "id": "1",
+            "name": "Coolness",
+            "created": "2014-11-07 17:23:22",
+            "max_value": null,
+            "type": null,
+            "weight": null
+        }
+    },
+    {
+        "id": "18",
+        "criteria_id": "1",
+        "project_id": "1",
+        "value": "1",
+        "expert_id": "0",
+        "criteria": {
+            "id": "1",
+            "name": "Coolness",
+            "created": "2014-11-07 17:23:22",
+            "max_value": null,
+            "type": null,
+            "weight": null
+        }
+    },
+    {
+        "id": "19",
+        "criteria_id": "1",
+        "project_id": "1",
+        "value": "1",
+        "expert_id": "0",
+        "criteria": {
+            "id": "1",
+            "name": "Coolness",
+            "created": "2014-11-07 17:23:22",
+            "max_value": null,
+            "type": null,
+            "weight": null
+        }
+    },
+    {
+        "id": "20",
+        "criteria_id": "1",
+        "project_id": "1",
+        "value": "1",
+        "expert_id": "0",
+        "criteria": {
+            "id": "1",
+            "name": "Coolness",
+            "created": "2014-11-07 17:23:22",
+            "max_value": null,
+            "type": null,
+            "weight": null
+        }
+    },
+    {
+        "id": "21",
+        "criteria_id": "1",
+        "project_id": "1",
+        "value": "1",
+        "expert_id": "0",
+        "criteria": {
+            "id": "1",
+            "name": "Coolness",
+            "created": "2014-11-07 17:23:22",
+            "max_value": null,
+            "type": null,
+            "weight": null
+        }
+    },
+    {
+        "id": "22",
+        "criteria_id": "1",
+        "project_id": "1",
+        "value": "1",
+        "expert_id": "0",
+        "criteria": {
+            "id": "1",
+            "name": "Coolness",
+            "created": "2014-11-07 17:23:22",
+            "max_value": null,
+            "type": null,
+            "weight": null
+        }
+    },
+    {
+        "id": "23",
+        "criteria_id": "1",
+        "project_id": "1",
+        "value": "1",
+        "expert_id": "0",
+        "criteria": {
+            "id": "1",
+            "name": "Coolness",
+            "created": "2014-11-07 17:23:22",
+            "max_value": null,
+            "type": null,
+            "weight": null
+        }
+    },
+    {
+        "id": "24",
+        "criteria_id": "1",
+        "project_id": "1",
+        "value": "1",
+        "expert_id": "0",
+        "criteria": {
+            "id": "1",
+            "name": "Coolness",
+            "created": "2014-11-07 17:23:22",
+            "max_value": null,
+            "type": null,
+            "weight": null
+        }
+    },
+    {
+        "id": "25",
+        "criteria_id": "1",
+        "project_id": "1",
+        "value": "1",
+        "expert_id": "0",
+        "criteria": {
+            "id": "1",
+            "name": "Coolness",
+            "created": "2014-11-07 17:23:22",
+            "max_value": null,
+            "type": null,
+            "weight": null
+        }
+    },
+    {
+        "id": "26",
+        "criteria_id": "1",
+        "project_id": "1",
+        "value": "100",
+        "expert_id": "2",
+        "criteria": {
+            "id": "1",
+            "name": "Coolness",
+            "created": "2014-11-07 17:23:22",
+            "max_value": null,
+            "type": null,
+            "weight": null
+        }
+    },
+    {
+        "id": "27",
+        "criteria_id": "1",
+        "project_id": "1",
+        "value": "100",
+        "expert_id": "2",
+        "criteria": {
+            "id": "1",
+            "name": "Coolness",
+            "created": "2014-11-07 17:23:22",
+            "max_value": null,
+            "type": null,
+            "weight": null
+        }
+    },
+    {
+        "id": "28",
+        "criteria_id": "1",
+        "project_id": "1",
+        "value": "100",
+        "expert_id": "2",
+        "criteria": {
+            "id": "1",
+            "name": "Coolness",
+            "created": "2014-11-07 17:23:22",
+            "max_value": null,
+            "type": null,
+            "weight": null
+        }
+    },
+    {
+        "id": "29",
+        "criteria_id": "1",
+        "project_id": "1",
+        "value": "100",
+        "expert_id": "2",
+        "criteria": {
+            "id": "1",
+            "name": "Coolness",
+            "created": "2014-11-07 17:23:22",
+            "max_value": null,
+            "type": null,
+            "weight": null
+        }
+    },
+    {
+        "id": "30",
+        "criteria_id": "1",
+        "project_id": "1",
+        "value": "100",
+        "expert_id": "2",
+        "criteria": {
+            "id": "1",
+            "name": "Coolness",
+            "created": "2014-11-07 17:23:22",
+            "max_value": null,
+            "type": null,
+            "weight": null
+        }
+    },
+    {
+        "id": "31",
+        "criteria_id": "1",
+        "project_id": "1",
+        "value": "100",
+        "expert_id": "2",
+        "criteria": {
+            "id": "1",
+            "name": "Coolness",
+            "created": "2014-11-07 17:23:22",
+            "max_value": null,
+            "type": null,
+            "weight": null
+        }
+    },
+    {
+        "id": "32",
+        "criteria_id": "1",
+        "project_id": "1",
+        "value": "100",
+        "expert_id": "2",
+        "criteria": {
+            "id": "1",
+            "name": "Coolness",
+            "created": "2014-11-07 17:23:22",
+            "max_value": null,
+            "type": null,
+            "weight": null
+        }
+    },
+    {
+        "id": "33",
+        "criteria_id": "1",
+        "project_id": "1",
+        "value": "100",
+        "expert_id": "2",
+        "criteria": {
+            "id": "1",
+            "name": "Coolness",
+            "created": "2014-11-07 17:23:22",
+            "max_value": null,
+            "type": null,
+            "weight": null
+        }
+    },
+    {
+        "id": "34",
+        "criteria_id": "1",
+        "project_id": "1",
+        "value": "100",
+        "expert_id": "2",
+        "criteria": {
+            "id": "1",
+            "name": "Coolness",
+            "created": "2014-11-07 17:23:22",
+            "max_value": null,
+            "type": null,
+            "weight": null
+        }
+    },
+    {
+        "id": "35",
+        "criteria_id": "1",
+        "project_id": "1",
+        "value": "100",
+        "expert_id": "2",
+        "criteria": {
+            "id": "1",
+            "name": "Coolness",
+            "created": "2014-11-07 17:23:22",
+            "max_value": null,
+            "type": null,
+            "weight": null
+        }
+    },
+    {
+        "id": "36",
+        "criteria_id": "1",
+        "project_id": "1",
+        "value": "100",
+        "expert_id": "2",
+        "criteria": {
+            "id": "1",
+            "name": "Coolness",
+            "created": "2014-11-07 17:23:22",
+            "max_value": null,
+            "type": null,
+            "weight": null
+        }
+    },
+    {
+        "id": "37",
+        "criteria_id": "1",
+        "project_id": "1",
+        "value": "100",
+        "expert_id": "2",
+        "criteria": {
+            "id": "1",
+            "name": "Coolness",
+            "created": "2014-11-07 17:23:22",
+            "max_value": null,
+            "type": null,
+            "weight": null
+        }
+    },
+    {
+        "id": "38",
+        "criteria_id": "1",
+        "project_id": "1",
+        "value": "100",
+        "expert_id": "2",
+        "criteria": {
+            "id": "1",
+            "name": "Coolness",
+            "created": "2014-11-07 17:23:22",
+            "max_value": null,
+            "type": null,
+            "weight": null
+        }
+    },
+    {
+        "id": "39",
+        "criteria_id": "1",
+        "project_id": "1",
+        "value": "100",
+        "expert_id": "2",
+        "criteria": {
+            "id": "1",
+            "name": "Coolness",
+            "created": "2014-11-07 17:23:22",
+            "max_value": null,
+            "type": null,
+            "weight": null
+        }
+    },
+    {
+        "id": "40",
+        "criteria_id": "1",
+        "project_id": "1",
+        "value": "100",
+        "expert_id": "2",
+        "criteria": {
+            "id": "1",
+            "name": "Coolness",
+            "created": "2014-11-07 17:23:22",
+            "max_value": null,
+            "type": null,
+            "weight": null
+        }
+    }
+]
+
+ 
+ VIEW 
+Resourse GET /api/ProjectCriteria/{id}
+Response: 
+{
+    "id": "40",
+    "criteria_id": "1",
+    "project_id": "1",
+    "value": "100",
+    "expert_id": "2",
+    "criteria": {
+        "id": "1",
+        "name": "Coolness",
+        "created": "2014-11-07 17:23:22",
         "max_value": null,
         "type": null,
         "weight": null

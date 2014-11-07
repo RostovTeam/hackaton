@@ -1,1 +1,18 @@
 MemberProject
+
+ 
+ LIST 
+Resourse GET /api/Member/projects
+Response: 
+[
+    {
+        "id": "1",
+        "event_id": "1",
+        "owner_id": "1",
+        "name": "Test project",
+        "description": "test project desc",
+        "git_url": null,
+        "created": null,
+        "code_lines": null
+    }
+]

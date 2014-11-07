@@ -16,7 +16,8 @@ class EventApiTest extends RESTfulApiTestCase
         'end_date' => '2014-12-03 19:00:00',
     ];
     public $filter = [
-        'name' => 'best'
+        'name' => 'best',
+        'attended'=>1
     ];
     public $fixtures = [
         'events' => 'Event',

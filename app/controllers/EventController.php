@@ -43,13 +43,19 @@ class EventController extends RESTfulController
     {
         $cr = parent::getFilterCriteria();
 
-        $member = Member::model()->findByPk(Yii::app()->user->id);
+        if (Yii::app()->user->hasState('role') 
+                && (Yii::app()->user->role == 'member' || Yii::app()->user->role == 'expert') 
+                && Yii::app()->request->getParam('attended')
+        )
+        {
 
-        $cr->compare('id',
-                array_map(function($v)
-                {
-                    return $v->id;
-                }, $member->events));
+            $member = Member::model()->findByPk(Yii::app()->user->id);
+            $cr->compare('id',
+                    array_map(function($v)
+                    {
+                        return $v->id;
+                    }, $member->events));
+        }
 
         if ($name = Yii::app()->request->getParam('name'))
         {

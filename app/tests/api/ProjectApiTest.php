@@ -18,7 +18,8 @@ class ProjectApiTest extends RESTfulApiTestCase
     ];
     public $filter = [
         'name' => 'tesla',
-        'event_id' => 1
+        'event_id' => 1,
+        'attended'=>1
     ];
     public $fixtures = [
         'events' => 'Event',

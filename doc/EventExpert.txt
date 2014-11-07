@@ -1,1 +1,59 @@
 EventExpert
+
+
+ UPDATE 
+Resourse PUT /api/Event/1/experts/{id}
+Request: 
+{
+    "id": 1
+}
+Response: 
+{
+    "id": "1",
+    "full_name": "Elon Mask",
+    "email": null,
+    "phone": "79054447777",
+    "occupation": null,
+    "created": null,
+    "git_nickname": null,
+    "vk_link": null,
+    "active_event": "1",
+    "vk_token": null,
+    "login": null,
+    "password": null,
+    "type": "member",
+    "salt": null,
+    "is_perfomed_simple_login": "0"
+}
+
+ 
+ LIST 
+Resourse GET /api/Event/1/experts
+Response: 
+[
+    {
+        "id": "2",
+        "full_name": "Elon Mask 1",
+        "email": null,
+        "phone": "79054447776",
+        "occupation": null,
+        "created": null,
+        "git_nickname": null,
+        "vk_link": null,
+        "active_event": "1",
+        "vk_token": null,
+        "login": null,
+        "password": null,
+        "type": "expert",
+        "salt": null,
+        "is_perfomed_simple_login": "0"
+    }
+]
+
+ 
+ DELETE 
+Resourse DELETE /api/Event/1/experts/{id}
+Response: 
+{
+    "error": 0
+}
