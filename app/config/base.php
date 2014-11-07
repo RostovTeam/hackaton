@@ -45,6 +45,7 @@ return array(
                     'verb' => 'DELETE'),
                 array('<controller>/create', 'pattern' => 'api/<controller:[a-zA-Z]+>',
                     'verb' => 'POST'),
+                array('<controller>/<action>', 'pattern' => 'api/<controller:[a-zA-Z]+>/<action:[a-zA-Z]+>'),
                 
                 //relation patterns
                 array('<controller>/viewRelation',
