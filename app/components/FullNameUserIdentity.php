@@ -22,18 +22,24 @@ class FullNameUserIdentity extends CUserIdentity
     public function authenticate()
     {
         $normalized = Member::normalizeFullName($this->fullname);
-        $user = Member::model()->findByAttributes(['LOWER(full_name)' => strtolower($normalized),
-            'phone' => $this->phone]);
+        $user = Member::model()->find('LOWER(full_name)=:fullname and phone=:phone',
+                [
+            ':fullname' => strtolower($normalized),
+            ':phone' => $this->phone
+        ]);
 
         if (!$user)
         {
             $parts = explode(' ', $normalized);
 
             if (count($parts) >= 2)
-                    $user = Member::model()->findByAttributes(['LOWER(full_name)' => strtolower($parts[1] . ' ' . $parts[0]),
-                    'phone' => $this->phone]);
+                    $user = Member::model()->find('LOWER(full_name)=:fullname and phone=:phone',
+                        [
+                    ':fullname' => strtolower($parts[1] . ' ' . $parts[0]),
+                    ':phone' => $this->phone
+                ]);
         }
-        
+
         if ($user === null)
         {
             $this->errorCode = self::ERROR_USERNAME_INVALID;
