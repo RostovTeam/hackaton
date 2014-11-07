@@ -1,0 +1,49 @@
+<div class="row">
+    <div class="col-sm-12">
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                <h3 class="panel-title">
+                    Список мероприятий
+                </h3>
+            </div>
+            <div class="panel-body">
+                <div class="row">
+                    <div class="col-sm-12"> <label>
+                        Поиск:
+                    </label>
+                        <input ng-model="search">
+                    </div>
+                </div>
+                <table class="table table-condensed">
+                    <thead>
+                    <tr>
+                        <th>#</th>
+                        <th>Название</th>
+                        <th>Дата начала</th>
+                        <th>Дата завершения</th>
+                        <th>Статус</th>
+                        <th></th>
+                    </tr>
+                    </thead>
+                    <tbody ng-repeat="event in events | filter : search">
+                    <tr>
+                        <td>{{event.id}}</td>
+                        <td><a ui-sref="manager.eventEdit({id:event.id})">{{event.name}}</a></td>
+                        <td>{{event.start_date}}</td>
+                        <td>{{event.end_date}}</td>
+                        <td>{{event.is_active}}</td>
+                        <td>
+                            <a  ui-sref="manager.eventEdit({id: event.id})">
+                                <i class="fa fa-pencil"></i>
+                            </a>
+                            <a ng-click="delEvent(event.id)">
+                                <i class="fa fa-trash-o"></i>
+                            </a>
+                        </td>
+                    </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>

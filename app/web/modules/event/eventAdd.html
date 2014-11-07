@@ -1,0 +1,52 @@
+<div class="row">
+    <div class="col-sm-12">
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                <h3 class="panel-title">Добавить менеджера</h3>
+            </div>
+            <div class="panel-body">
+                <div class="row">
+                    <div class="col-sm-4">
+                        <form role="form" ng-submit="add()" ng-model="event">
+                            <div class="col-sm-12 " ng-form="">
+                                <div class="row">
+                                    <div class="form-group">
+                                        <label for="name">Название</label>
+                                        <input type="text"
+                                               placeholder=""
+                                               ui-mask=""
+                                               name="name"
+                                               ng-model="event.name"
+                                               id="name"
+                                               required="required"
+                                               class="form-control">
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="stat_date">Начало</label>
+                                        <input type=""
+                                               placeholder=""
+                                               ui-mask=""
+                                               name="stat_date"
+                                               ng-model="event.start_date"
+                                               id="stat_date"
+                                               class="form-control ">
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="end_date">Конец</label>
+                                        <input type="text"
+                                               name="end_date"
+                                               ng-model="event.end_date"
+                                               id="end_date"
+                                               class="form-control ">
+                                    </div>
+                                </div>
+                            </div>
+                            <button type="submit" class="btn btn-primary">Отправить</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</div>
