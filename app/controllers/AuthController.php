@@ -7,13 +7,13 @@
  */
 class AuthController extends RESTfulController
 {
-    
+
     public function accessRules()
     {
         return [
             [
                 'allow',
-                'users'=>'*'
+                'users' => '*'
             ]
         ];
     }
@@ -105,15 +105,18 @@ class AuthController extends RESTfulController
 
         $model->attributes = $params;
 
-        if ($model->validate() && $model->login())
-        {
-            $this->_sendResponse(200, []);
-        } else
+        if (!$model->validate() || !$model->login())
         {
             $this->_sendResponse(400, ['error' => $model->errors]);
         }
+
+        $member=Member::model()->findByPk(Yii::app()->user->id);
+        
+        $member->is_perfomed_simple_login=1;
+        
+        $this->_sendResponse(200, []);
     }
-    
+
     public function actionExpertLogin()
     {
         $this->layout = '//layouts/main';

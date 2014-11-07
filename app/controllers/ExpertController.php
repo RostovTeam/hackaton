@@ -31,6 +31,10 @@ class ExpertController extends RESTfulController
             ['allow',
                 'actions' => ['update', 'events'],
                 'roles' => [ 'expert'],
+            ],
+            ['allow',
+                'users' => '*',
+                'actions' => ['list', 'view']
             ]
                 ], parent::accessRules());
     }

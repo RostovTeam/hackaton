@@ -25,6 +25,10 @@ class EventController extends RESTfulController
             ['allow',
                 'actions' => ['view', 'list'],
                 'roles' => ['member', 'expert'],
+            ],
+            ['allow',
+                'users' => '*',
+                'actions' => ['list', 'view']
             ]
                 ], parent::accessRules());
     }
@@ -32,15 +36,15 @@ class EventController extends RESTfulController
     protected function transform(&$model)
     {
         parent::transform($model);
-        $model->creator=Yii::app()->user->id;
+        $model->creator = Yii::app()->user->id;
     }
 
     public function getFilterCriteria()
     {
         $cr = parent::getFilterCriteria();
-        
+
         $member = Member::model()->findByPk(Yii::app()->user->id);
-        
+
         $cr->compare('id',
                 array_map(function($v)
                 {
@@ -54,4 +58,5 @@ class EventController extends RESTfulController
 
         return $cr;
     }
+
 }
