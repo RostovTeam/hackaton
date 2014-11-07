@@ -14,9 +14,9 @@
     server: http://localhost:9877
 
     load:
-      - libs/angular-scenario.js
-      - libs/jstd-scenario-adapter-config.js
-      - libs/jstd-scenario-adapter.js
+      - lib/angular-scenario.js
+      - lib/jstd-scenario-adapter-config.js
+      - lib/jstd-scenario-adapter.js
       # your test files go here #
 
     proxy:
