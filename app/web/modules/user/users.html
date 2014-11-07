@@ -3,12 +3,12 @@
         <div class="panel panel-default">
             <div class="panel-heading">
                 <h3 class="panel-title">
-                    Список экспертов
+                    Список пользователей
                 </h3>
             </div>
             <div class="panel-body">
                 <div class="row">
-                    <div class="col-sm-12"><label>
+                    <div class="col-sm-12"> <label>
                         Поиск:
                     </label>
                         <input ng-model="search">
@@ -23,16 +23,16 @@
                         <th></th>
                     </tr>
                     </thead>
-                    <tbody ng-repeat="expert in experts | filter:search">
+                    <tbody ng-repeat="user in users | filter : search">
                     <tr>
-                        <td>{{expert.id}}</td>
-                        <td><a ui-sref="manager.expertEdit({id:expert.id})">{{expert.full_name}}</a></td>
-                        <td>{{expert.phone}}</td>
+                        <td>{{user.id}}</td>
+                        <td><a ui-sref="g.proj({id:project.id})">{{user.full_name}}</a></td>
+                        <td>{{user.phone}}</td>
                         <td>
-                            <a ui-sref="manager.expertEdit({id: user.id})">
+                            <a ui-sref="manager.userEdit({id: user.id})">
                                 <i class="fa fa-pencil"></i>
                             </a>
-                            <a ng-click="delExpert(expert.id)">
+                            <a ng-click="delUser(user.id)">
                                 <i class="fa fa-trash-o"></i>
                             </a>
                         </td>
