@@ -39,7 +39,7 @@ class ExpertController extends RESTfulController
     {
         parent::transform($model);
         $model->login = $model->phone;
-        
+
         $model->type = Member::MEMBER_TYPE_EXPERT;
     }
 
@@ -57,6 +57,12 @@ class ExpertController extends RESTfulController
     protected function getFilterCriteria()
     {
         $cr = parent::getFilterCriteria();
+
+        if ($event_id = Yii::app()->request->getParam('event_id'))
+        {
+            $cr->condition = 'id in (select members_id from event_members where event_id=:event_id)';
+            $cr->params[':event_id'] = $event_id;
+        }
 
         return $cr;
     }
