@@ -6,14 +6,21 @@ Resourse POST /api/Expert
 Request: 
 {
     "full_name": "Elon Mask",
-    "phone": "79054447777"
+    "phone": "79054447777",
+    "event_id": 1
 }
 Response: 
 {
-    "type": "expert",
     "full_name": "Elon Mask",
     "phone": "79054447777",
+    "email": null,
+    "git_nickname": null,
+    "occupation": null,
+    "active_event": 1,
     "login": "79054447777",
+    "password": null,
+    "salt": null,
+    "type": "expert",
     "created": {
         "expression": "CURRENT_TIMESTAMP",
         "params": [
@@ -21,14 +28,8 @@ Response:
         ]
     },
     "id": "4",
-    "email": null,
-    "occupation": null,
-    "git_nickname": null,
     "vk_link": null,
-    "active_event": null,
-    "vk_token": null,
-    "password": null,
-    "salt": null
+    "vk_token": null
 }
 
  
@@ -59,10 +60,10 @@ Response:
         "email": null,
         "phone": "79054447777",
         "occupation": null,
-        "created": "2014-11-07 04:56:56",
+        "created": "2014-11-07 05:58:54",
         "git_nickname": null,
         "vk_link": null,
-        "active_event": null,
+        "active_event": "1",
         "vk_token": null,
         "login": "79054447777",
         "password": null,
@@ -81,10 +82,10 @@ Response:
     "email": null,
     "phone": "79054447777",
     "occupation": null,
-    "created": "2014-11-07 04:56:56",
+    "created": "2014-11-07 05:58:54",
     "git_nickname": null,
     "vk_link": null,
-    "active_event": null,
+    "active_event": "1",
     "vk_token": null,
     "login": "79054447777",
     "password": null,
@@ -98,7 +99,8 @@ Resourse PUT /api/Expert/{id}
 Request: 
 {
     "full_name": "Elon Mask",
-    "phone": "79054447777"
+    "phone": "79054447777",
+    "event_id": 1
 }
 Response: 
 {
@@ -107,10 +109,10 @@ Response:
     "email": null,
     "phone": "79054447777",
     "occupation": null,
-    "created": "2014-11-07 04:56:56",
+    "created": "2014-11-07 05:58:54",
     "git_nickname": null,
     "vk_link": null,
-    "active_event": null,
+    "active_event": "1",
     "vk_token": null,
     "login": "79054447777",
     "password": null,
@@ -122,6 +124,4 @@ Response:
  DELETE 
 Resourse DELETE /api/Expert/{id}
 Response: 
-{
-    "error": 0
-}
+null

@@ -9,10 +9,12 @@ class ExpertController extends RESTfulController
 {
 
     protected $model;
+    protected $formModel;
 
     public function __construct()
     {
         $this->model = Expert::className();
+        $this->formModel = MemberForm::className();
     }
 
     public function accessRules()
@@ -37,6 +39,8 @@ class ExpertController extends RESTfulController
     {
         parent::transform($model);
         $model->login = $model->phone;
+        
+        $model->type = Member::MEMBER_TYPE_EXPERT;
     }
 
     public function getUpdateModel($id = false)

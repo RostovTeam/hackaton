@@ -13,6 +13,7 @@ class ExpertApiTest extends RESTfulApiTestCase
     public $data = [
         'full_name' => 'Elon Mask',
         'phone' => '79054447777',
+        'event_id' => 1
     ];
     public $filter = [
         'full_name' => 'Elon'
@@ -21,8 +22,8 @@ class ExpertApiTest extends RESTfulApiTestCase
         'events' => 'Event',
         'members' => 'Member',
         'roles' => 'Role',
-        'member_roles' => 'MemberRole',        
-        'event_members'=>':event_members'
+        'member_roles' => 'MemberRole',
+        'event_members' => ':event_members'
     ];
 
     public function auth()
