@@ -1,0 +1,116 @@
+<div class="row">
+    <div class="col-md-3 col-sm-6">
+        <div class="dashboard-tile detail tile-blue">
+            <div class="content">
+                <h1 class="text-left timer" data-from="0" data-to="180" data-speed="2500">180</h1>
+
+                <p>New Users</p>
+            </div>
+            <div class="icon"><i class="fa fa-users"></i>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-3 col-sm-6">
+        <div class="dashboard-tile detail tile-turquoise">
+            <div class="content">
+                <h1 class="text-left timer" data-from="0" data-to="56" data-speed="2500">56</h1>
+
+                <p>New Comments</p>
+            </div>
+            <div class="icon"><i class="fa fa-comments"></i>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-3 col-sm-6">
+        <div class="dashboard-tile detail tile-red">
+            <div class="content">
+                <h1 class="text-left timer" data-from="0" data-to="38" data-speed="2500">38</h1>
+
+                <p>New Messages</p>
+            </div>
+            <div class="icon"><i class="fa fa fa-envelope"></i>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-3 col-sm-6">
+        <div class="dashboard-tile detail tile-purple">
+            <div class="content">
+                <h1 class="text-left timer" data-to="105" data-speed="2500">105</h1>
+
+                <p>New Sales</p>
+            </div>
+            <div class="icon"><i class="fa fa-bar-chart-o"></i>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="row">
+    <div class="col-lg-6">
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                <h3 class="panel-title">Активность команд</h3>
+            </div>
+            <div class="panel-body">
+
+                <div ng-if="!stats">
+                    Статистика отсутствует
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-6">
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                <h3 class="panel-title">Топ 5</h3>
+            </div>
+            <div class="panel-body">
+                <table class="table table-condensed" ng-if="projects.length>0">
+                    <thead>
+                    <tr>
+                        <th></th>
+                        <th>Название команды</th>
+                        <th>Балы</th>
+                    </tr>
+                    </thead>
+                    <tbody ng-repeat="project in projects | orderBy:'mark':true | limitTo:5">
+                    <tr>
+                        <td>{{$index+1}}</td>
+                        <td><a ui-sref="g.proj({id:project.id})">{{project.name}}</a></td>
+                        <td>{{project.mark}}</td>
+                    </tr>
+                    </tbody>
+                </table>
+                <div ng-if="projects.length==0">
+                    Проекты отсутствуют
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="row">
+    <div class="col-md-12">
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                <h3 class="panel-title">Экспертный состав</h3>
+            </div>
+            <div class="panel-body">
+                <div class="row">
+                    <div class="col-sm-4 expert" ng-repeat="expert in experts">
+                        <div class="col-sm-2 photo img-circle" style="background-image: url({{expert.photo}})"></div>
+                        <div class="col-sm-10 info">
+                            <h5>
+                                {{expert.name}}
+                                <br>
+                                <small>
+                                    {{expert.des}}
+                                </small>
+                            </h5>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</div>
