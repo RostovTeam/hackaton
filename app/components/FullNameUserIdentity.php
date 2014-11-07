@@ -10,17 +10,29 @@ class FullNameUserIdentity extends CUserIdentity
 
     protected $_id;
     protected $fullname;
+    protected $phone;
 
-    public function __construct($fullname)
+    public function __construct($fullname, $phone)
     {
         $this->fullname = $fullname;
+        $this->phone = $phone;
         parent::__construct($fullname, '');
     }
 
     public function authenticate()
     {
-        $user = Member::model()->findByAttributes(['full_name' => $this->fullname]);
+        $normalized = Member::normalizeFullName($this->fullname);
+        $user = Member::model()->findByAttributes(['LOWER(full_name)' => strtolower($normalized),
+            'phone' => $this->phone]);
 
+        if (!$user)
+        {
+            $parts=explode(' ',$normalized);
+            
+            if(count($parts)>=2)
+            $user = Member::model()->findByAttributes(['LOWER(full_name)' => strtolower($parts[1].' '.$parts[0]),
+                'phone' => $this->phone]);
+        }
         if ($user === null)
         {
             $this->errorCode = self::ERROR_USERNAME_INVALID;

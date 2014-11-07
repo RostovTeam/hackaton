@@ -113,6 +113,9 @@ class Member extends ActiveRecord
         {
             $this->addToEvent($this->event_id);
         }
+        
+        $tihs->full_name= self::normalizeFullName($this->full_name);
+                
 
         return true;
     }
@@ -164,6 +167,21 @@ class Member extends ActiveRecord
     public static function model($className = __CLASS__)
     {
         return parent::model($className);
+    }
+
+    public static function normalizeFullName($fullname)
+    {
+        $_i = trim(preg_replace('/\s+/', ' ', $fullname));
+
+        $parts = explode(' ', $_i);
+
+        if (count($parts) >= 2)
+        {
+            return $parts[0] . ' ' . $parts[1];
+        } else
+        {
+            return $i;
+        }
     }
 
 }

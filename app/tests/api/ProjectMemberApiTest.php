@@ -39,13 +39,13 @@ class ProjectMemberApiTest extends RESTfulApiTestCase
     public function auth()
     {
         $login = $this->members('member1')['full_name'];
-//        $password = 'password';
+        $phone = $this->members('member1')['phone'];
 
         $r = $this->request([
             'url' => '/index.php/auth/FullNameLogin',
             'data' => [
                 'fullname' => $login,
-//                'password' => $password
+                'phone' => $phone
             ]
         ]);
     }
