@@ -1,0 +1,45 @@
+<div class="row">
+    <div class="col-sm-12">
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                <h3 class="panel-title">
+                    Список экспертов
+                </h3>
+            </div>
+            <div class="panel-body">
+                <div class="row">
+                    <div class="col-sm-12"> <label>
+                        Поиск:
+                    </label>
+                        <input ng-model="search">
+                    </div>
+                </div>
+                <table class="table table-condensed">
+                    <thead>
+                    <tr>
+                        <th>#</th>
+                        <th>Имя</th>
+                        <th>Телефон</th>
+                        <th></th>
+                    </tr>
+                    </thead>
+                    <tbody ng-repeat="expert in experts | filter:search">
+                    <tr>
+                        <td>{{expert.id}}</td>
+                        <td><a ui-sref="manager.expertEdit({id:expert.id})">{{expert.full_name}}</a></td>
+                        <td>{{expert.phone}}</td>
+                        <td>
+                            <a ui-sref="manager.expertEdit({id: user.id})">
+                                <i class="fa fa-pencil"></i>
+                            </a>
+                            <a ng-click="delExpert(expert.id)">
+                                <i class="fa fa-trash-o"></i>
+                            </a>
+                        </td>
+                    </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
