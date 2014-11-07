@@ -1,0 +1,49 @@
+<aside class="sidebar">
+    <div id="leftside-navigation" class="nano">
+        <ul class="nano-content">
+
+            <li class="sub-menu" ui-sref-active="active">
+                <a ui-sref="admin.managers">
+                    <span>Менеджеры</span>
+                    <!--<i class="arrow fa fa-angle-right pull-right"></i>-->
+                </a>
+                <!--
+                <ul>
+                    <li ui-sref-active="active">
+                        <a ui-sref="admin.managerAdd">
+                            Добавить менеджера
+                        </a>
+                    </li>
+                </ul>
+                -->
+            </li>
+            <li class="sub-menu" ui-sref-active="active">
+                <a ui-sref="admin.managerAdd">
+                    Добавить менеджера
+                </a>
+            </li>
+        </ul>
+    </div>
+</aside>
+<div class="main-content-wrapper">
+    <div id="main-content">
+        <div ui-view></div>
+    </div>
+</div>
+<ul class="messenger messenger-fixed messenger-on-bottom messenger-on-right messenger-theme-flat">
+    <li class="messenger-message-slot messenger-shown" ng-repeat="alert in alerts" ng-class="{'messenger-first': $index==0, 'messenger-last': $index==alerts.length-1}">
+        <div class="messenger-message message alert messenger-will-hide-after {{alert.type}} message-{{alert.type}} alert-{{alert.type}}">
+            <div class="messenger-message-inner">
+                {{alert.msg}}
+            </div>
+            <div class="messenger-spinner">
+                <span class="messenger-spinner-side messenger-spinner-side-left">
+                    <span class="messenger-spinner-fill"></span>
+                </span>
+                <span class="messenger-spinner-side messenger-spinner-side-right">
+                    <span class="messenger-spinner-fill"></span>
+                </span>
+            </div>
+        </div>
+    </li>
+</ul>

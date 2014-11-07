@@ -1,0 +1,49 @@
+<div class="row">
+    <div class="col-sm-12">
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                <h3 class="panel-title">
+                    Список критериев
+                </h3>
+            </div>
+            <div class="panel-body">
+                <div class="row">
+                    <div class="col-sm-12"> <label>
+                        Поиск:
+                    </label>
+                        <input ng-model="search">
+                    </div>
+                </div>
+                <table class="table table-condensed">
+                    <thead>
+                    <tr>
+                        <th>#</th>
+                        <th>Название</th>
+                        <th>Допустимые значения(баллы)</th>
+                        <th></th>
+                    </tr>
+                    </thead>
+                    <tbody ng-repeat="criteria in criterias | filter : search">
+                    <tr>
+                        <td>{{criteria.id}}</td>
+                        <td><a ui-sref="manager.criteriaEdit({id:criteria.id})">{{criteria.name}}</a></td>
+                        <td>
+                            <span ng-repeat="value in criteria.values">
+                                {{value.label}}({{value.value}})
+                            </span>
+                        </td>
+                        <td>
+                            <a  ui-sref="manager.criteriaEdit({id: criteria.id})">
+                                <i class="fa fa-pencil"></i>
+                            </a>
+                            <a href="#" ng-click="delCriteria(criteria.id)">
+                                <i class="fa fa-trash-o"></i>
+                            </a>
+                        </td>
+                    </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
