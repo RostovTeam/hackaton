@@ -8,7 +8,7 @@
 class EventMemberApiTest extends RESTfulApiTestCase
 {
 
-    public $modelName = 'EventMember';
+    public $modelName = 'EventManager';
     public $resourse = '/api/Event/1/members';
     public $data = [
         'id' => 1

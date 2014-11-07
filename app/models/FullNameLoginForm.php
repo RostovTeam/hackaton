@@ -9,6 +9,7 @@ class FullNameLoginForm extends CFormModel
 {
 
     public $fullname;
+    public $phone;
     private $_identity;
 
     /**
@@ -19,7 +20,7 @@ class FullNameLoginForm extends CFormModel
     public function rules()
     {
         return array(
-            array('fullname', 'required'),
+            array('fullname,phone', 'required'),
             array('fullname', 'authenticate')
         );
     }
@@ -38,7 +39,7 @@ class FullNameLoginForm extends CFormModel
     {
         if (!$this->hasErrors())
         {
-            $this->_identity = new FullNameUserIdentity($this->fullname);
+            $this->_identity = new FullNameUserIdentity($this->fullname,$this->phone);
             if (!$this->_identity->authenticate())
                     $this->addError('phone', 'Номер не найден');
         }
@@ -52,7 +53,7 @@ class FullNameLoginForm extends CFormModel
     {
         if ($this->_identity === null)
         {
-            $this->_identity = new FullNameUserIdentity($this->fullname);
+            $this->_identity = new FullNameUserIdentity($this->fullname,$this->phone);
             $this->_identity->authenticate();
         }
 

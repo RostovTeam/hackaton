@@ -5,19 +5,19 @@
  *
  * @author Komov Roman
  */
-class ProjectMemberApiTest extends RESTfulApiTestCase
+class EventExpertsApiTest extends RESTfulApiTestCase
 {
 
-    public $modelName = 'ProjectMember';
-    public $resourse = '/api/Project/1/members';
+    public $modelName = 'EventExpert';
+    public $resourse = '/api/Event/1/experts';
     public $data = [
         'id' => 1
     ];
     public $fixtures = [
-        'events'=>'Event',
+        'events' => 'Event',
         'members' => 'Member',
-        'roles'=>'Role',
-        'member_roles'=>'MemberRole',
+        'roles' => 'Role',
+        'member_roles' => 'MemberRole',
         'projects' => 'Project',
         'projects_members' => ':projects_members'
     ];
@@ -38,14 +38,14 @@ class ProjectMemberApiTest extends RESTfulApiTestCase
 
     public function auth()
     {
-        $login = $this->members('member1')['full_name'];
-        $phone = $this->members('member1')['phone'];
+        $login = $this->members('manager1')['login'];
+        $password = $this->members('manager1')['password'];
 
         $r = $this->request([
-            'url' => '/index.php/auth/FullNameLogin',
+            'url' => '/index.php/auth/login',
             'data' => [
-                'fullname' => $login,
-                'phone' => $phone
+                'login' => $login,
+                'password' => $password
             ]
         ]);
     }
