@@ -45,7 +45,12 @@ class Event extends ActiveRecord
     public function relations()
     {
         return array(
-            'members' => array(self::MANY_MANY, Member::className(), 'event_members(event_id, members_id)'),
+            'members' => array(self::MANY_MANY, Member::className(), 'event_members(event_id, members_id)',
+                'condition' => 'members.type=:type', 'params' => [':type' => Member::MEMBER_TYPE_MEMBER]),
+            'managers' => array(self::MANY_MANY, Member::className(), 'event_members(event_id, members_id)',
+                'condition' => 'managers.type=:type', 'params' => [ ':type' => Member::MEMBER_TYPE_MANAGER]),
+            'experts' => array(self::MANY_MANY, Member::className(), 'event_members(event_id, members_id)',
+                'condition' => 'experts.type=:type', 'params' => [':type' => Member::MEMBER_TYPE_EXPERT]),
             'projects' => array(self::HAS_MANY, Project::className(), 'event_id'),
             'criterias' => array(self::MANY_MANY, Criteria::className(), 'event_criterias(event_id, criteria_id)'),
         );

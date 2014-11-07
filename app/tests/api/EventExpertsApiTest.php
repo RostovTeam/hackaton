@@ -5,11 +5,11 @@
  *
  * @author Komov Roman
  */
-class EventMemberApiTest extends RESTfulApiTestCase
+class EventExpertsApiTest extends RESTfulApiTestCase
 {
 
-    public $modelName = 'EventManager';
-    public $resourse = '/api/Event/1/members';
+    public $modelName = 'EventExpert';
+    public $resourse = '/api/Event/1/experts';
     public $data = [
         'id' => 1
     ];

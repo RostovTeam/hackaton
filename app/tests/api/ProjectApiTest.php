@@ -17,20 +17,22 @@ class ProjectApiTest extends RESTfulApiTestCase
         'event_id' => 1
     ];
     public $filter = [
-        'name' => 'tesla'
+        'name' => 'tesla',
+        'event_id' => 1
     ];
     public $fixtures = [
-        'events'=>'Event',
+        'events' => 'Event',
         'members' => 'Member',
         'roles' => 'Role',
         'member_roles' => 'MemberRole',
-        'projects'=>'Project',
+        'projects' => 'Project',
         'projects_members' => ':projects_members'
     ];
 
     public function auth()
     {
-        $login = 'Elon Mask';$this->members('member1')['full_name'];
+        $login = 'Elon Mask';
+        $this->members('member1')['full_name'];
 
         $r = $this->request([
             'url' => '/index.php/auth/FullNameLogin',
