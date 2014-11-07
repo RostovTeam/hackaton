@@ -40,7 +40,7 @@ class ProjectController extends RESTfulController
 
         $cr->with = ['members', 'owner', 'projectCriterias'];
 
-        if (Yii::app()->user->role == 'member' || Yii::app()->user->role == 'expert')
+        if (Yii::app()->user->hasState('role') && (Yii::app()->user->role == 'member' || Yii::app()->user->role == 'expert'))
         {
             $member = Member::model()->findByPk(Yii::app()->user->id);
             $cr->compare('event_id',
