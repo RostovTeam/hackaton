@@ -20,6 +20,7 @@ class MemberForm extends FormModel
     public $password;
     public $salt;
     public $type = Member::MEMBER_TYPE_MEMBER;
+    public $is_perfomed_simple_login=0;
 
     public function rules()
     {
