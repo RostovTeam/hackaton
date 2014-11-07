@@ -19,7 +19,8 @@ class ProjectController extends RESTfulController
     {
         return array_merge(
                 [
-            ['allow',
+            [
+                'allow',
                 'roles' => ['member'],
             ],
             ['allow',
