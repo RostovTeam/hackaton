@@ -33,7 +33,7 @@ Response:
     {
         "id": "1",
         "name": "Coolness",
-        "created": "2014-11-07 17:03:09",
+        "created": "2014-11-07 17:22:05",
         "max_value": null,
         "type": null,
         "weight": null,
@@ -61,7 +61,7 @@ Response:
     {
         "id": "2",
         "name": "Coolness",
-        "created": "2014-11-07 17:03:11",
+        "created": "2014-11-07 17:22:08",
         "max_value": null,
         "type": null,
         "weight": null,
@@ -78,7 +78,7 @@ Response:
 {
     "id": "2",
     "name": "Coolness",
-    "created": "2014-11-07 17:03:11",
+    "created": "2014-11-07 17:22:08",
     "max_value": null,
     "type": null,
     "weight": null,
@@ -98,7 +98,7 @@ Response:
 {
     "id": "2",
     "name": "Coolness",
-    "created": "2014-11-07 17:03:11",
+    "created": "2014-11-07 17:22:08",
     "max_value": null,
     "type": null,
     "weight": null,

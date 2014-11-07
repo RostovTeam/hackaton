@@ -14,7 +14,7 @@ Response:
     "value": "1",
     "criteria_id": "1",
     "label": "test",
-    "id": "17"
+    "id": "19"
 }
 
  
@@ -41,7 +41,7 @@ Response:
         "label": null
     },
     {
-        "id": "17",
+        "id": "19",
         "criteria_id": "1",
         "value": "1",
         "label": "test"
@@ -53,7 +53,7 @@ Response:
 Resourse GET /api/CriteriaValue/{id}
 Response: 
 {
-    "id": "17",
+    "id": "19",
     "criteria_id": "1",
     "value": "1",
     "label": "test"
@@ -70,7 +70,7 @@ Request:
 }
 Response: 
 {
-    "id": "17",
+    "id": "19",
     "criteria_id": "1",
     "value": "1",
     "label": "test"

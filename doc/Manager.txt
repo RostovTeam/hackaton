@@ -16,7 +16,7 @@ Response:
     "full_name": "Larry Page",
     "phone": "79054447777",
     "login": "login",
-    "password": "247fc5988625e184b319d699112ceee1",
+    "password": "eb11147dcc1a2188d73aeae0950bdab8",
     "type": "manager",
     "created": {
         "expression": "CURRENT_TIMESTAMP",
@@ -24,7 +24,7 @@ Response:
 
         ]
     },
-    "salt": "545cc33f5dea95.42446868",
+    "salt": "545cc7b05807f9.90475760",
     "id": "4",
     "email": null,
     "occupation": null,
@@ -63,15 +63,15 @@ Response:
         "email": null,
         "phone": "79054447777",
         "occupation": null,
-        "created": "2014-11-07 17:03:59",
+        "created": "2014-11-07 17:22:56",
         "git_nickname": null,
         "vk_link": null,
         "active_event": null,
         "vk_token": null,
         "login": "login",
-        "password": "247fc5988625e184b319d699112ceee1",
+        "password": "eb11147dcc1a2188d73aeae0950bdab8",
         "type": "manager",
-        "salt": "545cc33f5dea95.42446868",
+        "salt": "545cc7b05807f9.90475760",
         "is_perfomed_simple_login": "0"
     }
 ]
@@ -86,15 +86,15 @@ Response:
     "email": null,
     "phone": "79054447777",
     "occupation": null,
-    "created": "2014-11-07 17:03:59",
+    "created": "2014-11-07 17:22:56",
     "git_nickname": null,
     "vk_link": null,
     "active_event": null,
     "vk_token": null,
     "login": "login",
-    "password": "247fc5988625e184b319d699112ceee1",
+    "password": "eb11147dcc1a2188d73aeae0950bdab8",
     "type": "manager",
-    "salt": "545cc33f5dea95.42446868",
+    "salt": "545cc7b05807f9.90475760",
     "is_perfomed_simple_login": "0"
 }
 
@@ -115,7 +115,7 @@ Response:
     "email": null,
     "phone": "79054447777",
     "occupation": null,
-    "created": "2014-11-07 17:03:59",
+    "created": "2014-11-07 17:22:56",
     "git_nickname": null,
     "vk_link": null,
     "active_event": null,
@@ -123,7 +123,7 @@ Response:
     "login": "login",
     "password": "password",
     "type": "manager",
-    "salt": "545cc33f5dea95.42446868",
+    "salt": "545cc7b05807f9.90475760",
     "is_perfomed_simple_login": "0"
 }
 
