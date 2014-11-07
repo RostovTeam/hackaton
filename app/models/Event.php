@@ -17,6 +17,8 @@
 class Event extends ActiveRecord
 {
 
+    public $is_active = 1;
+
     /**
      * @return string the associated database table name
      */
@@ -31,7 +33,7 @@ class Event extends ActiveRecord
     public function rules()
     {
         return array(
-            array('name,creator', 'length', 'max' => 45),
+            array('name,creator,is_active', 'length', 'max' => 45),
             array('start_date, end_date, created', 'safe'),
             array('id, name, start_date, end_date, created', 'safe', 'on' => 'search'),
         );
@@ -45,29 +47,30 @@ class Event extends ActiveRecord
         return array(
             'members' => array(self::MANY_MANY, Member::className(), 'event_members(event_id, members_id)'),
             'projects' => array(self::HAS_MANY, Project::className(), 'event_id'),
-            'criterias'=> array(self::MANY_MANY, Criteria::className(), 'event_criterias(event_id, criteria_id)'),
+            'criterias' => array(self::MANY_MANY, Criteria::className(), 'event_criterias(event_id, criteria_id)'),
         );
     }
-    
+
     public function afterSave()
     {
         parent::afterSave();
-        
-        if($this->isNewRecord)
+
+        if ($this->isNewRecord)
         {
             $this->addMember($this->creator);
         }
     }
-    
+
     public function addMember($member_id)
     {
-        return  Yii::app()->db->createCommand()->insert('event_members', ['event_id'=>$this->id,'members_id'=>$member_id]);
+        return Yii::app()->db->createCommand()->insert('event_members',
+                        ['event_id' => $this->id, 'members_id' => $member_id]);
     }
 
     public function isActive()
     {
 //        $date = date('Y-m-d');
-        return $this->is_active;//$date >= $this->start && $date >= $this->end;
+        return $this->is_active; //$date >= $this->start && $date >= $this->end;
     }
 
     /**
