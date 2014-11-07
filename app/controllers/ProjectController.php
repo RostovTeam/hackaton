@@ -26,15 +26,19 @@ class ProjectController extends RESTfulController
             ['allow',
                 'roles' => ['manager', 'expert'],
                 'actions' => ['list', 'view']
+            ],
+            ['allow',
+                'users' => '*',
+                'actions' => ['list', 'view']
             ]
                 ], parent::accessRules());
     }
-    
+
     public function getFilterCriteria()
     {
         $cr = parent::getFilterCriteria();
 
-        $cr->with = ['members', 'owner','projectCriterias'];
+        $cr->with = ['members', 'owner', 'projectCriterias'];
 
         if (Yii::app()->user->role == 'member' || Yii::app()->user->role == 'expert')
         {
@@ -64,12 +68,11 @@ class ProjectController extends RESTfulController
     {
         parent::transform($model);
 
-        if (!Yii::app()->user->active_event)
+        if (Yii::app()->user->hasState('active_event') && Yii::app()->user->active_event)
         {
-            $this->_sendResponse(403, 'Cant create project: there are no events');
+            $model->event_id = Yii::app()->user->active_event;
         }
 
-        $model->event_id = Yii::app()->user->active_event;
         $model->owner_id = Yii::app()->user->id;
     }
 
@@ -77,12 +80,16 @@ class ProjectController extends RESTfulController
     {
         $row = $model->attributes;
 
-        $row['owner'] = $model->owner;
-        $row['members'] = $model->members;
+        if (!Yii::app()->user->isGuest)
+        {
+            $row['members'] = $model->members;
+            $row['owner'] = $model->owner;
+        }
+
         $row['mark'] = $model->getMark();
         $row['is_active'] = $model->isActive();
-        $row['criterias']=$model->projectCriterias();
-        
+        $row['criterias'] = $model->projectCriterias();
+
         return $row;
     }
 
