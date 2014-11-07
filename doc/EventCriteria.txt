@@ -1,0 +1,41 @@
+EventCriteria
+
+
+ UPDATE 
+Resourse PUT /api/Event/1/criterias/{id}
+Request: 
+{
+    "id": 1
+}
+Response: 
+{
+    "id": "1",
+    "name": "Coolness",
+    "created": "2014-11-07 02:09:51",
+    "max_value": null,
+    "type": null,
+    "weight": null
+}
+
+ 
+ LIST 
+Resourse GET /api/Event/1/criterias
+Response: 
+[
+    {
+        "id": "1",
+        "name": "Coolness",
+        "created": "2014-11-07 02:09:51",
+        "max_value": null,
+        "type": null,
+        "weight": null
+    }
+]
+
+ 
+ DELETE 
+Resourse DELETE /api/Event/1/criterias/{id}
+Response: 
+{
+    "error": 0
+}

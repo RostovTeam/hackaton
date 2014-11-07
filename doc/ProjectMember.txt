@@ -11,9 +11,9 @@ Response:
 {
     "id": "1",
     "full_name": "Elon Mask",
-    "number": null,
     "email": null,
     "phone": "79054447777",
+    "occupation": null,
     "created": null,
     "git_nickname": null,
     "vk_link": null,
@@ -33,9 +33,9 @@ Response:
     {
         "id": "1",
         "full_name": "Elon Mask",
-        "number": null,
         "email": null,
         "phone": "79054447777",
+        "occupation": null,
         "created": null,
         "git_nickname": null,
         "vk_link": null,

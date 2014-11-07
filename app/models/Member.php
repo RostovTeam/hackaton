@@ -24,7 +24,7 @@ class Member extends ActiveRecord
     const MEMBER_TYPE_EXPERT = 'expert';
 
     public $event_id;
-    
+
     /**
      * @return string the associated database table name
      */
@@ -40,21 +40,22 @@ class Member extends ActiveRecord
     {
         return array(
             array('full_name', 'required'),
+            array('login,password', 'required', 'on' => 'change_password'),
             array('full_name', 'length', 'max' => 450),
-            array('number', 'length', 'max' => 45),
+            array('occupation', 'safe',),
             array('email', 'length', 'max' => 200),
             array('phone', 'length', 'max' => 20),
             array('git_nickname', 'length', 'max' => 50),
             array('vk_link', 'length', 'max' => 100),
-            array('user_id,vk_link', 'unsafe'),
-            array('active_event','numerical','integerOnly'=>true),
+            array('vk_link', 'unsafe'),
+            array('active_event', 'numerical', 'integerOnly' => true),
             array('type', 'in', 'range' => ['member', 'manager', 'expert']),
             array('type', 'unsafe'),
             array('type', 'required'),
             array('login', 'length', 'max' => 45),
             array('password, salt', 'length', 'max' => 400),
             array('id, login, password, salt', 'safe', 'on' => 'search'),
-            array('id, user_id, full_name, email, phone, created, git_nickname, vk_link',
+            array('id, full_name, email, phone, created, git_nickname, vk_link',
                 'safe', 'on' => 'search'),
         );
     }
@@ -107,19 +108,19 @@ class Member extends ActiveRecord
             $this->salt = $this->generateSalt();
             $this->password = $this->hashPassword($this->password, $this->salt);
         }
-        
-        if($this->isNewRecord && $this->event_id)
+
+        if ($this->isNewRecord && $this->event_id)
         {
             $this->addToEvent($this->event_id);
         }
-        
+
         return true;
     }
 
     public function addToEvent($event_id)
     {
         return Yii::app()->db->createCommand()->insert('event_members',
-                ['member_id' => $this->id, 'event_id' => $event_id]);
+                        ['members_id' => $this->id, 'event_id' => $event_id]);
     }
 
     /**

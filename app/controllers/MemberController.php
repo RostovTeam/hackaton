@@ -9,9 +9,11 @@ class MemberController extends RESTfulController
 {
 
     protected $model;
+    protected $formModel;
 
     public function __construct()
     {
+        $this->formModel = MemberForm::className();
         $this->model = Member::className();
     }
 
@@ -20,8 +22,8 @@ class MemberController extends RESTfulController
         return array_merge(
                 [
             ['allow',
-                'actions' => ['view'],
-                 'roles' => ['member'],
+                'actions' => ['list', 'view', 'update', 'changePassword'],
+                'roles' => ['member'],
             ],
             ['allow',
                 'roles' => ['manager']
@@ -34,6 +36,22 @@ class MemberController extends RESTfulController
         $cr = parent::getFilterCriteria();
         $cr->compare('type', Member::MEMBER_TYPE_MEMBER);
 
+        if (Yii::app()->user->role == 'member')
+        {
+            $cr->limit = 7;
+
+            if ($fullname = Yii::app()->request->getParam('full_name') && count($fullname) >= 3)
+            {
+                //too hardcore... i know
+                $cr->condition = 'LOWER(full_name like) LIKE :fullname';
+                $cr[':fullname'] = '%' . strtolower(trim($fullname)) . '%';
+            } else
+            {
+                //fo not show list of members without filter
+                return null;
+            }
+        }
+
         return $cr;
     }
 
@@ -42,9 +60,20 @@ class MemberController extends RESTfulController
         parent::transform($model);
         $model->type = Member::MEMBER_TYPE_MEMBER;
 
-        if (Yii::app()->user->role == 'manager')
+//        if (Yii::app()->user->role == 'manager')
+//        {
+//            $model->active_event = Yii::app()->user->active_event;
+//        }
+    }
+
+    public function getUpdateModel($id)
+    {
+        if (Yii::app()->user->role == 'member')
         {
-            $model->active_event = Yii::app()->user->active_event;
+            return Member::model()->findByPk(Yii::app()->user->id);
+        } else
+        {
+            return parent::getUpdateModel($id);
         }
     }
 
@@ -63,6 +92,28 @@ class MemberController extends RESTfulController
         }
 
         $this->_sendResponse(200, $member->attributes);
+    }
+
+    public function actionChangePassword()
+    {
+        $member = Member::model()->find('id=:id and type=:type',
+                [':id' => Yii::app()->user->id, ':type' => 'member']);
+
+        if (!$member)
+        {
+            $this->_sendResponse('404', 'Member not found');
+        }
+
+        $member->scenario = 'change_password';
+
+        $member->attributes = Yii::app()->request->getJsonData();
+
+        if (!$member->save())
+        {
+            $this->_sendResponse('400', ['validation_erros' => $member->errors]);
+        }
+
+        $this->_sendResponse('200', ['ok']);
     }
 
 }

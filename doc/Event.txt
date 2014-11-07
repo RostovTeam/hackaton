@@ -13,6 +13,7 @@ Response:
 {
     "name": "best future development",
     "end_date": "2014-12-03 19:00:00",
+    "creator": "3",
     "created": {
         "expression": "CURRENT_TIMESTAMP",
         "params": [
@@ -31,20 +32,13 @@ FILTER   name
 Response: 
 [
     {
-        "id": "1",
-        "name": "best future development",
-        "is_active": "1",
-        "start_date": null,
-        "end_date": "2014-12-03 19:00:00",
-        "created": "2014-11-05 05:57:26"
-    },
-    {
         "id": "2",
         "name": "best future development",
         "is_active": null,
         "start_date": null,
         "end_date": "2014-12-03 19:00:00",
-        "created": "2014-11-05 05:57:28"
+        "created": "2014-11-07 02:09:46",
+        "creator": "3"
     }
 ]
 
@@ -58,7 +52,8 @@ Response:
     "is_active": null,
     "start_date": null,
     "end_date": "2014-12-03 19:00:00",
-    "created": "2014-11-05 05:57:28"
+    "created": "2014-11-07 02:09:46",
+    "creator": "3"
 }
 
 
@@ -77,13 +72,12 @@ Response:
     "is_active": null,
     "start_date": null,
     "end_date": "2014-12-03 19:00:00",
-    "created": "2014-11-05 05:57:28"
+    "created": "2014-11-07 02:09:46",
+    "creator": "3"
 }
 
  
  DELETE 
 Resourse DELETE /api/Event/{id}
 Response: 
-{
-    "error": 0
-}
+null

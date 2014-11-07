@@ -7,13 +7,15 @@ Request:
 {
     "full_name": "Larry Page",
     "phone": "79054447777",
-    "active_event": 1
+    "login": "login",
+    "password": "password"
 }
 Response: 
 {
     "full_name": "Larry Page",
     "phone": "79054447777",
-    "active_event": 1,
+    "login": "login",
+    "password": "af795bbdf86109257b6336a2dbd2753d",
     "type": "manager",
     "created": {
         "expression": "CURRENT_TIMESTAMP",
@@ -21,15 +23,14 @@ Response:
 
         ]
     },
+    "salt": "545bf1c37d07a6.41589446",
     "id": "4",
-    "number": null,
     "email": null,
+    "occupation": null,
     "git_nickname": null,
     "vk_link": null,
-    "vk_token": null,
-    "login": null,
-    "password": null,
-    "salt": null
+    "active_event": null,
+    "vk_token": null
 }
 
  
@@ -41,9 +42,9 @@ Response:
     {
         "id": "3",
         "full_name": "Elon Mask 2",
-        "number": null,
         "email": null,
         "phone": "79054447777",
+        "occupation": null,
         "created": null,
         "git_nickname": null,
         "vk_link": null,
@@ -57,18 +58,18 @@ Response:
     {
         "id": "4",
         "full_name": "Larry Page",
-        "number": null,
         "email": null,
         "phone": "79054447777",
-        "created": "2014-11-05 05:57:46",
+        "occupation": null,
+        "created": "2014-11-07 02:10:11",
         "git_nickname": null,
         "vk_link": null,
-        "active_event": "1",
+        "active_event": null,
         "vk_token": null,
-        "login": null,
-        "password": null,
+        "login": "login",
+        "password": "af795bbdf86109257b6336a2dbd2753d",
         "type": "manager",
-        "salt": null
+        "salt": "545bf1c37d07a6.41589446"
     }
 ]
 
@@ -79,18 +80,18 @@ Response:
 {
     "id": "4",
     "full_name": "Larry Page",
-    "number": null,
     "email": null,
     "phone": "79054447777",
-    "created": "2014-11-05 05:57:46",
+    "occupation": null,
+    "created": "2014-11-07 02:10:11",
     "git_nickname": null,
     "vk_link": null,
-    "active_event": "1",
+    "active_event": null,
     "vk_token": null,
-    "login": null,
-    "password": null,
+    "login": "login",
+    "password": "af795bbdf86109257b6336a2dbd2753d",
     "type": "manager",
-    "salt": null
+    "salt": "545bf1c37d07a6.41589446"
 }
 
 
@@ -100,24 +101,25 @@ Request:
 {
     "full_name": "Larry Page",
     "phone": "79054447777",
-    "active_event": 1
+    "login": "login",
+    "password": "password"
 }
 Response: 
 {
     "id": "4",
     "full_name": "Larry Page",
-    "number": null,
     "email": null,
     "phone": "79054447777",
-    "created": "2014-11-05 05:57:46",
+    "occupation": null,
+    "created": "2014-11-07 02:10:11",
     "git_nickname": null,
     "vk_link": null,
-    "active_event": 1,
+    "active_event": null,
     "vk_token": null,
-    "login": null,
-    "password": null,
+    "login": "login",
+    "password": "password",
     "type": "manager",
-    "salt": null
+    "salt": "545bf1c37d07a6.41589446"
 }
 
  

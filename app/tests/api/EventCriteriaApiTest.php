@@ -5,26 +5,37 @@
  *
  * @author Komov Roman
  */
-class EventApiTest extends RESTfulApiTestCase
+class EventCriteriaApiTest extends RESTfulApiTestCase
 {
 
-    public $modelName = 'Event';
-    public $resourse = '/api/Event';
+    public $modelName = 'EventCriteria';
+    public $resourse = '/api/Event/1/criterias';
     public $data = [
-        'name' => 'best future development',
-        'stat_date' => '2014-12-01 17:00:00',
-        'end_date' => '2014-12-03 19:00:00',
-    ];
-    public $filter = [
-        'name' => 'best'
+        'id' => 1
     ];
     public $fixtures = [
         'events' => 'Event',
         'members' => 'Member',
         'roles' => 'Role',
         'member_roles' => 'MemberRole',
-        'event_members'=>':event_members'
+        'projects' => 'Project',
+        'projects_members' => ':projects_members',
+        'criterias'=>'Criteria'
     ];
+
+    public function testApi()
+    {
+        $this->auth();
+
+        //add m:n relation
+        $this->_update(1);
+
+        //list relations
+        $this->_list();
+
+        //drop relation
+        $this->_delete(1);
+    }
 
     public function auth()
     {

@@ -28,7 +28,7 @@ class ProjectController extends RESTfulController
             ]
                 ], parent::accessRules());
     }
-
+    
     public function getFilterCriteria()
     {
         $cr = parent::getFilterCriteria();
