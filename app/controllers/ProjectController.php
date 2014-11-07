@@ -40,7 +40,10 @@ class ProjectController extends RESTfulController
 
         $cr->with = ['members', 'owner', 'projectCriterias'];
 
-        if (Yii::app()->user->hasState('role') && (Yii::app()->user->role == 'member' || Yii::app()->user->role == 'expert'))
+        if (Yii::app()->user->hasState('role') 
+                && (Yii::app()->user->role == 'member' || Yii::app()->user->role == 'expert')
+               && Yii::app()->request->getParam('attended')
+                )
         {
             $member = Member::model()->findByPk(Yii::app()->user->id);
             $cr->compare('event_id',
@@ -48,13 +51,13 @@ class ProjectController extends RESTfulController
                     {
                         return $v->id;
                     }, $member->events));
-        } else
-        {
-            if ($event_id = Yii::app()->request->getParam('event_id'))
-            {
-                $cr->compare('event_id', $event_id);
-            }
         }
+        
+        if ($event_id = Yii::app()->request->getParam('event_id'))
+        {
+            $cr->compare('event_id', $event_id);
+        }
+
 
         if ($name = Yii::app()->request->getParam('name'))
         {
