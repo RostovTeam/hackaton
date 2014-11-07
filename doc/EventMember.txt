@@ -45,6 +45,38 @@ Response:
         "password": null,
         "type": "member",
         "salt": null
+    },
+    {
+        "id": "2",
+        "full_name": "Elon Mask 1",
+        "email": null,
+        "phone": "79054447776",
+        "occupation": null,
+        "created": null,
+        "git_nickname": null,
+        "vk_link": null,
+        "active_event": "1",
+        "vk_token": null,
+        "login": null,
+        "password": null,
+        "type": "expert",
+        "salt": null
+    },
+    {
+        "id": "3",
+        "full_name": "Elon Mask 2",
+        "email": null,
+        "phone": "79054447777",
+        "occupation": null,
+        "created": null,
+        "git_nickname": null,
+        "vk_link": null,
+        "active_event": "1",
+        "vk_token": null,
+        "login": "manager",
+        "password": "password",
+        "type": "manager",
+        "salt": null
     }
 ]
 

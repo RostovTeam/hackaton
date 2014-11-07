@@ -124,7 +124,6 @@ class AuthController extends RESTfulController
 
         if (!$params)
         {
-
             $this->_sendResponse(400, ['error' => 'empty request']);
             return;
         }
@@ -136,7 +135,7 @@ class AuthController extends RESTfulController
             $this->_sendResponse(200, []);
         } else
         {
-            $this->_sendResponse(400, ['error' => 'failed to find expert']);
+            $this->_sendResponse(400, ['error' => $model->errors]);
         }
     }
 

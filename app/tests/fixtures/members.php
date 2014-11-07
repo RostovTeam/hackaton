@@ -11,7 +11,7 @@ return [
     'expert1' => [
         'id'=>2,
         'full_name' => 'Elon Mask 1',
-        'phone' => '79054447777',
+        'phone' => '79054447776',
         'type'=>'expert',
         'active_event'=>$this->getRecord('events', 'event1')['id']
     ],

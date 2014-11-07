@@ -1,0 +1,17 @@
+ManagerEvents
+
+ 
+ LIST 
+Resourse GET /api/Manager/Events
+Response: 
+[
+    {
+        "id": "1",
+        "name": "best future development",
+        "is_active": "1",
+        "start_date": null,
+        "end_date": "2014-12-03 19:00:00",
+        "created": "2014-11-07 04:57:09",
+        "creator": "0"
+    }
+]
