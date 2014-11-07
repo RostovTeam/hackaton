@@ -19,7 +19,7 @@ class PhoneUserIdentity extends CUserIdentity
 
     public function authenticate()
     {
-        $user = Member::model()->findByAttributes(['login' => $this->phone]);
+        $user = Member::model()->findByAttributes(['phone' => $this->phone,'type'=>  Member::MEMBER_TYPE_EXPERT]);
 
         if ($user === null)
         {
