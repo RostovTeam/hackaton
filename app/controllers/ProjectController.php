@@ -34,7 +34,7 @@ class ProjectController extends RESTfulController
     {
         $cr = parent::getFilterCriteria();
 
-        $cr->with = ['members', 'owner'];
+        $cr->with = ['members', 'owner','projectCriterias'];
 
         if (Yii::app()->user->role == 'member' || Yii::app()->user->role == 'expert')
         {
@@ -81,7 +81,8 @@ class ProjectController extends RESTfulController
         $row['members'] = $model->members;
         $row['mark'] = $model->getMark();
         $row['is_active'] = $model->isActive();
-
+        $row['criterias']=$model->projectCriterias();
+        
         return $row;
     }
 
