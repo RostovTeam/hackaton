@@ -11,7 +11,7 @@ return CMap::mergeArray(
                     'connectionString' => 'mysql:host=localhost;dbname=hackaton',
                     'emulatePrepare' => true,
                     'username' => 'root',
-                    'password' => '',
+                    'password' => 'hackaton',
                     'charset' => 'utf8',
                 ),
                 'clientScript' => array(
