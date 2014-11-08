@@ -26,7 +26,7 @@
                     <tbody ng-repeat="user in users | filter : search">
                     <tr>
                         <td>{{user.id}}</td>
-                        <td><a ui-sref="g.user({id:user.id})">{{user.full_name}}</a></td>
+                        <td><a ui-sref="g.userEdit({id:user.id})">{{user.full_name}}</a></td>
                         <td>{{user.phone}}</td>
                         <td>
                             <a ui-sref="manager.userEdit({id: user.id})">
