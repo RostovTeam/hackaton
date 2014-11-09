@@ -32,26 +32,25 @@ class ProjectCriteriaController extends RESTfulController
             $model->expert_id = Yii::app()->user->id;
         }
     }
-    
-    public function actionCreate()
+public function actionCreate()
     {
         $modelname = $this->model;
 
         $params = Yii::app()->request->getJsonData();
-
-        if (isset($params['expert_id']) && isset($params['project_id']))
-                $modelname::model()->deleteAll('expert_id=:expert_id and project_id=:project_id',
-                    [':expert_id' => $params['expert_id'], ':project_id' => $params['project_id']]);
 
         if (!$params)
         {
             $this->_sendResponse(400, array('error' => 'empty request'));
         }
 
-        $model= new $modelname('create');
+        $model = new $modelname('create');
         $model->attributes = $params;
 
         $this->transform($model);
+        
+        if (isset($model->expert_id) && isset($params['project_id']))
+                $modelname::model()->deleteAll('expert_id=:expert_id and project_id=:project_id',
+                    [':expert_id' => $params['expert_id'], ':project_id' => $params['project_id']]);
 
         if (!$model->validate())
         {
