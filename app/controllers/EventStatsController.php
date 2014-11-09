@@ -25,7 +25,7 @@ class EventStatsController extends RESTfulController
 
         $event_id = Yii::app()->request->getParam('event_id');
         $event_created = '';
-        if (!$event_id)
+        /*if (!$event_id)
         {
             $event = Yii::app()->db->createCommand()
                     ->select('*')
@@ -40,7 +40,7 @@ class EventStatsController extends RESTfulController
             $event = Event::model()->findByPk($event_id);
             //$event_created = $event->created;
         }
-
+*/
         $event = Event::model()->findByPk($event_id);
 
         $projectsCount = count($event->projects);
@@ -51,18 +51,17 @@ class EventStatsController extends RESTfulController
 
         $start = Yii::app()->request->getParam('start', $event['start_date']);
 
-        $commmitDetail = $this->getCommitsDetail($start, $event,
-                $event['end_date']);
+        //$commmitDetail = $this->getCommitsDetail($start, $event,$event['end_date']);
 
 
         $this->_sendResponse(200,
                 [
             'event_id' => $event['id'],
             'projects_count' => $projectsCount,
-            'members_count' => $membersCount,
-            'commits_count' => $commitsCount,
+            'members_count' => $membersCount
+            /*'commits_count' => $commitsCount,
             'commit_detail' => $commmitDetail,
-            'start_date' => $start
+            'start_date' => $start*/
         ]);
     }
 
