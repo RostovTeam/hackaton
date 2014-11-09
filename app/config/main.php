@@ -28,9 +28,9 @@ return CMap::mergeArray(
                             'class' => 'CFileLogRoute',
                             'levels' => 'error, warning, info',
                         ),
-                        array(
-                            'class' => 'CWebLogRoute',
-                        ),
+ //                       array(
+   //                         'class' => 'CWebLogRoute',
+     //                   ),
                         array(
                             'class' => 'CProfileLogRoute',
                         ),
