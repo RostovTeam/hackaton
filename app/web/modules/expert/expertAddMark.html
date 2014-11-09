@@ -15,7 +15,7 @@
                 <div ng-repeat="criteria in criterias">
                     <h5 ng-click="openCrit(criteria)">{{criteria.name}} <i class="fa fa-angle-right"></i> </h5>
                     <div ng-if="criteria.display">
-                        <div ng-repeat="value in criteria.values | orderBy:'value':true">
+                        <div ng-repeat="value in criteria.values | orderBy:'value':true" style="margin: 20px">
                             <a ng-click="addMark(criteria.id, value.value)" style="padding-left: 10px">{{value.label}}</a>
                         </div>
                     </div>
