@@ -11,7 +11,7 @@ return CMap::mergeArray(
                     'connectionString' => 'mysql:host=localhost;dbname=hackaton',
                     'emulatePrepare' => true,
                     'username' => 'root',
-                    'password' => '',
+                    'password' => 'hackaton',
                     'charset' => 'utf8',
                 ),
                 'clientScript' => array(
@@ -28,9 +28,9 @@ return CMap::mergeArray(
                             'class' => 'CFileLogRoute',
                             'levels' => 'error, warning, info',
                         ),
-                        array(
-                            'class' => 'CWebLogRoute',
-                        ),
+ //                       array(
+   //                         'class' => 'CWebLogRoute',
+     //                   ),
                         array(
                             'class' => 'CProfileLogRoute',
                         ),

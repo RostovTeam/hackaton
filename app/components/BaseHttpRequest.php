@@ -12,6 +12,10 @@ class BaseHttpRequest extends CHttpRequest
     {
         $request_body=$this->getRawBody();
         
-        return CJSON::decode($request_body);
+        $json= CJSON::decode($request_body);
+        
+        Yii::log(json_encode($json,JSON_PRETTY_PRINT));
+        
+        return $json;
     }
 }

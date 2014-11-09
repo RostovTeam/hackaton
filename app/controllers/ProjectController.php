@@ -21,7 +21,7 @@ class ProjectController extends RESTfulController
                 [
             [
                 'allow',
-                'roles' => ['member'],
+                'roles' => ['member','manager'],
             ],
             ['allow',
                 'roles' => ['manager', 'expert'],
