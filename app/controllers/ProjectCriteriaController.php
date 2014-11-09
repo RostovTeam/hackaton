@@ -33,6 +33,47 @@ class ProjectCriteriaController extends RESTfulController
         }
     }
 
+    public function actionCreate()
+    {
+        $modelname = $this->model;
+
+        $params = Yii::app()->request->getJsonData();
+
+        if (isset($params['expert_id']) && isset($params['criteria_id']))
+                $modelname::model()->deleteAll('expert_id=:expert_id and criteria_id=:criteria_id',
+                    [':expert_id' => $params['expert_id'], ':criteria_id' => $params['criteria_id']]);
+
+        if (!$params)
+        {
+            $this->_sendResponse(400, array('error' => 'empty request'));
+        }
+
+        $model= new $modelname('create');
+        $model->attributes = $params;
+
+        $this->transform($model);
+
+        if (!$model->validate())
+        {
+            $this->_sendResponse(500,
+                    array('error' => 'validation_errors', 'errors_list' => $model->errors));
+        }
+
+        if (get_class($model) == $formModelName)
+        {
+            if (!($result = $model->create()))
+                    $this->_sendResponse(500, array('error' => $model->errors));
+        }
+        else
+        {
+            if (!$model->save())
+                    $this->_sendResponse(500, array('error' => 'intenal_error'));
+
+            $result = $model;
+        }
+
+        $this->_sendResponse(200, $this->serializeView($result));
+    }
     protected function getFilterCriteria()
     {
         $cr = parent::getFilterCriteria();
