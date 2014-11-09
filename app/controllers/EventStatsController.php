@@ -47,7 +47,7 @@ class EventStatsController extends RESTfulController
 
         $membersCount = count($event->members);
 
-        $commitsCount = count($event->commits);
+        //$commitsCount = count($event->commits);
 
         $start = Yii::app()->request->getParam('start', $event['start_date']);
 
