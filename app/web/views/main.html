@@ -2,9 +2,9 @@
     <div class="col-md-3 col-sm-6">
         <div class="dashboard-tile detail tile-blue">
             <div class="content">
-                <h1 class="text-left timer" data-from="0" data-to="180" data-speed="2500">180</h1>
+                <h1 class="text-left timer" data-from="0" data-to="180" data-speed="2500">{{stat.members_count}}</h1>
 
-                <p>New Users</p>
+                <p>Колличество пользователей</p>
             </div>
             <div class="icon"><i class="fa fa-users"></i>
             </div>
@@ -13,38 +13,47 @@
     <div class="col-md-3 col-sm-6">
         <div class="dashboard-tile detail tile-turquoise">
             <div class="content">
-                <h1 class="text-left timer" data-from="0" data-to="56" data-speed="2500">56</h1>
+                <h1 class="text-left timer" data-from="0" data-to="56" data-speed="2500">{{stat.projects_count}}</h1>
 
-                <p>New Comments</p>
+                <p>Колличество проектов</p>
             </div>
-            <div class="icon"><i class="fa fa-comments"></i>
-            </div>
-        </div>
-    </div>
-    <div class="col-md-3 col-sm-6">
-        <div class="dashboard-tile detail tile-red">
-            <div class="content">
-                <h1 class="text-left timer" data-from="0" data-to="38" data-speed="2500">38</h1>
-
-                <p>New Messages</p>
-            </div>
-            <div class="icon"><i class="fa fa fa-envelope"></i>
-            </div>
-        </div>
-    </div>
-    <div class="col-md-3 col-sm-6">
-        <div class="dashboard-tile detail tile-purple">
-            <div class="content">
-                <h1 class="text-left timer" data-to="105" data-speed="2500">105</h1>
-
-                <p>New Sales</p>
-            </div>
-            <div class="icon"><i class="fa fa-bar-chart-o"></i>
+            <div class="icon"><i class="fa fa-code"></i>
             </div>
         </div>
     </div>
 </div>
 
+<div class="row">
+    <div class="col-lg-12">
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                <h3 class="panel-title">Статистика команд</h3>
+            </div>
+            <div class="panel-body">
+                <table class="table table-condensed" ng-if="projects.length>0">
+                    <thead>
+                    <tr>
+                        <th></th>
+                        <th>Название команды</th>
+                        <th>Балы</th>
+                    </tr>
+                    </thead>
+                    <tbody ng-repeat="project in projects | orderBy:'mark':true ">
+                    <tr>
+                        <td>{{$index+1}}</td>
+                        <td>{{project.name}}</td>
+                        <td>{{project.mark}}</td>
+                    </tr>
+                    </tbody>
+                </table>
+                <div ng-if="!projects">
+                    Проекты отсутствует
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!--
 <div class="row">
     <div class="col-lg-6">
         <div class="panel panel-default">
@@ -96,12 +105,12 @@
             </div>
             <div class="panel-body">
                 <div class="row">
-                    <div class="col-sm-4 expert" ng-repeat="expert in experts">
+                    <div class="col-sm-4 expert"  ng-repeat="expert in experts">
                         <div class="col-sm-2 photo img-circle" style="background-image: url({{expert.photo}})"></div>
                         <div class="col-sm-10 info">
                             <h5>
                                 {{expert.name}}
-                                <br>
+                                <br />
                                 <small>
                                     {{expert.des}}
                                 </small>
@@ -114,3 +123,4 @@
     </div>
 
 </div>
+-->
