@@ -39,9 +39,9 @@ class ProjectCriteriaController extends RESTfulController
 
         $params = Yii::app()->request->getJsonData();
 
-        if (isset($params['expert_id']) && isset($params['criteria_id']))
-                $modelname::model()->deleteAll('expert_id=:expert_id and criteria_id=:criteria_id',
-                    [':expert_id' => $params['expert_id'], ':criteria_id' => $params['criteria_id']]);
+        if (isset($params['expert_id']) && isset($params['project_id']))
+                $modelname::model()->deleteAll('expert_id=:expert_id and project_id=:project_id',
+                    [':expert_id' => $params['expert_id'], ':criteria_id' => $params['project_id']]);
 
         if (!$params)
         {
