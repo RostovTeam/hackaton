@@ -49,7 +49,7 @@ public function actionCreate()
         $this->transform($model);
         
         if (isset($model->expert_id) && isset($params['project_id']))
-                $modelname::model()->deleteAll('expert_id=:expert_id and project_id=:project_id and criteria_id-:criteria_id',
+                $modelname::model()->deleteAll('expert_id=:expert_id and project_id=:project_id and criteria_id=:criteria_id',
                     [':expert_id' => $model->expert_id, ':project_id' => $params['project_id'],':criteria_id'=>$params['criteria_id']]);
 
         if (!$model->validate())
