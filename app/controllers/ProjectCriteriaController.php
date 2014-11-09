@@ -32,7 +32,7 @@ class ProjectCriteriaController extends RESTfulController
             $model->expert_id = Yii::app()->user->id;
         }
     }
-
+    
     public function actionCreate()
     {
         $modelname = $this->model;
@@ -41,7 +41,7 @@ class ProjectCriteriaController extends RESTfulController
 
         if (isset($params['expert_id']) && isset($params['project_id']))
                 $modelname::model()->deleteAll('expert_id=:expert_id and project_id=:project_id',
-                    [':expert_id' => $params['expert_id'], ':criteria_id' => $params['project_id']]);
+                    [':expert_id' => $params['expert_id'], ':project_id' => $params['project_id']]);
 
         if (!$params)
         {
