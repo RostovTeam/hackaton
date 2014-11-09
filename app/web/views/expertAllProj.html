@@ -25,14 +25,12 @@
                     <thead>
                     <tr>
                         <th>Название проекта</th>
-                        <th>Руководитель</th>
                         <th>Колличество баллов</th>
                     </tr>
                     </thead>
                     <tbody ng-repeat="proj in projects | filter : search">
-                    <tr>
+                    <tr ui-sref="expertAddMark({id: proj.id})">
                         <td>{{proj.name}}</td>
-                        <td>{{proj.creator_name}}</td>
                         <td>{{proj.mark}}</td>
                     </tr>
                     </tbody>

@@ -1,0 +1,26 @@
+<div class="panel panel-default">
+    <div class="panel-heading">
+        <h3 class="panel-title">{{proj.name}}</h3>
+    </div>
+    <div class="panel-body">
+        <div class="row">
+            <div class="col-sm-12">
+                <h4>Описание</h4>
+                <hr>
+                {{proj.description}}
+            </div>
+            <div class="col-sm-12">
+                <h4>Оценки</h4>
+                <hr>
+                <div ng-repeat="criteria in criterias">
+                    <h5 ng-click="openCrit(criteria)">{{criteria.name}} <i class="fa fa-angle-right"></i> </h5>
+                    <div ng-if="criteria.display">
+                        <div ng-repeat="value in criteria.values | orderBy:'value':true">
+                            <a ng-click="addMark(criteria.id, value.value)" style="padding-left: 10px">{{value.label}}</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>ч
